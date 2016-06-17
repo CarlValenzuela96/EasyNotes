@@ -30,7 +30,6 @@ public class TPconjunto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jcMousePanel2 = new jcMousePanel.jcMousePanel();
         jcMousePanel1 = new jcMousePanel.jcMousePanel();
         pagPrincipal = new javax.swing.JButton();
         jcMousePanel3 = new jcMousePanel.jcMousePanel();
@@ -94,19 +93,6 @@ public class TPconjunto extends javax.swing.JFrame {
         botonCerrar = new javax.swing.JButton();
         botonMin = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
-
-        jcMousePanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Logo2.png"))); // NOI18N
-
-        javax.swing.GroupLayout jcMousePanel2Layout = new javax.swing.GroupLayout(jcMousePanel2);
-        jcMousePanel2.setLayout(jcMousePanel2Layout);
-        jcMousePanel2Layout.setHorizontalGroup(
-            jcMousePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 178, Short.MAX_VALUE)
-        );
-        jcMousePanel2Layout.setVerticalGroup(
-            jcMousePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -945,7 +931,6 @@ public class TPconjunto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private jcMousePanel.jcMousePanel jcMousePanel1;
-    private jcMousePanel.jcMousePanel jcMousePanel2;
     private jcMousePanel.jcMousePanel jcMousePanel3;
     private jcMousePanel.jcMousePanel jcMousePanel4;
     private javax.swing.JLabel nombreAsign;
