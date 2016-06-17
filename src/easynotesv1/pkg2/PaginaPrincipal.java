@@ -5,6 +5,8 @@
  */
 package easynotesv1.pkg2;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author carlos
@@ -19,6 +21,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
        
         initComponents();
         setLocationRelativeTo(null);
+       
         asign1.setVisible(false);
         asign2.setVisible(false);
         asign3.setVisible(false);
@@ -28,7 +31,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign7.setVisible(false);
         asign8.setVisible(false);
         asign9.setVisible(false);
-    }
+       
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,7 +81,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentana.png"))); // NOI18N
 
-        jcMousePanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Logo2.png"))); // NOI18N
+        jcMousePanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/LogoEasyNotes.png"))); // NOI18N
 
         javax.swing.GroupLayout jcMousePanel2Layout = new javax.swing.GroupLayout(jcMousePanel2);
         jcMousePanel2.setLayout(jcMousePanel2Layout);
@@ -353,7 +357,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-         System.exit(0); 
+       int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+        if (JOptionPane.OK_OPTION == resp) {
+            System.exit(0);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

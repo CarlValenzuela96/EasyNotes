@@ -35,6 +35,7 @@ public class Inicio extends javax.swing.JFrame {
 
         jcMousePanel1 = new jcMousePanel.jcMousePanel();
         jcMousePanel2 = new jcMousePanel.jcMousePanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         L1 = new javax.swing.JLabel();
         L2 = new javax.swing.JLabel();
@@ -46,17 +47,25 @@ public class Inicio extends javax.swing.JFrame {
 
         jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/fondoBlancoInicio.jpg"))); // NOI18N
 
-        jcMousePanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Logo2.png"))); // NOI18N
+        jcMousePanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/LogoEasyNotes.png"))); // NOI18N
+
+        jLabel2.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel2.setText("2016");
 
         javax.swing.GroupLayout jcMousePanel2Layout = new javax.swing.GroupLayout(jcMousePanel2);
         jcMousePanel2.setLayout(jcMousePanel2Layout);
         jcMousePanel2Layout.setHorizontalGroup(
             jcMousePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 411, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel2Layout.createSequentialGroup()
+                .addContainerGap(377, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addContainerGap())
         );
         jcMousePanel2Layout.setVerticalGroup(
             jcMousePanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 182, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel2Layout.createSequentialGroup()
+                .addGap(0, 168, Short.MAX_VALUE)
+                .addComponent(jLabel2))
         );
 
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -155,6 +164,7 @@ public class Inicio extends javax.swing.JFrame {
     public javax.swing.JLabel L2;
     public javax.swing.JLabel L3;
     public javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private jcMousePanel.jcMousePanel jcMousePanel1;
     private jcMousePanel.jcMousePanel jcMousePanel2;
     // End of variables declaration//GEN-END:variables
