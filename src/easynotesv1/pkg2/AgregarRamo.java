@@ -14,14 +14,12 @@ public class AgregarRamo extends javax.swing.JFrame {
     /**
      * Creates new form TPseparado
      */
-    
-    
     public AgregarRamo() {
         initComponents();
         setLocationRelativeTo(null);
         jTextField2.setEditable(false);
         
-        
+
     }
 
     /**
@@ -59,6 +57,8 @@ public class AgregarRamo extends javax.swing.JFrame {
         modoAprob = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         jcMousePanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/Logo2.png"))); // NOI18N
 
@@ -173,7 +173,7 @@ public class AgregarRamo extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(61, 138, 247));
         jLabel10.setText("%");
 
-        modoAprob.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEORICO - PRACTICO por Separado", "TEORICO - PRACTICO en Conjunto" }));
+        modoAprob.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEORICO - PRACTICO en Conjunto", "TEORICO - PRACTICO por Separado" }));
         modoAprob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modoAprobActionPerformed(evt);
@@ -208,6 +208,12 @@ public class AgregarRamo extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setForeground(new java.awt.Color(61, 138, 247));
+        jLabel11.setText("Press enter, para calucular pond Practica");
+
+        jLabel12.setForeground(new java.awt.Color(0, 102, 204));
+        jLabel12.setText("EasyNotes 2016");
+
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
         jcMousePanel1Layout.setHorizontalGroup(
@@ -235,7 +241,9 @@ public class AgregarRamo extends javax.swing.JFrame {
                                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel7))
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel11))
                                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                                                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,12 +275,15 @@ public class AgregarRamo extends javax.swing.JFrame {
                 .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(crearAsign)
                         .addGap(59, 59, 59))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -290,7 +301,8 @@ public class AgregarRamo extends javax.swing.JFrame {
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(22, 22, 22)
                         .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
@@ -305,7 +317,8 @@ public class AgregarRamo extends javax.swing.JFrame {
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -348,16 +361,16 @@ public class AgregarRamo extends javax.swing.JFrame {
 
         this.dispose();
         PaginaPrincipal pp = new PaginaPrincipal();
-         
+
         pp.setTitle("EasyNotes");
         pp.setVisible(true);
 
     }//GEN-LAST:event_crearAsignActionPerformed
-    
+
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-         PaginaPrincipal pp = new PaginaPrincipal();
+        PaginaPrincipal pp = new PaginaPrincipal();
         pp.setTitle("EasyNotes");
         pp.setVisible(true);
     }//GEN-LAST:event_cancelarActionPerformed
@@ -368,30 +381,47 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void modoAprobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoAprobActionPerformed
         // TODO add your handling code here:
+        if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")) {
+            jTextField1.setText("50");
+            jTextField2.setText("50");
+            jTextField1.setEditable(false);
+            jLabel11.setVisible(false);
+        }
+        if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")) {
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField1.setEditable(true);
+              jLabel11.setVisible(true);
+            if (!jTextField1.getText().equals("")) {
+                double pondP = 100 - Double.parseDouble(jTextField1.getText());
+                jTextField2.setText(String.valueOf(pondP));
+              
+            }
+        }
     }//GEN-LAST:event_modoAprobActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
-       
-        
+
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        if(!jTextField1.getText().equals("")){
-        double pondP= 100-Double.parseDouble(jTextField1.getText());
-        jTextField2.setText(String.valueOf(pondP));
+        if (!jTextField1.getText().equals("")) {
+            double pondP = 100 - Double.parseDouble(jTextField1.getText());
+            jTextField2.setText(String.valueOf(pondP));
         }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        System.exit(0); 
+        System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        setExtendedState(ICONIFIED); 
+        setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -440,6 +470,8 @@ public class AgregarRamo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
