@@ -20,7 +20,6 @@ public class AgregarRamo extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         jTextField2.setEditable(false);
-        
 
     }
 
@@ -133,16 +132,53 @@ public class AgregarRamo extends javax.swing.JFrame {
                 nomAsignActionPerformed(evt);
             }
         });
+        nomAsign.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nomAsignKeyTyped(evt);
+            }
+        });
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField1KeyTyped(evt);
+            }
+        });
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
+            }
+        });
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField2KeyTyped(evt);
+            }
+        });
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField3KeyTyped(evt);
+            }
+        });
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        jTextField4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField4KeyTyped(evt);
             }
         });
 
@@ -343,13 +379,16 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
         // TODO add your handling code here:
+        if (!nomAsign.getText().equals("") && !jTextField1.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("")) {
+            this.dispose();
+            PaginaPrincipal pp = new PaginaPrincipal();
 
-        this.dispose();
-        PaginaPrincipal pp = new PaginaPrincipal();
-
-        pp.setTitle("EasyNotes");
-        pp.setVisible(true);
-
+            pp.setTitle("EasyNotes");
+            pp.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
+            "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_crearAsignActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -376,11 +415,11 @@ public class AgregarRamo extends javax.swing.JFrame {
             jTextField1.setText("");
             jTextField2.setText("");
             jTextField1.setEditable(true);
-              jLabel11.setVisible(true);
+            jLabel11.setVisible(true);
             if (!jTextField1.getText().equals("")) {
                 double pondP = 100 - Double.parseDouble(jTextField1.getText());
                 jTextField2.setText(String.valueOf(pondP));
-              
+
             }
         }
     }//GEN-LAST:event_modoAprobActionPerformed
@@ -411,6 +450,63 @@ public class AgregarRamo extends javax.swing.JFrame {
         // TODO add your handling code here:
         setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void nomAsignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomAsignKeyTyped
+        // TODO add your handling code here:
+              char c=evt.getKeyChar(); 
+
+          if(Character.isDigit(c)) { 
+              getToolkit().beep(); 
+               
+              evt.consume(); 
+          } 
+    }//GEN-LAST:event_nomAsignKeyTyped
+
+    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+        // TODO add your handling code here:
+              char c=evt.getKeyChar(); 
+
+          if(Character.isLetter(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+            
+          }
+    }//GEN-LAST:event_jTextField1KeyTyped
+
+    private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
+        // TODO add your handling code here:
+          
+    }//GEN-LAST:event_jTextField2KeyTyped
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
+        // TODO add your handling code here:
+            char c=evt.getKeyChar(); 
+
+          if(Character.isLetter(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+            
+          }
+    }//GEN-LAST:event_jTextField3KeyTyped
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
+        // TODO add your handling code here:
+            char c=evt.getKeyChar(); 
+
+          if(Character.isLetter(c)) { 
+              getToolkit().beep(); 
+              evt.consume(); 
+            
+          }
+    }//GEN-LAST:event_jTextField4KeyTyped
 
     /**
      * @param args the command line arguments
