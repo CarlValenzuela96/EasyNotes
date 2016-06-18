@@ -5,6 +5,8 @@
  */
 package easynotesv1.pkg2;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +18,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     /**
      * Creates new form TPseparado
      */
+    int x,y;
     public AgregarRamo() {
         initComponents();
         setLocationRelativeTo(null);
@@ -63,7 +66,7 @@ public class AgregarRamo extends javax.swing.JFrame {
         setUndecorated(true);
 
         jcMousePanel1.setForeground(new java.awt.Color(61, 138, 247));
-        jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentana.png"))); // NOI18N
+        jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentanaDeg.png"))); // NOI18N
 
         jcMousePanel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/line.png"))); // NOI18N
 
@@ -113,14 +116,26 @@ public class AgregarRamo extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(61, 138, 247));
         jLabel6.setText("CANTIDAD EVALUACIONES PRACTICO:");
 
-        crearAsign.setText("CREAR ASIGNATURA");
+        crearAsign.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bCA.png"))); // NOI18N
+        crearAsign.setBorder(null);
+        crearAsign.setBorderPainted(false);
+        crearAsign.setContentAreaFilled(false);
+        crearAsign.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bCAP.png"))); // NOI18N
+        crearAsign.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bCAP.png"))); // NOI18N
+        crearAsign.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bCAP.png"))); // NOI18N
         crearAsign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 crearAsignActionPerformed(evt);
             }
         });
 
-        cancelar.setText("cancelar");
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bCancelar.png"))); // NOI18N
+        cancelar.setBorder(null);
+        cancelar.setBorderPainted(false);
+        cancelar.setContentAreaFilled(false);
+        cancelar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bCancelarP.png"))); // NOI18N
+        cancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bCancelarP.png"))); // NOI18N
+        cancelar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bCancelarP.png"))); // NOI18N
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
@@ -233,7 +248,17 @@ public class AgregarRamo extends javax.swing.JFrame {
         jLabel11.setText("Press enter, para calucular pond Practica");
 
         jLabel12.setForeground(new java.awt.Color(0, 102, 204));
-        jLabel12.setText("EasyNotes 2016");
+        jLabel12.setText("     EasyNotes 2016");
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel12MousePressed(evt);
+            }
+        });
+        jLabel12.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel12MouseDragged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
@@ -296,36 +321,33 @@ public class AgregarRamo extends javax.swing.JFrame {
                 .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(crearAsign)
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(crearAsign)
+                .addGap(59, 59, 59))
         );
         jcMousePanel1Layout.setVerticalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
+                        .addGap(42, 42, 42)
                         .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addGap(22, 22, 22)
-                        .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(26, 26, 26)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -356,7 +378,7 @@ public class AgregarRamo extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(crearAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -454,22 +476,18 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void nomAsignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomAsignKeyTyped
         // TODO add your handling code here:
               char c=evt.getKeyChar(); 
-
-          if(Character.isDigit(c)) { 
-              getToolkit().beep(); 
-               
+          if(!Character.isLetter(c)&&c!=KeyEvent.VK_SPACE) {   
               evt.consume(); 
           } 
     }//GEN-LAST:event_nomAsignKeyTyped
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         // TODO add your handling code here:
-              char c=evt.getKeyChar(); 
+          char c=evt.getKeyChar(); 
 
-          if(Character.isLetter(c)) { 
-              getToolkit().beep(); 
+         if(!Character.isDigit(c)&&c!=KeyEvent.VK_PERIOD) { 
               evt.consume(); 
-            
+         
           }
     }//GEN-LAST:event_jTextField1KeyTyped
 
@@ -485,9 +503,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         // TODO add your handling code here:
             char c=evt.getKeyChar(); 
-
-          if(Character.isLetter(c)) { 
-              getToolkit().beep(); 
+          if(!Character.isDigit(c)) { 
               evt.consume(); 
             
           }
@@ -501,12 +517,23 @@ public class AgregarRamo extends javax.swing.JFrame {
         // TODO add your handling code here:
             char c=evt.getKeyChar(); 
 
-          if(Character.isLetter(c)) { 
-              getToolkit().beep(); 
+          if(!Character.isDigit(c)) { 
               evt.consume(); 
             
           }
     }//GEN-LAST:event_jTextField4KeyTyped
+
+    private void jLabel12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MousePressed
+        // TODO add your handling code here:
+        x=evt.getX();
+        y=evt.getY();
+    }//GEN-LAST:event_jLabel12MousePressed
+
+    private void jLabel12MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseDragged
+        // TODO add your handling code here:
+        Point point = MouseInfo.getPointerInfo().getLocation()   ; 
+    setLocation(point.x - x, point.y - y)   ; 
+    }//GEN-LAST:event_jLabel12MouseDragged
 
     /**
      * @param args the command line arguments

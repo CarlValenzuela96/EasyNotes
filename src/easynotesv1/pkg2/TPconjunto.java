@@ -5,6 +5,7 @@
  */
 package easynotesv1.pkg2;
 
+import java.awt.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +17,11 @@ public class TPconjunto extends javax.swing.JFrame {
     /**
      * Creates new form TPseparado
      */
+    int x, y;
+
     public TPconjunto() {
         initComponents();
+        setLocationRelativeTo(null);
         promGral.setEditable(false);
     }
 
@@ -95,11 +99,18 @@ public class TPconjunto extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jcMousePanel1.setForeground(new java.awt.Color(61, 138, 247));
-        jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentana.png"))); // NOI18N
+        jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentanaDeg.png"))); // NOI18N
 
-        pagPrincipal.setText("Principal");
+        pagPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPR.png"))); // NOI18N
+        pagPrincipal.setBorder(null);
+        pagPrincipal.setBorderPainted(false);
+        pagPrincipal.setContentAreaFilled(false);
+        pagPrincipal.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPRP.png"))); // NOI18N
+        pagPrincipal.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPRP.png"))); // NOI18N
+        pagPrincipal.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPRP.png"))); // NOI18N
         pagPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pagPrincipalActionPerformed(evt);
@@ -404,7 +415,13 @@ public class TPconjunto extends javax.swing.JFrame {
             }
         });
 
-        guardar.setText("GUARDAR");
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardar.png"))); // NOI18N
+        guardar.setBorder(null);
+        guardar.setBorderPainted(false);
+        guardar.setContentAreaFilled(false);
+        guardar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
+        guardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
+        guardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
 
         botonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/salir.png"))); // NOI18N
         botonCerrar.setBorder(null);
@@ -435,7 +452,17 @@ public class TPconjunto extends javax.swing.JFrame {
         });
 
         jLabel18.setForeground(new java.awt.Color(0, 102, 204));
-        jLabel18.setText("EasyNotes 2016");
+        jLabel18.setText("     EasyNotes 2016");
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel18MousePressed(evt);
+            }
+        });
+        jLabel18.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel18MouseDragged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
@@ -549,9 +576,9 @@ public class TPconjunto extends javax.swing.JFrame {
                 .addGap(0, 9, Short.MAX_VALUE))
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(pagPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pagPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(96, 96, 96)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -560,43 +587,40 @@ public class TPconjunto extends javax.swing.JFrame {
                         .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(189, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pondTeo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addComponent(jLabel4)
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pondPract)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addGap(153, 153, 153))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pondTeo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)
-                                .addGap(74, 74, 74)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pondPract)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
-                                .addGap(153, 153, 153))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addContainerGap())))))
+                        .addComponent(jLabel14)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(botonMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(botonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jcMousePanel1Layout.setVerticalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel18)
-                    .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(botonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botonMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(botonCerrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonMin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -610,7 +634,7 @@ public class TPconjunto extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(26, 26, 26))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(25, 25, 25)
                         .addComponent(pagPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -852,7 +876,7 @@ public class TPconjunto extends javax.swing.JFrame {
     private void pagPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagPrincipalActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        PaginaPrincipal pp= new PaginaPrincipal();
+        PaginaPrincipal pp = new PaginaPrincipal();
         pp.setTitle("EasyNotes");
         pp.setVisible(true);
     }//GEN-LAST:event_pagPrincipalActionPerformed
@@ -867,8 +891,20 @@ public class TPconjunto extends javax.swing.JFrame {
 
     private void botonMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMinActionPerformed
         // TODO add your handling code here:
-         setExtendedState(ICONIFIED);
+        setExtendedState(ICONIFIED);
     }//GEN-LAST:event_botonMinActionPerformed
+
+    private void jLabel18MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MousePressed
+        // TODO add your handling code here:
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jLabel18MousePressed
+
+    private void jLabel18MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseDragged
+        // TODO add your handling code here:
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        setLocation(point.x - x, point.y - y);
+    }//GEN-LAST:event_jLabel18MouseDragged
 
     /**
      * @param args the command line arguments

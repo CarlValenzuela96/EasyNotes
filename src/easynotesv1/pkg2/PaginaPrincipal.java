@@ -5,6 +5,8 @@
  */
 package easynotesv1.pkg2;
 
+import java.awt.MouseInfo;
+import java.awt.Point;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,12 +18,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     /**
      * Creates new form PaginaPrincipal
      */
-    
+    int x, y;
+
     public PaginaPrincipal() {
-       
+
         initComponents();
         setLocationRelativeTo(null);
-       
+
         asign1.setVisible(false);
         asign2.setVisible(false);
         asign3.setVisible(false);
@@ -31,8 +34,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign7.setVisible(false);
         asign8.setVisible(false);
         asign9.setVisible(false);
-       
-        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,7 +82,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentana.png"))); // NOI18N
+        jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentanaDeg.png"))); // NOI18N
 
         jcMousePanel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/LogoEasyNotes.png"))); // NOI18N
 
@@ -98,6 +101,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         botonAgregar.setBorder(null);
         botonAgregar.setBorderPainted(false);
         botonAgregar.setContentAreaFilled(false);
+        botonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonAgregar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bARP.png"))); // NOI18N
         botonAgregar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bARP.png"))); // NOI18N
         botonAgregar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bARP.png"))); // NOI18N
@@ -111,6 +115,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         botonBorrar.setBorder(null);
         botonBorrar.setBorderPainted(false);
         botonBorrar.setContentAreaFilled(false);
+        botonBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonBorrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bBRP.png"))); // NOI18N
         botonBorrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bBRP.png"))); // NOI18N
         botonBorrar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bBRP.png"))); // NOI18N
@@ -124,6 +129,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         botonReiniciar.setBorder(null);
         botonReiniciar.setBorderPainted(false);
         botonReiniciar.setContentAreaFilled(false);
+        botonReiniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonReiniciar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRSP.png"))); // NOI18N
         botonReiniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRSP.png"))); // NOI18N
         botonReiniciar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRSP.png"))); // NOI18N
@@ -162,7 +168,17 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         });
 
         jLabel13.setForeground(new java.awt.Color(0, 102, 204));
-        jLabel13.setText("EasyNotes 2016");
+        jLabel13.setText("     EasyNotes 2016");
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel13MousePressed(evt);
+            }
+        });
+        jLabel13.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel13MouseDragged(evt);
+            }
+        });
 
         asign1.setText("jButton1");
 
@@ -219,11 +235,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel14)
-                        .addGap(105, 105, 105))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(asign3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,18 +244,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                             .addComponent(asign8, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(asign9, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(asign1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(asign2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 439, Short.MAX_VALUE)
+                            .addComponent(asign2, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jcMousePanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
@@ -274,6 +279,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel12))
                         .addGap(55, 55, 55))))
+            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel14)
+                        .addGap(105, 105, 105))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         jcMousePanel1Layout.setVerticalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,11 +299,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jLabel13)
-                                .addGap(18, 18, 18)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabel10)
-                                .addGap(11, 11, 11)
+                                .addGap(1, 1, 1)
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                                 .addContainerGap()
@@ -320,7 +336,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                         .addGap(62, 62, 62)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(botonReiniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonBorrar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(botonAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -362,7 +378,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        AgregarRamo ar= new AgregarRamo();
+        AgregarRamo ar = new AgregarRamo();
         ar.setTitle("AGREGAR ASIGNATURA");
         ar.setVisible(true);
         ar.setResizable(false);
@@ -371,14 +387,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        EliminarRamo er= new EliminarRamo();
+        EliminarRamo er = new EliminarRamo();
         er.setTitle("ELIMINAR ASIGNATURA");
         er.setVisible(true);
     }//GEN-LAST:event_botonBorrarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-       int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+        int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
         }
@@ -388,6 +404,18 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jLabel13MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MousePressed
+        // TODO add your handling code here:
+        x = evt.getX();
+        y = evt.getY();
+    }//GEN-LAST:event_jLabel13MousePressed
+
+    private void jLabel13MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseDragged
+        // TODO add your handling code here:
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        setLocation(point.x - x, point.y - y);
+    }//GEN-LAST:event_jLabel13MouseDragged
 
     /**
      * @param args the command line arguments
@@ -422,8 +450,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             @Override
             public void run() {
                 new PaginaPrincipal().setVisible(true);
-              
-                
+
             }
         });
     }

@@ -5,6 +5,7 @@
  */
 package easynotesv1.pkg2;
 
+import java.awt.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,8 +17,10 @@ public class TPseparado extends javax.swing.JFrame {
     /**
      * Creates new form TPseparado
      */
+    int x,y;
     public TPseparado() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -92,11 +95,18 @@ public class TPseparado extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jcMousePanel1.setForeground(new java.awt.Color(61, 138, 247));
-        jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentana.png"))); // NOI18N
+        jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentanaDeg.png"))); // NOI18N
 
-        paginaPrincipal.setText("Principal");
+        paginaPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPR.png"))); // NOI18N
+        paginaPrincipal.setBorder(null);
+        paginaPrincipal.setBorderPainted(false);
+        paginaPrincipal.setContentAreaFilled(false);
+        paginaPrincipal.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPRP.png"))); // NOI18N
+        paginaPrincipal.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPRP.png"))); // NOI18N
+        paginaPrincipal.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPRP.png"))); // NOI18N
         paginaPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paginaPrincipalActionPerformed(evt);
@@ -392,7 +402,13 @@ public class TPseparado extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(61, 138, 247));
         jLabel16.setText("cantEvP");
 
-        guardar.setText("GUARDAR");
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardar.png"))); // NOI18N
+        guardar.setBorder(null);
+        guardar.setBorderPainted(false);
+        guardar.setContentAreaFilled(false);
+        guardar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
+        guardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
+        guardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/salir.png"))); // NOI18N
         jButton4.setBorder(null);
@@ -423,7 +439,17 @@ public class TPseparado extends javax.swing.JFrame {
         });
 
         jLabel18.setForeground(new java.awt.Color(0, 102, 204));
-        jLabel18.setText("EasyNotes 2016");
+        jLabel18.setText("     EasyNotes 2016");
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel18MousePressed(evt);
+            }
+        });
+        jLabel18.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel18MouseDragged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
@@ -543,46 +569,43 @@ public class TPseparado extends javax.swing.JFrame {
                 .addComponent(jcMousePanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(29, 29, 29))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(181, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pondTeo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
+                        .addComponent(jLabel4)
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pondPract)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5)
+                        .addGap(153, 153, 153))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pondTeo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)
-                                .addGap(74, 74, 74)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pondPract)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel5)
-                                .addGap(153, 153, 153))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addContainerGap())))))
+                        .addComponent(jLabel14)
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jcMousePanel1Layout.setVerticalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel18)
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)))
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
@@ -846,6 +869,18 @@ public class TPseparado extends javax.swing.JFrame {
         // TODO add your handling code here:
          setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jLabel18MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MousePressed
+        // TODO add your handling code here:
+        x=evt.getX();
+        y=evt.getY();
+    }//GEN-LAST:event_jLabel18MousePressed
+
+    private void jLabel18MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseDragged
+        // TODO add your handling code here:
+          Point point = MouseInfo.getPointerInfo().getLocation();
+        setLocation(point.x - x, point.y - y);
+    }//GEN-LAST:event_jLabel18MouseDragged
 
     /**
      * @param args the command line arguments
