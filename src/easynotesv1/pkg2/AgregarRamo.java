@@ -18,7 +18,8 @@ public class AgregarRamo extends javax.swing.JFrame {
     /**
      * Creates new form TPseparado
      */
-    int x,y;
+    int x, y;
+
     public AgregarRamo() {
         initComponents();
         setLocationRelativeTo(null);
@@ -401,15 +402,21 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
         // TODO add your handling code here:
-        if (!nomAsign.getText().equals("") && !jTextField1.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("")) {
+        if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
             this.dispose();
             PaginaPrincipal pp = new PaginaPrincipal();
 
             pp.setTitle("EasyNotes");
             pp.setVisible(true);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
-            "ERROR", JOptionPane.WARNING_MESSAGE);
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        if (!jTextField1.getText().equals("")) {
+            if (Double.valueOf(jTextField1.getText()) > 100) {
+                JOptionPane.showMessageDialog(null, "Ponderacion Teorica incorrecta",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+            }
         }
     }//GEN-LAST:event_crearAsignActionPerformed
 
@@ -454,9 +461,27 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        if (!jTextField1.getText().equals("")) {
+        if (!jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100 ){
             double pondP = 100 - Double.parseDouble(jTextField1.getText());
             jTextField2.setText(String.valueOf(pondP));
+
+            jTextField4.setText("");
+            jTextField4.setEditable(true);
+            jTextField3.setText("");
+            jTextField3.setEditable(true);
+
+        }
+        if (!jTextField1.getText().equals("")) {
+            if (Double.valueOf(jTextField1.getText()) > 100) {
+                jLabel11.setText("Introduce Ponderacion menor a 100");
+
+            } else if (Double.valueOf(jTextField1.getText()) == 100) {
+                jTextField4.setText("0");
+                jTextField4.setEditable(false);
+            } else if (Double.valueOf(jTextField2.getText()) == 100) {
+                jTextField3.setText("0");
+                jTextField3.setEditable(false);
+            }
         }
     }//GEN-LAST:event_jTextField1ActionPerformed
 
@@ -475,38 +500,44 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void nomAsignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomAsignKeyTyped
         // TODO add your handling code here:
-              char c=evt.getKeyChar(); 
-          if(!Character.isLetter(c)&&c!=KeyEvent.VK_SPACE) {   
-              evt.consume(); 
-          } 
+        char c = evt.getKeyChar();
+        if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+            evt.consume();
+        }
+        if (nomAsign.getText().length() >= 22) {
+            evt.consume();
+        }
     }//GEN-LAST:event_nomAsignKeyTyped
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         // TODO add your handling code here:
-          char c=evt.getKeyChar(); 
+        char c = evt.getKeyChar();
 
-         if(!Character.isDigit(c)&&c!=KeyEvent.VK_PERIOD) { 
-              evt.consume(); 
-         
-          }
+        if (!Character.isDigit(c) && c != KeyEvent.VK_PERIOD) {
+            evt.consume();
+        }
+
+        if ((c == KeyEvent.VK_PERIOD) && jTextField1.getText().contains(".")) {
+            evt.consume();
+        }
+        if (jTextField1.getText().length() >= 5) {
+            evt.consume();
+        }
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         // TODO add your handling code here:
-          
+
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         // TODO add your handling code here:
-            char c=evt.getKeyChar(); 
-          if(!Character.isDigit(c)) { 
-              evt.consume(); 
-            
-          }
+        validarCantNotas(jTextField3.getText(), evt);
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -515,26 +546,31 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
         // TODO add your handling code here:
-            char c=evt.getKeyChar(); 
-
-          if(!Character.isDigit(c)) { 
-              evt.consume(); 
-            
-          }
+        validarCantNotas(jTextField4.getText(), evt);
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jLabel12MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MousePressed
         // TODO add your handling code here:
-        x=evt.getX();
-        y=evt.getY();
+        x = evt.getX();
+        y = evt.getY();
     }//GEN-LAST:event_jLabel12MousePressed
 
     private void jLabel12MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseDragged
         // TODO add your handling code here:
-        Point point = MouseInfo.getPointerInfo().getLocation()   ; 
-    setLocation(point.x - x, point.y - y)   ; 
+        Point point = MouseInfo.getPointerInfo().getLocation();
+        setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel12MouseDragged
 
+    private void validarCantNotas(String cadena, java.awt.event.KeyEvent evt) {
+        char c = evt.getKeyChar();
+
+        if (!(c >= '1' && c <= '8')) {
+            evt.consume();
+        }
+        if (cadena.length() >= 1) {
+            evt.consume();
+        }
+    }
     /**
      * @param args the command line arguments
      */

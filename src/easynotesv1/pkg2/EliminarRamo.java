@@ -301,6 +301,9 @@ public class EliminarRamo extends javax.swing.JFrame {
             Error.setVisible(true);
             Error.setText("Ingresa Solo Letras");
         }
+        if (nomAsign.getText().length()>=22){
+            evt.consume();
+        }
     }//GEN-LAST:event_nomAsignKeyTyped
 
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed

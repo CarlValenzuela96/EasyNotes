@@ -160,6 +160,11 @@ public class TPseparado extends javax.swing.JFrame {
                 nt1ActionPerformed(evt);
             }
         });
+        nt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nt1KeyTyped(evt);
+            }
+        });
 
         jLabel7.setForeground(new java.awt.Color(61, 138, 247));
         jLabel7.setText("TEORICO - cantidad de evaluaciones :");
@@ -169,10 +174,20 @@ public class TPseparado extends javax.swing.JFrame {
                 nt2ActionPerformed(evt);
             }
         });
+        nt2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nt2KeyTyped(evt);
+            }
+        });
 
         nt3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nt3ActionPerformed(evt);
+            }
+        });
+        nt3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nt3KeyTyped(evt);
             }
         });
 
@@ -181,10 +196,20 @@ public class TPseparado extends javax.swing.JFrame {
                 nt4ActionPerformed(evt);
             }
         });
+        nt4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nt4KeyTyped(evt);
+            }
+        });
 
         nt5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nt5ActionPerformed(evt);
+            }
+        });
+        nt5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nt5KeyTyped(evt);
             }
         });
 
@@ -193,16 +218,31 @@ public class TPseparado extends javax.swing.JFrame {
                 nt6ActionPerformed(evt);
             }
         });
+        nt6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nt6KeyTyped(evt);
+            }
+        });
 
         nt7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nt7ActionPerformed(evt);
             }
         });
+        nt7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nt7KeyTyped(evt);
+            }
+        });
 
         nt8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nt8ActionPerformed(evt);
+            }
+        });
+        nt8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nt8KeyTyped(evt);
             }
         });
 
@@ -277,10 +317,20 @@ public class TPseparado extends javax.swing.JFrame {
                 np8ActionPerformed(evt);
             }
         });
+        np8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                np8KeyTyped(evt);
+            }
+        });
 
         np4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 np4ActionPerformed(evt);
+            }
+        });
+        np4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                np4KeyTyped(evt);
             }
         });
 
@@ -289,10 +339,20 @@ public class TPseparado extends javax.swing.JFrame {
                 np6ActionPerformed(evt);
             }
         });
+        np6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                np6KeyTyped(evt);
+            }
+        });
 
         np7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 np7ActionPerformed(evt);
+            }
+        });
+        np7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                np7KeyTyped(evt);
             }
         });
 
@@ -301,16 +361,31 @@ public class TPseparado extends javax.swing.JFrame {
                 np5ActionPerformed(evt);
             }
         });
+        np5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                np5KeyTyped(evt);
+            }
+        });
 
         np3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 np3ActionPerformed(evt);
             }
         });
+        np3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                np3KeyTyped(evt);
+            }
+        });
 
         np1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 np1ActionPerformed(evt);
+            }
+        });
+        np1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                np1KeyTyped(evt);
             }
         });
 
@@ -320,6 +395,11 @@ public class TPseparado extends javax.swing.JFrame {
         np2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 np2ActionPerformed(evt);
+            }
+        });
+        np2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                np2KeyTyped(evt);
             }
         });
 
@@ -882,6 +962,98 @@ public class TPseparado extends javax.swing.JFrame {
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel18MouseDragged
 
+    private void nt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt1KeyTyped
+        // TODO add your handling code here:
+        validacionNota(nt1.getText(),evt);
+    }//GEN-LAST:event_nt1KeyTyped
+
+    private void nt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt2KeyTyped
+        // TODO add your handling code here:
+        validacionNota(nt2.getText(),evt);
+    }//GEN-LAST:event_nt2KeyTyped
+
+    private void nt3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt3KeyTyped
+        // TODO add your handling code here:
+        validacionNota(nt3.getText(),evt);
+    }//GEN-LAST:event_nt3KeyTyped
+
+    private void nt4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt4KeyTyped
+        // TODO add your handling code here:
+        validacionNota(nt4.getText(),evt);
+    }//GEN-LAST:event_nt4KeyTyped
+
+    private void nt5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt5KeyTyped
+        // TODO add your handling code here:
+        validacionNota(nt5.getText(),evt);
+    }//GEN-LAST:event_nt5KeyTyped
+
+    private void nt6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt6KeyTyped
+        // TODO add your handling code here:
+        validacionNota(nt6.getText(),evt);
+    }//GEN-LAST:event_nt6KeyTyped
+
+    private void nt7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt7KeyTyped
+        // TODO add your handling code here:
+        validacionNota(nt7.getText(),evt);
+    }//GEN-LAST:event_nt7KeyTyped
+
+    private void nt8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt8KeyTyped
+        // TODO add your handling code here:
+        validacionNota(nt8.getText(),evt);
+    }//GEN-LAST:event_nt8KeyTyped
+
+    private void np1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np1KeyTyped
+        // TODO add your handling code here:
+        validacionNota(np1.getText(),evt);
+    }//GEN-LAST:event_np1KeyTyped
+
+    private void np2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np2KeyTyped
+        // TODO add your handling code here:
+        validacionNota(np2.getText(),evt);
+    }//GEN-LAST:event_np2KeyTyped
+
+    private void np3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np3KeyTyped
+        // TODO add your handling code here:
+        validacionNota(np3.getText(),evt);
+    }//GEN-LAST:event_np3KeyTyped
+
+    private void np4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np4KeyTyped
+        // TODO add your handling code here:
+        validacionNota(np4.getText(),evt);
+    }//GEN-LAST:event_np4KeyTyped
+
+    private void np5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np5KeyTyped
+        // TODO add your handling code here:
+        validacionNota(np5.getText(),evt);
+    }//GEN-LAST:event_np5KeyTyped
+
+    private void np6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np6KeyTyped
+        // TODO add your handling code here:
+        validacionNota(np6.getText(),evt);
+    }//GEN-LAST:event_np6KeyTyped
+
+    private void np7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np7KeyTyped
+        // TODO add your handling code here:
+        validacionNota(np7.getText(),evt);
+    }//GEN-LAST:event_np7KeyTyped
+
+    private void np8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np8KeyTyped
+        // TODO add your handling code here:
+        validacionNota(np8.getText(),evt);
+    }//GEN-LAST:event_np8KeyTyped
+   private void validacionNota(String cadena, java.awt.event.KeyEvent evt){
+        char c = evt.getKeyChar();
+
+        if (!(c >= '1' && c <= '7') && c != '.') {
+            evt.consume();
+        }
+        if ((c == '.') && cadena.contains(".")) {
+            evt.consume();
+        }
+        if (cadena.length() >= 5) {
+            evt.consume();
+        }
+    }
     /**
      * @param args the command line arguments
      */
