@@ -104,6 +104,7 @@ public class TPseparado extends javax.swing.JFrame {
         paginaPrincipal.setBorder(null);
         paginaPrincipal.setBorderPainted(false);
         paginaPrincipal.setContentAreaFilled(false);
+        paginaPrincipal.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         paginaPrincipal.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPRP.png"))); // NOI18N
         paginaPrincipal.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPRP.png"))); // NOI18N
         paginaPrincipal.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bPRP.png"))); // NOI18N

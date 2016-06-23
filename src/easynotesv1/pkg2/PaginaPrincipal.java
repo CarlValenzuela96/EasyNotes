@@ -24,7 +24,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         initComponents();
         setLocationRelativeTo(null);
-
         asign1.setVisible(false);
         asign2.setVisible(false);
         asign3.setVisible(false);
@@ -34,7 +33,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign7.setVisible(false);
         asign8.setVisible(false);
         asign9.setVisible(false);
-
     }
 
     /**
@@ -180,23 +178,104 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        asign1.setForeground(new java.awt.Color(0, 102, 204));
+        asign1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign1.setText("jButton1");
+        asign1.setBorder(null);
+        asign1.setBorderPainted(false);
+        asign1.setContentAreaFilled(false);
+        asign1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
 
+        asign2.setForeground(new java.awt.Color(0, 102, 204));
+        asign2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign2.setText("jButton1");
+        asign2.setBorder(null);
+        asign2.setBorderPainted(false);
+        asign2.setContentAreaFilled(false);
+        asign2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
 
+        asign3.setForeground(new java.awt.Color(0, 102, 204));
+        asign3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign3.setText("jButton1");
+        asign3.setBorder(null);
+        asign3.setBorderPainted(false);
+        asign3.setContentAreaFilled(false);
+        asign3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
 
+        asign4.setForeground(new java.awt.Color(0, 102, 204));
+        asign4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign4.setText("jButton1");
+        asign4.setBorder(null);
+        asign4.setBorderPainted(false);
+        asign4.setContentAreaFilled(false);
+        asign4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
 
+        asign5.setForeground(new java.awt.Color(0, 102, 204));
+        asign5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign5.setText("jButton1");
+        asign5.setBorder(null);
+        asign5.setBorderPainted(false);
+        asign5.setContentAreaFilled(false);
+        asign5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign5.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign5.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
 
+        asign6.setForeground(new java.awt.Color(0, 102, 204));
+        asign6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign6.setText("jButton1");
+        asign6.setBorder(null);
+        asign6.setBorderPainted(false);
+        asign6.setContentAreaFilled(false);
+        asign6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign6.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
 
+        asign7.setForeground(new java.awt.Color(0, 102, 204));
+        asign7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign7.setText("jButton1");
+        asign7.setBorder(null);
+        asign7.setBorderPainted(false);
+        asign7.setContentAreaFilled(false);
+        asign7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign7.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign7.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
 
+        asign8.setForeground(new java.awt.Color(0, 102, 204));
+        asign8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign8.setText("jButton1");
+        asign8.setBorder(null);
+        asign8.setBorderPainted(false);
+        asign8.setContentAreaFilled(false);
+        asign8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign8.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign8.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
 
+        asign9.setForeground(new java.awt.Color(0, 102, 204));
+        asign9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign9.setText("jButton1");
+        asign9.setBorder(null);
+        asign9.setBorderPainted(false);
+        asign9.setContentAreaFilled(false);
+        asign9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign9.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign9.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
 
         jLabel1.setForeground(new java.awt.Color(61, 138, 247));
         jLabel1.setText("Permite crear y definir las ");
