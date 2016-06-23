@@ -181,6 +181,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         });
 
         asign1.setText("jButton1");
+        asign1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign1ActionPerformed(evt);
+            }
+        });
 
         asign2.setText("jButton1");
 
@@ -416,6 +421,16 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel13MouseDragged
+    // se paso a publio y statico en (customize code ) para poder agregar y ser visible desde agregar ramo
+    private void asign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign1ActionPerformed
+        
+        // dependiendo de la opcion que se ingreso sebiera abrir al pinchar en el ramo, si es TPconjunto o TPseparado
+        //en este caso sera TPseparado para probar
+        this.dispose();
+        TPseparado ts= new TPseparado();
+        ts.setTitle("TPseparado");
+        ts.setVisible(true);
+    }//GEN-LAST:event_asign1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -456,7 +471,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton asign1;
+    public static javax.swing.JButton asign1;
     private javax.swing.JButton asign2;
     private javax.swing.JButton asign3;
     private javax.swing.JButton asign4;
