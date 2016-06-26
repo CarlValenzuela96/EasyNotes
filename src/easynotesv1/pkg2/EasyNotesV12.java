@@ -35,6 +35,7 @@ public class EasyNotesV12 {
         
         PaginaPrincipal pp= new PaginaPrincipal();
         pp.setVisible(true);
+    
     }
     
 }
