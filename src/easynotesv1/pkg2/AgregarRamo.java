@@ -412,9 +412,9 @@ public class AgregarRamo extends javax.swing.JFrame {
             
             if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
                 
-                se.agregarRamo(nomAsign.getText());
-                pp.asign1.setText(nomAsign.getText());
-                pp.asign1.setVisible(true);
+                //se.agregarRamo(nomAsign.getText());
+                //pp.asign1.setText(nomAsign.getText());
+                //pp.asign1.setVisible(true);
             }
             
             
