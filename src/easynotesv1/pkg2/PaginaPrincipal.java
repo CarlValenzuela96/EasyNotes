@@ -19,6 +19,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      * Creates new form PaginaPrincipal
      */
     int x, y;
+    static int an = 0;
+    
 
     public PaginaPrincipal() {
 
@@ -190,6 +192,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign1ActionPerformed(evt);
+            }
+        });
 
         asign2.setForeground(new java.awt.Color(0, 102, 204));
         asign2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
@@ -497,6 +504,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel13MouseDragged
+
+    private void asign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asign1ActionPerformed
 
     /**
      * @param args the command line arguments
