@@ -5,6 +5,7 @@
  */
 package easynotesv1.pkg2;
 
+import clases.Semestre;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -405,10 +406,20 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
         // TODO add your handling code here:
+        PaginaPrincipal pp = new PaginaPrincipal();
+        Semestre se = new Semestre();
         if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
+            
+            if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
+                
+                se.agregarRamo(nomAsign.getText());
+                pp.asign1.setText(nomAsign.getText());
+                pp.asign1.setVisible(true);
+            }
+            
+            
+            
             this.dispose();
-            PaginaPrincipal pp = new PaginaPrincipal();
-
             pp.setTitle("EasyNotes");
             pp.setVisible(true);
         } else {
@@ -504,7 +515,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void nomAsignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomAsignKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if (!Character.isLetter(c) && c != KeyEvent.VK_SPACE) {
+        if ((c<'a' || c>'z') && (c<'A' || c>'Z')) {
             evt.consume();
         }
         if (nomAsign.getText().length() >= 22) {
@@ -516,7 +527,7 @@ public class AgregarRamo extends javax.swing.JFrame {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) && c != KeyEvent.VK_PERIOD) {
+        if ((c< '0' || c>'9')) {
             evt.consume();
         }
 
@@ -541,6 +552,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         // TODO add your handling code here:
         validarCantNotas(jTextField3.getText(), evt);
+        
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed

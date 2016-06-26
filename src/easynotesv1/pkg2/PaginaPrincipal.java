@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package easynotesv1.pkg2;
 
 import java.awt.MouseInfo;
@@ -185,13 +181,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign1.setForeground(new java.awt.Color(0, 102, 204));
         asign1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign1.setText("jButton1");
-        asign1.setBorder(null);
-        asign1.setBorderPainted(false);
-        asign1.setContentAreaFilled(false);
-        asign1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        asign1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
-        asign1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
-        asign1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 asign1ActionPerformed(evt);
@@ -504,9 +493,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel13MouseDragged
-
+    // se paso a publio y statico en (customize code ) para poder agregar y ser visible desde agregar ramo
     private void asign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign1ActionPerformed
-        // TODO add your handling code here:
+
+        // dependiendo de la opcion que se ingreso sebiera abrir al pinchar en el ramo, si es TPconjunto o TPseparado
+        //en este caso sera TPseparado para probar
+        this.dispose();
+        TPseparado ts= new TPseparado();
+        ts.setTitle("TPseparado");
+        ts.setVisible(true);
     }//GEN-LAST:event_asign1ActionPerformed
 
     /**
@@ -548,7 +543,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton asign1;
+    public static javax.swing.JButton asign1;
     private javax.swing.JButton asign2;
     private javax.swing.JButton asign3;
     private javax.swing.JButton asign4;
