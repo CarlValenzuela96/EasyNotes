@@ -4,6 +4,7 @@ package easynotesv1.pkg2;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import javax.swing.JOptionPane;
+import clases.Ramo;
 
 /**
  *
@@ -16,12 +17,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      */
     int x, y;
     static int an = 0;
+    static Ramo[] ramos = new Ramo[10];
     
 
     public PaginaPrincipal() {
 
         initComponents();
         setLocationRelativeTo(null);
+        ramos[9] = null;
         asign1.setVisible(false);
         asign2.setVisible(false);
         asign3.setVisible(false);
@@ -131,6 +134,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         botonReiniciar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRSP.png"))); // NOI18N
         botonReiniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRSP.png"))); // NOI18N
         botonReiniciar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRSP.png"))); // NOI18N
+        botonReiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonReiniciarActionPerformed(evt);
+            }
+        });
 
         jLabel10.setForeground(new java.awt.Color(61, 138, 247));
         jLabel10.setText("Asignaturas Agregadas");
@@ -181,6 +189,13 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign1.setForeground(new java.awt.Color(0, 102, 204));
         asign1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign1.setText("jButton1");
+        asign1.setBorder(null);
+        asign1.setBorderPainted(false);
+        asign1.setContentAreaFilled(false);
+        asign1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 asign1ActionPerformed(evt);
@@ -471,7 +486,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+        int resp = JOptionPane.showConfirmDialog(null, 
+                "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?"
+                        , "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
         }
@@ -498,12 +515,54 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         // dependiendo de la opcion que se ingreso sebiera abrir al pinchar en el ramo, si es TPconjunto o TPseparado
         //en este caso sera TPseparado para probar
-        this.dispose();
-        TPseparado ts= new TPseparado();
-        ts.setTitle("TPseparado");
-        ts.setVisible(true);
+        //this.dispose();
+        //TPseparado ts= new TPseparado();
+        //ts.setTitle("TPseparado");
+        //ts.setVisible(true);
+        asignatura(1);
     }//GEN-LAST:event_asign1ActionPerformed
 
+    private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
+        // TODO add your handling code here:
+        reiniciar();
+    }//GEN-LAST:event_botonReiniciarActionPerformed
+
+    private void reiniciar(){
+        int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
+                + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
+                + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?", 
+                "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
+        if (JOptionPane.OK_OPTION == resp) {
+            for (Ramo ramo : ramos) {ramo = null;}
+            switch (an) {
+                case 9:
+                    asign9.setVisible(false);
+                case 8:
+                    asign8.setVisible(false);
+                case 7:
+                    asign7.setVisible(false);
+                case 6:
+                    asign6.setVisible(false);
+                case 5:
+                    asign5.setVisible(false);
+                case 4:
+                    asign4.setVisible(false);
+                case 3:
+                    asign3.setVisible(false);
+                case 2:
+                    asign2.setVisible(false);
+                case 1:
+                    asign1.setVisible(false);
+                case 0:
+                    break;
+            }
+        }
+    }
+    private void asignatura(int n){
+        
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -543,7 +602,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton asign1;
+    private javax.swing.JButton asign1;
     private javax.swing.JButton asign2;
     private javax.swing.JButton asign3;
     private javax.swing.JButton asign4;
