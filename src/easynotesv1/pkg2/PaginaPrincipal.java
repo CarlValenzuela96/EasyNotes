@@ -16,7 +16,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      * Creates new form PaginaPrincipal
      */
     int x, y;
-    static int an = 0;
+    static byte an = 0;
     static Ramo[] ramos = new Ramo[9];
     
 
@@ -30,23 +30,23 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void inicioBotones(){
         switch (an) {
             case 9:
-                asign9.setName(ramos[8].getNombre());
+                asign9.setText(ramos[8].getNombre());
             case 8:
-                asign8.setName(ramos[7].getNombre());
+                asign8.setText(ramos[7].getNombre());
             case 7:
-                asign7.setName(ramos[6].getNombre());
+                asign7.setText(ramos[6].getNombre());
             case 6:
-                asign6.setName(ramos[5].getNombre());
+                asign6.setText(ramos[5].getNombre());
             case 5:
-                asign5.setName(ramos[4].getNombre());
+                asign5.setText(ramos[4].getNombre());
             case 4:
-                asign4.setName(ramos[3].getNombre());
+                asign4.setText(ramos[3].getNombre());
             case 3:
-                asign3.setName(ramos[2].getNombre());
+                asign3.setText(ramos[2].getNombre());
             case 2:
-                asign2.setName(ramos[1].getNombre());
+                asign2.setText(ramos[1].getNombre());
             case 1:
-                asign1.setName(ramos[0].getNombre());
+                asign1.setText(ramos[0].getNombre());
             case 0:
                 break;
         }
@@ -507,11 +507,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        AgregarRamo ar = new AgregarRamo();
-        ar.setTitle("AGREGAR ASIGNATURA");
-        ar.setVisible(true);
-        ar.setResizable(false);
+        agregar();
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
@@ -565,6 +561,62 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         reiniciar();
     }//GEN-LAST:event_botonReiniciarActionPerformed
 
+    private void agregar(){
+        if (an<9) {
+            this.dispose();
+            AgregarRamo ar = new AgregarRamo();
+            ar.setTitle("AGREGAR ASIGNATURA");
+            ar.setVisible(true);
+            ar.setResizable(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya tiene el máximo de\n9 "
+                    + "asignaturas creadas.", "Límite alcanzado",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void ramoNuevo(Ramo rn){
+        switch (an) {
+            case 0:
+                asign1.setVisible(true);
+                asign1.setText(rn.getNombre());
+                break;
+            case 1:
+                asign2.setVisible(true);
+                asign2.setText(rn.getNombre());
+                break;
+            case 2:
+                asign3.setVisible(true);
+                asign3.setText(rn.getNombre());
+                break;
+            case 3:
+                asign4.setVisible(true);
+                asign4.setText(rn.getNombre());
+                break;
+            case 4:
+                asign5.setVisible(true);
+                asign5.setText(rn.getNombre());
+                break;
+            case 5:
+                asign6.setVisible(true);
+                asign6.setText(rn.getNombre());
+                break;
+            case 6:
+                asign7.setVisible(true);
+                asign7.setText(rn.getNombre());
+                break;
+            case 7:
+                asign8.setVisible(true);
+                asign8.setText(rn.getNombre());
+                break;
+            case 8:
+                asign9.setVisible(true);
+                asign9.setText(rn.getNombre());
+                break;
+        }
+        ramos[an++] = rn;
+    }
+    
     private void reiniciar(){
         int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
                 + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
