@@ -5,7 +5,7 @@
  */
 package easynotesv1.pkg2;
 
-import clases.Semestre;
+import clases.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -406,20 +406,25 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
         // TODO add your handling code here:
         PaginaPrincipal pp = new PaginaPrincipal();
-        Semestre se = new Semestre();
+        Ramo nr;
         if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
-            
-            if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
-                
-                //se.agregarRamo(nomAsign.getText());
-                //pp.asign1.setText(nomAsign.getText());
-                //pp.asign1.setVisible(true);
+            if (jTextField2.getText().equals("")){
+                Simple s = new Simple();
+                s.setTipo("Teórico");
+                nr = s;
+            } else if (jTextField1.getText().equals("")){
+                Simple s = new Simple();
+                s.setTipo("Práctico");
+                nr = s;
+            } else {
+                Mixto m = new Mixto();
+                m.setPond_teo(Float.parseFloat(jTextField1.getText()));
+                m.setPond_parct(Float.parseFloat(jTextField2.getText()));
+                nr = m;
             }
-            
-            
-            
+            nr.setNombre(nomAsign.getText());
+            pp.ramoNuevo(nr);
             this.dispose();
-            pp.setVisible(true);
             pp.setTitle("EasyNotes");
             pp.setVisible(true);
         } else {
