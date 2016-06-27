@@ -1,6 +1,6 @@
-
 package easynotesv1.pkg2;
 
+import clases.Ramo;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import javax.swing.JOptionPane;
@@ -16,23 +16,36 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      */
     int x, y;
     static int an = 0;
-    
+    static Ramo[] ramos = new Ramo[10];
 
     public PaginaPrincipal() {
 
         initComponents();
         setLocationRelativeTo(null);
-        asign1.setVisible(false);
-        asign2.setVisible(false);
-        asign3.setVisible(false);
-        asign4.setVisible(false);
-        asign5.setVisible(false);
-        asign6.setVisible(false);
-        asign7.setVisible(false);
-        asign8.setVisible(false);
-        asign9.setVisible(false);
-   
+        ramos[9] = null;
+        switch (an) {
+            case 0:
+                asign1.setVisible(false);
+            case 1:
+                asign2.setVisible(false);
+            case 2:
+                asign3.setVisible(false);
+            case 3:
+                asign4.setVisible(false);
+            case 4:
+                asign5.setVisible(false);
+            case 5:
+                asign6.setVisible(false);
+            case 6:
+                asign7.setVisible(false);
+            case 7:
+                asign8.setVisible(false);
+            case 8:
+                asign9.setVisible(false);
+            case 9:
+                break;
         }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -199,6 +212,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         botonReiniciar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRSP.png"))); // NOI18N
         botonReiniciar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRSP.png"))); // NOI18N
         botonReiniciar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRSP.png"))); // NOI18N
+        botonReiniciar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonReiniciarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setForeground(new java.awt.Color(61, 138, 247));
         jLabel6.setText(" Permite eliminar una");
@@ -287,7 +305,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         asign5.setForeground(new java.awt.Color(0, 102, 204));
         asign5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        asign5.setText("jButton1");
         asign5.setBorder(null);
         asign5.setBorderPainted(false);
         asign5.setContentAreaFilled(false);
@@ -295,10 +312,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign5.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign5.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign5ActionPerformed(evt);
+            }
+        });
 
         asign6.setForeground(new java.awt.Color(0, 102, 204));
         asign6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        asign6.setText("jButton1");
         asign6.setBorder(null);
         asign6.setBorderPainted(false);
         asign6.setContentAreaFilled(false);
@@ -309,7 +330,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         asign8.setForeground(new java.awt.Color(0, 102, 204));
         asign8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        asign8.setText("jButton1");
         asign8.setBorder(null);
         asign8.setBorderPainted(false);
         asign8.setContentAreaFilled(false);
@@ -317,10 +337,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign8.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign8.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign8ActionPerformed(evt);
+            }
+        });
 
         asign2.setForeground(new java.awt.Color(0, 102, 204));
         asign2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        asign2.setText("jButton1");
         asign2.setBorder(null);
         asign2.setBorderPainted(false);
         asign2.setContentAreaFilled(false);
@@ -331,7 +355,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         asign1.setForeground(new java.awt.Color(0, 102, 204));
         asign1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        asign1.setText("jButton1");
         asign1.setBorder(null);
         asign1.setBorderPainted(false);
         asign1.setContentAreaFilled(false);
@@ -347,7 +370,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         asign4.setForeground(new java.awt.Color(0, 102, 204));
         asign4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        asign4.setText("jButton1");
         asign4.setBorder(null);
         asign4.setBorderPainted(false);
         asign4.setContentAreaFilled(false);
@@ -358,7 +380,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         asign9.setForeground(new java.awt.Color(0, 102, 204));
         asign9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        asign9.setText("jButton1");
         asign9.setBorder(null);
         asign9.setBorderPainted(false);
         asign9.setContentAreaFilled(false);
@@ -369,7 +390,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         asign3.setForeground(new java.awt.Color(0, 102, 204));
         asign3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        asign3.setText("jButton1");
         asign3.setBorder(null);
         asign3.setBorderPainted(false);
         asign3.setContentAreaFilled(false);
@@ -380,7 +400,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         asign7.setForeground(new java.awt.Color(0, 102, 204));
         asign7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        asign7.setText("jButton1");
         asign7.setBorder(null);
         asign7.setBorderPainted(false);
         asign7.setContentAreaFilled(false);
@@ -516,7 +535,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         AgregarRamo ar = new AgregarRamo();
         ar.setTitle("AGREGAR ASIGNATURA");
         ar.setVisible(true);
-        ar.setResizable(false);
+
+
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
@@ -529,7 +549,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+        int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
         }
@@ -556,11 +577,61 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         // dependiendo de la opcion que se ingreso sebiera abrir al pinchar en el ramo, si es TPconjunto o TPseparado
         //en este caso sera TPseparado para probar
-        this.dispose();
-        TPseparado ts= new TPseparado();
-        ts.setTitle("TPseparado");
-        ts.setVisible(true);
+        //this.dispose();
+        //TPseparado ts= new TPseparado();
+        //ts.setTitle("TPseparado");
+        //ts.setVisible(true);
+        asignatura(1);
     }//GEN-LAST:event_asign1ActionPerformed
+
+    private void asign8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asign8ActionPerformed
+
+    private void asign5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_asign5ActionPerformed
+
+    private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
+        // TODO add your handling code here:
+        reiniciar();
+    }//GEN-LAST:event_botonReiniciarActionPerformed
+    private void reiniciar() {
+        int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
+                + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
+                + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?", 
+                "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
+        if (JOptionPane.OK_OPTION == resp) {
+            for (Ramo ramo : ramos) {ramo = null;}
+            switch (an) {
+                case 9:
+                    asign9.setVisible(false);
+                case 8:
+                    asign8.setVisible(false);
+                case 7:
+                    asign7.setVisible(false);
+                case 6:
+                    asign6.setVisible(false);
+                case 5:
+                    asign5.setVisible(false);
+                case 4:
+                    asign4.setVisible(false);
+                case 3:
+                    asign3.setVisible(false);
+                case 2:
+                    asign2.setVisible(false);
+                case 1:
+                    asign1.setVisible(false);
+                case 0:
+                    break;
+            }
+            an = 0;
+        }
+    }
+
+    private void asignatura(int n) {
+
+    }
 
     /**
      * @param args the command line arguments
