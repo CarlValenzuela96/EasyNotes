@@ -25,15 +25,28 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         ramos[9] = null;
-        asign1.setVisible(false);
-        asign2.setVisible(false);
-        asign3.setVisible(false);
-        asign4.setVisible(false);
-        asign5.setVisible(false);
-        asign6.setVisible(false);
-        asign7.setVisible(false);
-        asign8.setVisible(false);
-        asign9.setVisible(false);
+        switch (an) {
+            case 0:
+                asign1.setVisible(false);
+            case 1:
+                asign2.setVisible(false);
+            case 2:
+                asign3.setVisible(false);
+            case 3:
+                asign4.setVisible(false);
+            case 4:
+                asign5.setVisible(false);
+            case 5:
+                asign6.setVisible(false);
+            case 6:
+                asign7.setVisible(false);
+            case 7:
+                asign8.setVisible(false);
+            case 8:
+                asign9.setVisible(false);
+            case 9:
+                break;
+        }
     }
 
     /**
@@ -556,6 +569,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 case 0:
                     break;
             }
+            an = 0;
         }
     }
     private void asignatura(int n){
