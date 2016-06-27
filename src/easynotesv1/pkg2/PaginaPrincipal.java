@@ -17,14 +17,39 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      */
     int x, y;
     static int an = 0;
-    static Ramo[] ramos = new Ramo[10];
+    static Ramo[] ramos = new Ramo[9];
     
 
     public PaginaPrincipal() {
 
         initComponents();
         setLocationRelativeTo(null);
-        ramos[9] = null;
+        inicioBotones();
+    }
+    
+    private void inicioBotones(){
+        switch (an) {
+            case 9:
+                asign9.setName(ramos[8].getNombre());
+            case 8:
+                asign8.setName(ramos[7].getNombre());
+            case 7:
+                asign7.setName(ramos[6].getNombre());
+            case 6:
+                asign6.setName(ramos[5].getNombre());
+            case 5:
+                asign5.setName(ramos[4].getNombre());
+            case 4:
+                asign4.setName(ramos[3].getNombre());
+            case 3:
+                asign3.setName(ramos[2].getNombre());
+            case 2:
+                asign2.setName(ramos[1].getNombre());
+            case 1:
+                asign1.setName(ramos[0].getNombre());
+            case 0:
+                break;
+        }
         switch (an) {
             case 0:
                 asign1.setVisible(false);
