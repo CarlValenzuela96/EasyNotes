@@ -4,7 +4,7 @@ public class Mixto extends Ramo {
 	private boolean separado;
 	private float pond_teo;
 	private float pond_parct;
-	private int lim_teo;
+	private byte lim_teo;
 
 	public boolean getSeparado() {
 		return this.separado;
@@ -33,12 +33,12 @@ public class Mixto extends Ramo {
 		this.pond_parct = pond_parct;
 	}
 
-	public int getLim_teo() {
+	public byte getLim_teo() {
 		return this.lim_teo;
 	}
 
 	
-	public void setLim_teo(int lim_teo) {
+	public void setLim_teo(byte lim_teo) {
 		this.lim_teo = lim_teo;
 	}
 

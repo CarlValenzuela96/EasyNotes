@@ -405,38 +405,7 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
         // TODO add your handling code here:
-        PaginaPrincipal pp = new PaginaPrincipal();
-        Ramo nr;
-        if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
-            if (jTextField2.getText().equals("")){
-                Simple s = new Simple();
-                s.setTipo("Teórico");
-                nr = s;
-            } else if (jTextField1.getText().equals("")){
-                Simple s = new Simple();
-                s.setTipo("Práctico");
-                nr = s;
-            } else {
-                Mixto m = new Mixto();
-                m.setPond_teo(Float.parseFloat(jTextField1.getText()));
-                m.setPond_parct(Float.parseFloat(jTextField2.getText()));
-                nr = m;
-            }
-            nr.setNombre(nomAsign.getText());
-            pp.ramoNuevo(nr);
-            this.dispose();
-            pp.setTitle("EasyNotes");
-            pp.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-        }
-        if (!jTextField1.getText().equals("")) {
-            if (Double.valueOf(jTextField1.getText()) > 100) {
-                JOptionPane.showMessageDialog(null, "Ponderacion Teorica incorrecta",
-                        "ERROR", JOptionPane.WARNING_MESSAGE);
-            }
-        }
+        agregar();
     }//GEN-LAST:event_crearAsignActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -481,28 +450,7 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        if (!jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100 ){
-            double pondP = 100 - Double.parseDouble(jTextField1.getText());
-            jTextField2.setText(String.valueOf(pondP));
-
-            jTextField4.setText("");
-            jTextField4.setEditable(true);
-            jTextField3.setText("");
-            jTextField3.setEditable(true);
-
-        }
-        if (!jTextField1.getText().equals("")) {
-            if (Double.valueOf(jTextField1.getText()) > 100) {
-                jLabel11.setText("Introduce Ponderacion menor a 100");
-
-            } else if (Double.valueOf(jTextField1.getText()) == 100) {
-                jTextField4.setText("0");
-                jTextField4.setEditable(false);
-            } else if (Double.valueOf(jTextField2.getText()) == 100) {
-                jTextField3.setText("0");
-                jTextField3.setEditable(false);
-            }
-        }
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -582,6 +530,46 @@ public class AgregarRamo extends javax.swing.JFrame {
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel12MouseDragged
 
+    private void agregar(){
+        PaginaPrincipal pp = new PaginaPrincipal();
+        if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
+            Ramo nr;
+            if (jTextField2.getText().equals("")){
+                Simple s = new Simple();
+                s.setTipo("Teórico");
+                s.setNotas(Byte.parseByte(jTextField3.getText()));
+                nr = s;
+            } else if (jTextField1.getText().equals("")){
+                Simple s = new Simple();
+                s.setTipo("Práctico");
+                s.setNotas(Byte.parseByte(jTextField4.getText()));
+                nr = s;
+            } else {
+                Mixto m = new Mixto();
+                m.setPond_teo(Float.parseFloat(jTextField1.getText()));
+                m.setPond_parct(Float.parseFloat(jTextField2.getText()));
+                m.setLim_teo(Byte.parseByte(jTextField3.getText()));
+                m.setNotas((byte) (Byte.parseByte(jTextField3.getText()) + 
+                        Byte.parseByte(jTextField4.getText())));
+                nr = m;
+            }
+            nr.setNombre(nomAsign.getText());
+            pp.ramoNuevo(nr);
+            this.dispose();
+            pp.setTitle("EasyNotes");
+            pp.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        if (!jTextField1.getText().equals("")) {
+            if (Double.valueOf(jTextField1.getText()) > 100) {
+                JOptionPane.showMessageDialog(null, "Ponderacion Teorica incorrecta",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+    
     private void validarCantNotas(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
