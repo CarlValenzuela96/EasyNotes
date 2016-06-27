@@ -20,12 +20,12 @@ public class AgregarRamo extends javax.swing.JFrame {
      * Creates new form TPseparado
      */
     int x, y;
-PaginaPrincipal pp ;
+
     public AgregarRamo() {
         initComponents();
         setLocationRelativeTo(null);
         jTextField2.setEditable(false);
-        this.pp= new PaginaPrincipal();
+       
     }
 
     /**
@@ -405,7 +405,7 @@ PaginaPrincipal pp ;
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
         // TODO add your handling code here:
-        
+       PaginaPrincipal pp= new PaginaPrincipal();
            Semestre se = new Semestre();
         if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
             
@@ -436,6 +436,7 @@ PaginaPrincipal pp ;
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
+        PaginaPrincipal pp = new PaginaPrincipal();
         this.dispose();
         pp.setVisible(true);
         pp.setTitle("EasyNotes");
