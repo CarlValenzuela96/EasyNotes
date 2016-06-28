@@ -534,18 +534,19 @@ public class AgregarRamo extends javax.swing.JFrame {
         PaginaPrincipal pp = new PaginaPrincipal();
         if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
             Ramo nr;
-            if (jTextField2.getText().equals("")){
+            if (jTextField1.getText().equals("100")){
                 Simple s = new Simple();
                 s.setTipo("Teórico");
                 s.setNotas(Byte.parseByte(jTextField3.getText()));
                 nr = s;
-            } else if (jTextField1.getText().equals("")){
+            } else if (jTextField2.getText().equals("100")){
                 Simple s = new Simple();
                 s.setTipo("Práctico");
                 s.setNotas(Byte.parseByte(jTextField4.getText()));
                 nr = s;
             } else {
                 Mixto m = new Mixto();
+                m.setSeparado(modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado"));
                 m.setPond_teo(Float.parseFloat(jTextField1.getText()));
                 m.setPond_parct(Float.parseFloat(jTextField2.getText()));
                 m.setLim_teo(Byte.parseByte(jTextField3.getText()));
