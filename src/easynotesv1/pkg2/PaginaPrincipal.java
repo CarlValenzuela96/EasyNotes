@@ -4,7 +4,7 @@ package easynotesv1.pkg2;
 import java.awt.MouseInfo;
 import java.awt.Point;
 import javax.swing.JOptionPane;
-import clases.Ramo;
+import clases.*;
 import java.util.ArrayList;
 
 /**
@@ -544,13 +544,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     // se paso a publio y statico en (customize code ) para poder agregar y ser visible desde agregar ramo
     private void asign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign1ActionPerformed
 
-        // dependiendo de la opcion que se ingreso sebiera abrir al pinchar en el ramo, si es TPconjunto o TPseparado
-        //en este caso sera TPseparado para probar
-        //this.dispose();
-        //TPseparado ts= new TPseparado();
-        //ts.setTitle("TPseparado");
-        //ts.setVisible(true);
-        asignatura(1);
+        asignatura(0);
     }//GEN-LAST:event_asign1ActionPerformed
 
     private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
@@ -651,7 +645,15 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }
     private void asignatura(int n){
-        
+        Ramo r = ramos.get(n);
+        this.dispose();
+        if(r.getClass().getName().equals("Mixto")){
+        }else{
+            InterfazSimple s = new InterfazSimple();
+            s.ingresarRamo((Simple) r);
+            s.setTitle(r.getNombre());
+            s.setVisible(true);
+        }
     }
     
     private void borrar(){
