@@ -28,7 +28,7 @@ public class EliminarRamo extends javax.swing.JFrame {
         for (String string : n) {
             nomAsign.addItem(string);
         }
-        nomAsign.setSelectedIndex(-1);
+        nomAsign.setSelectedIndex(0);
     }
 
     /**
@@ -245,7 +245,7 @@ public class EliminarRamo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
+        elim();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -290,6 +290,13 @@ public class EliminarRamo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomAsignActionPerformed
 
+    private void elim(){
+        this.dispose();
+        PaginaPrincipal pp = new PaginaPrincipal();
+        pp.elim(nomAsign.getSelectedIndex());
+        pp.setTitle("EasyNotes");
+        pp.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */

@@ -672,7 +672,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
     
     public void elim(int i){
-        
+        ramos.remove(i);
+        inicioBotones();
     }
     
     /**
