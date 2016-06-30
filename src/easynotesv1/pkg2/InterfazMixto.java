@@ -12,14 +12,14 @@ import javax.swing.JOptionPane;
  *
  * @author carlos
  */
-public class TPconjunto extends javax.swing.JFrame {
+public class InterfazMixto extends javax.swing.JFrame {
 
     /**
      * Creates new form TPseparado
      */
     int x, y;
 
-    public TPconjunto() {
+    public InterfazMixto() {
         initComponents();
         setLocationRelativeTo(null);
         promGral.setEditable(false);
@@ -97,6 +97,7 @@ public class TPconjunto extends javax.swing.JFrame {
         botonCerrar = new javax.swing.JButton();
         botonMin = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
+        tipoAprob = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -134,7 +135,7 @@ public class TPconjunto extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel1.setText("Tipo Aprobacion: Teorico - Practico en Conjunto");
+        jLabel1.setText("Tipo Aprobacion:");
 
         nombreAsign.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         nombreAsign.setForeground(new java.awt.Color(61, 138, 247));
@@ -547,6 +548,10 @@ public class TPconjunto extends javax.swing.JFrame {
             }
         });
 
+        tipoAprob.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tipoAprob.setForeground(new java.awt.Color(61, 138, 247));
+        tipoAprob.setText("jLabel19");
+
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
         jcMousePanel1Layout.setHorizontalGroup(
@@ -665,7 +670,9 @@ public class TPconjunto extends javax.swing.JFrame {
                                 .addGap(34, 34, 34))))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGap(226, 226, 226)
-                        .addComponent(jLabel1))
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tipoAprob))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(jLabel2)
@@ -723,7 +730,9 @@ public class TPconjunto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel1)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tipoAprob))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -1103,14 +1112,30 @@ public class TPconjunto extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TPconjunto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazMixto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TPconjunto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazMixto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TPconjunto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazMixto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TPconjunto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazMixto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1131,7 +1156,7 @@ public class TPconjunto extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TPconjunto().setVisible(true);
+                new InterfazMixto().setVisible(true);
             }
         });
     }
@@ -1200,5 +1225,6 @@ public class TPconjunto extends javax.swing.JFrame {
     private javax.swing.JTextField pt6;
     private javax.swing.JTextField pt7;
     private javax.swing.JTextField pt8;
+    private javax.swing.JLabel tipoAprob;
     // End of variables declaration//GEN-END:variables
 }

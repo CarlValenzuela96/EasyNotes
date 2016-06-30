@@ -12,13 +12,18 @@ import javax.swing.JOptionPane;
  *
  * @author carlos
  */
-public class TPseparado extends javax.swing.JFrame {
+public class InterfazSimple extends javax.swing.JFrame {
 
     /**
      * Creates new form TPseparado
      */
-    int x,y;
-    public TPseparado() {
+    int x,
+
+    /**
+     * Creates new form InterfazSimple
+     */
+    y;
+    public InterfazSimple() {
         initComponents();
         setLocationRelativeTo(null);
     }
@@ -37,12 +42,6 @@ public class TPseparado extends javax.swing.JFrame {
         jcMousePanel3 = new jcMousePanel.jcMousePanel();
         jLabel1 = new javax.swing.JLabel();
         nombreAsign = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        pondTeo = new javax.swing.JLabel();
-        pondPract = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         nt1 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -62,37 +61,16 @@ public class TPseparado extends javax.swing.JFrame {
         pt6 = new javax.swing.JTextField();
         pt7 = new javax.swing.JTextField();
         pt8 = new javax.swing.JTextField();
-        pp2 = new javax.swing.JTextField();
-        pp1 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        np8 = new javax.swing.JTextField();
-        np4 = new javax.swing.JTextField();
-        np6 = new javax.swing.JTextField();
-        np7 = new javax.swing.JTextField();
-        np5 = new javax.swing.JTextField();
-        np3 = new javax.swing.JTextField();
-        np1 = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        np2 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        pp3 = new javax.swing.JTextField();
-        pp4 = new javax.swing.JTextField();
-        pp5 = new javax.swing.JTextField();
-        pp6 = new javax.swing.JTextField();
-        pp7 = new javax.swing.JTextField();
-        pp8 = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         promT = new javax.swing.JTextField();
-        jLabel13 = new javax.swing.JLabel();
-        promP = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         jcMousePanel4 = new jcMousePanel.jcMousePanel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         guardar = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
+        tipoAprob = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -131,29 +109,11 @@ public class TPseparado extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel1.setText("Tipo Aprobacion: Teorico - Practico por Separado");
+        jLabel1.setText("Tipo Aprobacion:");
 
         nombreAsign.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         nombreAsign.setForeground(new java.awt.Color(61, 138, 247));
         nombreAsign.setText("nombreAsign");
-
-        jLabel2.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel2.setText("Ponderacion Teorico:");
-
-        jLabel3.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel3.setText("Ponderacion Practico:");
-
-        pondTeo.setForeground(new java.awt.Color(61, 138, 247));
-        pondTeo.setText("pondTeo");
-
-        pondPract.setForeground(new java.awt.Color(61, 138, 247));
-        pondPract.setText("pondPract");
-
-        jLabel4.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel4.setText("%");
-
-        jLabel5.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel5.setText("%");
 
         jLabel6.setForeground(new java.awt.Color(61, 138, 247));
         jLabel6.setText("NOTAS");
@@ -170,7 +130,7 @@ public class TPseparado extends javax.swing.JFrame {
         });
 
         jLabel7.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel7.setText("TEORICO - cantidad de evaluaciones :");
+        jLabel7.setText(" Cantidad de evaluaciones :");
 
         nt2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,166 +260,12 @@ public class TPseparado extends javax.swing.JFrame {
             }
         });
 
-        pp2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pp2ActionPerformed(evt);
-            }
-        });
-
-        pp1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pp1ActionPerformed(evt);
-            }
-        });
-
-        jLabel9.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel9.setText("POND.");
-
-        np8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                np8ActionPerformed(evt);
-            }
-        });
-        np8.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                np8KeyTyped(evt);
-            }
-        });
-
-        np4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                np4ActionPerformed(evt);
-            }
-        });
-        np4.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                np4KeyTyped(evt);
-            }
-        });
-
-        np6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                np6ActionPerformed(evt);
-            }
-        });
-        np6.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                np6KeyTyped(evt);
-            }
-        });
-
-        np7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                np7ActionPerformed(evt);
-            }
-        });
-        np7.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                np7KeyTyped(evt);
-            }
-        });
-
-        np5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                np5ActionPerformed(evt);
-            }
-        });
-        np5.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                np5KeyTyped(evt);
-            }
-        });
-
-        np3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                np3ActionPerformed(evt);
-            }
-        });
-        np3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                np3KeyTyped(evt);
-            }
-        });
-
-        np1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                np1ActionPerformed(evt);
-            }
-        });
-        np1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                np1KeyTyped(evt);
-            }
-        });
-
-        jLabel10.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel10.setText("NOTAS");
-
-        np2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                np2ActionPerformed(evt);
-            }
-        });
-        np2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                np2KeyTyped(evt);
-            }
-        });
-
-        jLabel11.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel11.setText("PRACTICO - cantidad de evaluaciones :");
-
-        pp3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pp3ActionPerformed(evt);
-            }
-        });
-
-        pp4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pp4ActionPerformed(evt);
-            }
-        });
-
-        pp5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pp5ActionPerformed(evt);
-            }
-        });
-
-        pp6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pp6ActionPerformed(evt);
-            }
-        });
-
-        pp7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pp7ActionPerformed(evt);
-            }
-        });
-
-        pp8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pp8ActionPerformed(evt);
-            }
-        });
-
         jLabel12.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel12.setText("PROMEDIO TEORICO");
+        jLabel12.setText("PROMEDIO ");
 
         promT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 promTActionPerformed(evt);
-            }
-        });
-
-        jLabel13.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel13.setText("PROMEDIO PRACTICO");
-
-        promP.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                promPActionPerformed(evt);
             }
         });
 
@@ -482,9 +288,6 @@ public class TPseparado extends javax.swing.JFrame {
 
         jLabel15.setForeground(new java.awt.Color(61, 138, 247));
         jLabel15.setText("cantEvT");
-
-        jLabel16.setForeground(new java.awt.Color(61, 138, 247));
-        jLabel16.setText("cantEvP");
 
         guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardar.png"))); // NOI18N
         guardar.setBorder(null);
@@ -535,6 +338,10 @@ public class TPseparado extends javax.swing.JFrame {
             }
         });
 
+        tipoAprob.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tipoAprob.setForeground(new java.awt.Color(61, 138, 247));
+        tipoAprob.setText("jLabel17");
+
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
         jcMousePanel1Layout.setHorizontalGroup(
@@ -560,6 +367,8 @@ public class TPseparado extends javax.swing.JFrame {
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tipoAprob)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -571,121 +380,56 @@ public class TPseparado extends javax.swing.JFrame {
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel14))
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pondTeo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pondPract)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jLabel14)))
                 .addContainerGap())
-            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel16))
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(np1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(pp1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel15))
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(nt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nt3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nt4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nt5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nt6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(pt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pt3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pt4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pt5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pt6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel15))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(nt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nt3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nt4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nt5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nt6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(pt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pt3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pt4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pt5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pt6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(41, 41, 41)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12))
+                .addGap(65, 65, 65))
         );
         jcMousePanel1Layout.setVerticalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -696,9 +440,7 @@ public class TPseparado extends javax.swing.JFrame {
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(23, 23, 23))
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)))
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -710,21 +452,15 @@ public class TPseparado extends javax.swing.JFrame {
                                 .addGap(9, 9, 9)
                                 .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
-                        .addGap(21, 21, 21)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(pondTeo)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(pondPract)
-                            .addComponent(jLabel3)))
+                            .addComponent(jLabel1)
+                            .addComponent(tipoAprob)))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addComponent(paginaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addGap(107, 107, 107)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -757,39 +493,7 @@ public class TPseparado extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel16))
-                .addGap(14, 14, 14)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(np1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10)
-                            .addComponent(np2, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(np3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(np4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(np5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(np6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(np7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(np8, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(pp1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pp2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pp3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pp4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pp5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pp6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pp7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pp8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(87, 87, 87)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 205, Short.MAX_VALUE)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -872,77 +576,9 @@ public class TPseparado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_pt8ActionPerformed
 
-    private void pp2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pp2ActionPerformed
-
-    private void pp1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pp1ActionPerformed
-
-    private void np8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_np8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_np8ActionPerformed
-
-    private void np4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_np4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_np4ActionPerformed
-
-    private void np6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_np6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_np6ActionPerformed
-
-    private void np7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_np7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_np7ActionPerformed
-
-    private void np5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_np5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_np5ActionPerformed
-
-    private void np3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_np3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_np3ActionPerformed
-
-    private void np1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_np1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_np1ActionPerformed
-
-    private void np2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_np2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_np2ActionPerformed
-
-    private void pp3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pp3ActionPerformed
-
-    private void pp4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pp4ActionPerformed
-
-    private void pp5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pp5ActionPerformed
-
-    private void pp6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pp6ActionPerformed
-
-    private void pp7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pp7ActionPerformed
-
-    private void pp8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pp8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pp8ActionPerformed
-
     private void promTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_promTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_promTActionPerformed
-
-    private void promPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_promPActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_promPActionPerformed
 
     private void paginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paginaPrincipalActionPerformed
         // TODO add your handling code here:
@@ -1016,46 +652,6 @@ public class TPseparado extends javax.swing.JFrame {
         // TODO add your handling code here:
         validacionNota(nt8.getText(),evt);
     }//GEN-LAST:event_nt8KeyTyped
-
-    private void np1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np1KeyTyped
-        // TODO add your handling code here:
-        validacionNota(np1.getText(),evt);
-    }//GEN-LAST:event_np1KeyTyped
-
-    private void np2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np2KeyTyped
-        // TODO add your handling code here:
-        validacionNota(np2.getText(),evt);
-    }//GEN-LAST:event_np2KeyTyped
-
-    private void np3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np3KeyTyped
-        // TODO add your handling code here:
-        validacionNota(np3.getText(),evt);
-    }//GEN-LAST:event_np3KeyTyped
-
-    private void np4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np4KeyTyped
-        // TODO add your handling code here:
-        validacionNota(np4.getText(),evt);
-    }//GEN-LAST:event_np4KeyTyped
-
-    private void np5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np5KeyTyped
-        // TODO add your handling code here:
-        validacionNota(np5.getText(),evt);
-    }//GEN-LAST:event_np5KeyTyped
-
-    private void np6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np6KeyTyped
-        // TODO add your handling code here:
-        validacionNota(np6.getText(),evt);
-    }//GEN-LAST:event_np6KeyTyped
-
-    private void np7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np7KeyTyped
-        // TODO add your handling code here:
-        validacionNota(np7.getText(),evt);
-    }//GEN-LAST:event_np7KeyTyped
-
-    private void np8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np8KeyTyped
-        // TODO add your handling code here:
-        validacionNota(np8.getText(),evt);
-    }//GEN-LAST:event_np8KeyTyped
    private void validacionNota(String cadena, java.awt.event.KeyEvent evt){
         char c = evt.getKeyChar();
 
@@ -1086,14 +682,22 @@ public class TPseparado extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TPseparado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TPseparado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TPseparado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TPseparado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InterfazSimple.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -1106,7 +710,7 @@ public class TPseparado extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TPseparado().setVisible(true);
+                new InterfazSimple().setVisible(true);
             }
         });
     }
@@ -1116,34 +720,17 @@ public class TPseparado extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private jcMousePanel.jcMousePanel jcMousePanel1;
     private jcMousePanel.jcMousePanel jcMousePanel3;
     private jcMousePanel.jcMousePanel jcMousePanel4;
     private javax.swing.JLabel nombreAsign;
-    private javax.swing.JTextField np1;
-    private javax.swing.JTextField np2;
-    private javax.swing.JTextField np3;
-    private javax.swing.JTextField np4;
-    private javax.swing.JTextField np5;
-    private javax.swing.JTextField np6;
-    private javax.swing.JTextField np7;
-    private javax.swing.JTextField np8;
     private javax.swing.JTextField nt1;
     private javax.swing.JTextField nt2;
     private javax.swing.JTextField nt3;
@@ -1153,17 +740,6 @@ public class TPseparado extends javax.swing.JFrame {
     private javax.swing.JTextField nt7;
     private javax.swing.JTextField nt8;
     private javax.swing.JButton paginaPrincipal;
-    private javax.swing.JLabel pondPract;
-    private javax.swing.JLabel pondTeo;
-    private javax.swing.JTextField pp1;
-    private javax.swing.JTextField pp2;
-    private javax.swing.JTextField pp3;
-    private javax.swing.JTextField pp4;
-    private javax.swing.JTextField pp5;
-    private javax.swing.JTextField pp6;
-    private javax.swing.JTextField pp7;
-    private javax.swing.JTextField pp8;
-    private javax.swing.JTextField promP;
     private javax.swing.JTextField promT;
     private javax.swing.JTextField pt1;
     private javax.swing.JTextField pt2;
@@ -1173,5 +749,6 @@ public class TPseparado extends javax.swing.JFrame {
     private javax.swing.JTextField pt6;
     private javax.swing.JTextField pt7;
     private javax.swing.JTextField pt8;
+    private javax.swing.JLabel tipoAprob;
     // End of variables declaration//GEN-END:variables
 }
