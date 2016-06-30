@@ -423,21 +423,20 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void modoAprobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoAprobActionPerformed
         // TODO add your handling code here:
-        if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")) {
-            jTextField1.setText("50");
-            jTextField2.setText("50");
-            jTextField1.setEditable(false);
-            jLabel11.setVisible(false);
+         if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")) {
+            jTextField1.setText("");
+            jTextField2.setText("");
+           if (!jTextField1.getText().equals("")) {
+                double pondP = 100 - Double.parseDouble(jTextField1.getText());
+                jTextField2.setText(String.valueOf(pondP));
+            } 
         }
         if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")) {
             jTextField1.setText("");
             jTextField2.setText("");
-            jTextField1.setEditable(true);
-            jLabel11.setVisible(true);
             if (!jTextField1.getText().equals("")) {
                 double pondP = 100 - Double.parseDouble(jTextField1.getText());
                 jTextField2.setText(String.valueOf(pondP));
-
             }
         }
     }//GEN-LAST:event_modoAprobActionPerformed
