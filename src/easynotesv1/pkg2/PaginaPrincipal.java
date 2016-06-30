@@ -512,10 +512,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        EliminarRamo er = new EliminarRamo();
-        er.setTitle("ELIMINAR ASIGNATURA");
-        er.setVisible(true);
+        borrar();
     }//GEN-LAST:event_botonBorrarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -618,40 +615,65 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
     
     private void reiniciar(){
-        int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
-                + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
-                + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?", 
-                "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
-        if (JOptionPane.OK_OPTION == resp) {
-            switch (ramos.size()) {
-                case 9:
-                    asign9.setVisible(false);
-                case 8:
-                    asign8.setVisible(false);
-                case 7:
-                    asign7.setVisible(false);
-                case 6:
-                    asign6.setVisible(false);
-                case 5:
-                    asign5.setVisible(false);
-                case 4:
-                    asign4.setVisible(false);
-                case 3:
-                    asign3.setVisible(false);
-                case 2:
-                    asign2.setVisible(false);
-                case 1:
-                    asign1.setVisible(false);
-                case 0:
-                    break;
+        if (!ramos.isEmpty()) {
+            int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
+                    + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
+                    + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?",
+                    "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
+            if (JOptionPane.OK_OPTION == resp) {
+                switch (ramos.size()) {
+                    case 9:
+                        asign9.setVisible(false);
+                    case 8:
+                        asign8.setVisible(false);
+                    case 7:
+                        asign7.setVisible(false);
+                    case 6:
+                        asign6.setVisible(false);
+                    case 5:
+                        asign5.setVisible(false);
+                    case 4:
+                        asign4.setVisible(false);
+                    case 3:
+                        asign3.setVisible(false);
+                    case 2:
+                        asign2.setVisible(false);
+                    case 1:
+                        asign1.setVisible(false);
+                    case 0:
+                        break;
+                }
+                ramos.clear();
             }
-            ramos.clear();
+        } else {
+            JOptionPane.showMessageDialog(null, "La lista de ramos ya está vacía",
+                    "Nada que hacer", JOptionPane.INFORMATION_MESSAGE);
         }
     }
     private void asignatura(int n){
         
     }
     
+    private void borrar(){
+        if (!ramos.isEmpty()) {
+            this.dispose();
+            String n = "";
+            for (Ramo ramo : ramos) {
+                n += ramo.getNombre() + ":";
+            }
+            EliminarRamo er = new EliminarRamo();
+            er.nombres(n.split(":"));
+            er.setTitle("ELIMINAR ASIGNATURA");
+            er.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "La lista de ramos ya está vacía",
+                    "Nada que hacer", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
+    public void elim(int i){
+        
+    }
     
     /**
      * @param args the command line arguments

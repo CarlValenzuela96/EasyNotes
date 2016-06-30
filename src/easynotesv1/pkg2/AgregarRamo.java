@@ -450,6 +450,28 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        if (!jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100 ){
+            double pondP = 100 - Double.parseDouble(jTextField1.getText());
+            jTextField2.setText(String.valueOf(pondP));
+
+            jTextField4.setText("");
+            jTextField4.setEditable(true);
+            jTextField3.setText("");
+            jTextField3.setEditable(true);
+
+        }
+        if (!jTextField1.getText().equals("")) {
+            if (Double.valueOf(jTextField1.getText()) > 100) {
+                jLabel11.setText("Introduce Ponderacion menor a 100");
+
+            } else if (Double.valueOf(jTextField1.getText()) == 100) {
+                jTextField4.setText("0");
+                jTextField4.setEditable(false);
+            } else if (Double.valueOf(jTextField2.getText()) == 100) {
+                jTextField3.setText("0");
+                jTextField3.setEditable(false);
+            }
+        }
         
     }//GEN-LAST:event_jTextField1ActionPerformed
 
