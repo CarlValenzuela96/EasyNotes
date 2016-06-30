@@ -426,18 +426,10 @@ public class AgregarRamo extends javax.swing.JFrame {
          if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")) {
             jTextField1.setText("");
             jTextField2.setText("");
-           if (!jTextField1.getText().equals("")) {
-                double pondP = 100 - Double.parseDouble(jTextField1.getText());
-                jTextField2.setText(String.valueOf(pondP));
-            } 
         }
         if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")) {
             jTextField1.setText("");
             jTextField2.setText("");
-            if (!jTextField1.getText().equals("")) {
-                double pondP = 100 - Double.parseDouble(jTextField1.getText());
-                jTextField2.setText(String.valueOf(pondP));
-            }
         }
     }//GEN-LAST:event_modoAprobActionPerformed
 
@@ -449,17 +441,18 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        if (!jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100 ){
-            double pondP = 100 - Double.parseDouble(jTextField1.getText());
+        if (!jTextField1.getText().equals("") && jTextField1.getText().charAt(0)!='.'){
+            if(Double.valueOf(jTextField1.getText()) <= 100){
+              double pondP = 100 - Double.parseDouble(jTextField1.getText());
             jTextField2.setText(String.valueOf(pondP));
 
             jTextField4.setText("");
             jTextField4.setEditable(true);
             jTextField3.setText("");
             jTextField3.setEditable(true);
-
+            }
         }
-        if (!jTextField1.getText().equals("")) {
+        if (!jTextField1.getText().equals("")&&jTextField1.getText().charAt(0)!='.') {
             if (Double.valueOf(jTextField1.getText()) > 100) {
                 jLabel11.setText("Introduce Ponderacion menor a 100");
 
