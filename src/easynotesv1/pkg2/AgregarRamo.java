@@ -405,33 +405,7 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
         // TODO add your handling code here:
-       PaginaPrincipal pp= new PaginaPrincipal();
-           Semestre se = new Semestre();
-        if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
-            
-            if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
-              
-                //se.agregarRamo(nomAsign.getText());
-                //pp.asign1.setText(nomAsign.getText());
-                //pp.asign1.setVisible(true);
-            } 
-            
-            
-            
-            this.dispose();
-            pp.setVisible(true);
-            pp.setTitle("EasyNotes");
-            pp.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-        }
-        if (!jTextField1.getText().equals("")) {
-            if (Double.valueOf(jTextField1.getText()) > 100) {
-                JOptionPane.showMessageDialog(null, "Ponderacion Teorica incorrecta",
-                        "ERROR", JOptionPane.WARNING_MESSAGE);
-            }
-        }
+      agregar();
     }//GEN-LAST:event_crearAsignActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
