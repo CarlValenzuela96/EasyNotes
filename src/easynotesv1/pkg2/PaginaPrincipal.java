@@ -1,9 +1,12 @@
 package easynotesv1.pkg2;
 
-import clases.Ramo;
+import clases.*;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,7 +28,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
        inicioBotones();
     }
-     private void inicioBotones(){
+     private void inicioBotones() {
         switch (ramos.size()) {
             case 9:
                 asign9.setText(ramos.get(8).getNombre());
@@ -556,11 +559,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        AgregarRamo ar = new AgregarRamo();
-        ar.setTitle("AGREGAR ASIGNATURA");
-        ar.setVisible(true);
-
+       agregar();
+       
 
     }//GEN-LAST:event_botonAgregarActionPerformed
 
@@ -628,6 +628,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             ar.setTitle("AGREGAR ASIGNATURA");
             ar.setVisible(true);
             ar.setResizable(false);
+            
         } else {
             JOptionPane.showMessageDialog(null, "Ya tiene el máximo de\n9 "
                     + "asignaturas creadas.", "Límite alcanzado",
@@ -708,6 +709,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             ramos.clear();
         }
     }
+    
     private void asignatura(int n){
         
     }
@@ -750,8 +752,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new PaginaPrincipal().setVisible(true);
-
+              
+                    new PaginaPrincipal().setVisible(true);
             }
         });
     }

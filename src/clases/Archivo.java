@@ -1,21 +1,46 @@
 package clases;
+
+import java.io.*;
+
+
 public class Archivo {
 
-	private Ramo ramo;
+    private Ramo ramo;
+    
+    
+    public void crearArchivo(String nombre) throws IOException {
+       
+        File f = new File("Ramos//"+nombre + ".txt");
+        FileWriter fw;
+        BufferedWriter bw;
 
-	public void crearArchivo() {
-		
-		throw new UnsupportedOperationException();
-	}
+        if (!f.exists()) {
 
-	public void editarArchivo() {
-		
-		throw new UnsupportedOperationException();
-	}
+            fw = new FileWriter(f, true);
+            bw = new BufferedWriter(fw);
+            bw.newLine();
+            bw.write(nombre);
 
-	public void leerArchivo() {
-		
-		throw new UnsupportedOperationException();
-	}
+        } else {
+            fw = new FileWriter(f);
+            bw = new BufferedWriter(fw);
+            bw.write(nombre);
+
+        }
+        bw.close();
+        fw.close();
+        
+//        throw new UnsupportedOperationException();
+    }
+
+    public void editarArchivo() {
+
+        throw new UnsupportedOperationException();
+    }
+
+    public void leerArchivo() {
+
+        throw new UnsupportedOperationException();
+    }
 
 }

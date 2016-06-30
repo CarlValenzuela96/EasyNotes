@@ -8,6 +8,9 @@ package easynotesv1.pkg2;
 import clases.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -404,8 +407,12 @@ public class AgregarRamo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
-        // TODO add your handling code here:
-      agregar();
+        try {
+            // TODO add your handling code here:
+            agregar();
+        } catch (IOException ex) {
+            Logger.getLogger(AgregarRamo.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_crearAsignActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -542,7 +549,7 @@ public class AgregarRamo extends javax.swing.JFrame {
         Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel12MouseDragged
-  private void agregar(){
+  private void agregar() throws IOException{
         PaginaPrincipal pp = new PaginaPrincipal();
         if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
             Ramo nr;
@@ -567,7 +574,9 @@ public class AgregarRamo extends javax.swing.JFrame {
                 nr = m;
             }
             nr.setNombre(nomAsign.getText());
+            
             pp.ramoNuevo(nr);
+            nr.crearArchivo();
             this.dispose();
             pp.setTitle("EasyNotes");
             pp.setVisible(true);
@@ -582,6 +591,7 @@ public class AgregarRamo extends javax.swing.JFrame {
             }
         }
     }
+    
     private void validarCantNotas(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 

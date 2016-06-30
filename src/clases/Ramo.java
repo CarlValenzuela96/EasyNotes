@@ -1,4 +1,7 @@
 package clases;
+
+import java.io.IOException;
+
 public class Ramo {
 
 	private String nombre;
@@ -6,7 +9,7 @@ public class Ramo {
 	private Archivo archivo;
 
         public Ramo(){
-            
+            this.archivo= new Archivo();
         }
         
         public Ramo(String nombre){
@@ -29,5 +32,8 @@ public class Ramo {
 	public void setNotas(byte notas) {
 		this.notas = notas;
 	}
-        
+      public void crearArchivo() throws IOException {
+       
+        archivo.crearArchivo(this.nombre);
+    }
 }
