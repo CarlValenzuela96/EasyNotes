@@ -450,6 +450,9 @@
               <Image iconType="3" name="/recursos/bRamoP.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asign2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="asign3">
           <Properties>
@@ -476,6 +479,9 @@
               <Image iconType="3" name="/recursos/bRamoP.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asign3ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="asign4">
           <Properties>
@@ -502,6 +508,9 @@
               <Image iconType="3" name="/recursos/bRamoP.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asign4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="asign5">
           <Properties>
@@ -528,6 +537,9 @@
               <Image iconType="3" name="/recursos/bRamoP.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asign5ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="asign6">
           <Properties>
@@ -554,6 +566,9 @@
               <Image iconType="3" name="/recursos/bRamoP.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asign6ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="asign7">
           <Properties>
@@ -580,6 +595,9 @@
               <Image iconType="3" name="/recursos/bRamoP.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asign7ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="asign8">
           <Properties>
@@ -606,6 +624,9 @@
               <Image iconType="3" name="/recursos/bRamoP.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asign8ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="asign9">
           <Properties>
@@ -632,6 +653,9 @@
               <Image iconType="3" name="/recursos/bRamoP.png"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="asign9ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
