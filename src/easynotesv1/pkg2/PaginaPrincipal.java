@@ -3,6 +3,7 @@ package easynotesv1.pkg2;
 import clases.Ramo;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,15 +16,39 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      * Creates new form PaginaPrincipal
      */
     int x, y;
-    static int an = 0;
-    static Ramo[] ramos = new Ramo[10];
+    
+    static ArrayList<Ramo> ramos = new ArrayList<>();
 
     public PaginaPrincipal() {
 
         initComponents();
         setLocationRelativeTo(null);
-        ramos[9] = null;
-        switch (an) {
+       inicioBotones();
+    }
+     private void inicioBotones(){
+        switch (ramos.size()) {
+            case 9:
+                asign9.setText(ramos.get(8).getNombre());
+            case 8:
+                asign8.setText(ramos.get(7).getNombre());
+            case 7:
+                asign7.setText(ramos.get(6).getNombre());
+            case 6:
+                asign6.setText(ramos.get(5).getNombre());
+            case 5:
+                asign5.setText(ramos.get(4).getNombre());
+            case 4:
+                asign4.setText(ramos.get(3).getNombre());
+            case 3:
+                asign3.setText(ramos.get(2).getNombre());
+            case 2:
+                asign2.setText(ramos.get(1).getNombre());
+            case 1:
+                asign1.setText(ramos.get(0).getNombre());
+            case 0:
+                break;
+        }
+        switch (ramos.size()) {
             case 0:
                 asign1.setVisible(false);
             case 1:
@@ -596,14 +621,69 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         reiniciar();
     }//GEN-LAST:event_botonReiniciarActionPerformed
-    private void reiniciar() {
+    private void agregar(){
+        if (ramos.size()<9) {
+            this.dispose();
+            AgregarRamo ar = new AgregarRamo();
+            ar.setTitle("AGREGAR ASIGNATURA");
+            ar.setVisible(true);
+            ar.setResizable(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Ya tiene el máximo de\n9 "
+                    + "asignaturas creadas.", "Límite alcanzado",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void ramoNuevo(Ramo rn){
+        switch (ramos.size()) {
+            case 0:
+                asign1.setVisible(true);
+                asign1.setText(rn.getNombre());
+                break;
+            case 1:
+                asign2.setVisible(true);
+                asign2.setText(rn.getNombre());
+                break;
+            case 2:
+                asign3.setVisible(true);
+                asign3.setText(rn.getNombre());
+                break;
+            case 3:
+                asign4.setVisible(true);
+                asign4.setText(rn.getNombre());
+                break;
+            case 4:
+                asign5.setVisible(true);
+                asign5.setText(rn.getNombre());
+                break;
+            case 5:
+                asign6.setVisible(true);
+                asign6.setText(rn.getNombre());
+                break;
+            case 6:
+                asign7.setVisible(true);
+                asign7.setText(rn.getNombre());
+                break;
+            case 7:
+                asign8.setVisible(true);
+                asign8.setText(rn.getNombre());
+                break;
+            case 8:
+                asign9.setVisible(true);
+                asign9.setText(rn.getNombre());
+                break;
+        }
+        ramos.add(rn);
+    }
+    
+    private void reiniciar(){
         int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
                 + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
                 + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?", 
                 "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
-            for (Ramo ramo : ramos) {ramo = null;}
-            switch (an) {
+            switch (ramos.size()) {
                 case 9:
                     asign9.setVisible(false);
                 case 8:
@@ -625,12 +705,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 case 0:
                     break;
             }
-            an = 0;
+            ramos.clear();
         }
     }
-
-    private void asignatura(int n) {
-
+    private void asignatura(int n){
+        
     }
 
     /**

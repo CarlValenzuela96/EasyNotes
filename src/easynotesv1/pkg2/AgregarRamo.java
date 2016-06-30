@@ -5,10 +5,10 @@
  */
 package easynotesv1.pkg2;
 
-import clases.Semestre;
+import clases.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 /**
  *
@@ -576,7 +576,46 @@ public class AgregarRamo extends javax.swing.JFrame {
         Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel12MouseDragged
-
+  private void agregar(){
+        PaginaPrincipal pp = new PaginaPrincipal();
+        if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
+            Ramo nr;
+            if (jTextField1.getText().equals("100")){
+                Simple s = new Simple();
+                s.setTipo("Teórico");
+                s.setNotas(Byte.parseByte(jTextField3.getText()));
+                nr = s;
+            } else if (jTextField2.getText().equals("100")){
+                Simple s = new Simple();
+                s.setTipo("Práctico");
+                s.setNotas(Byte.parseByte(jTextField4.getText()));
+                nr = s;
+            } else {
+                Mixto m = new Mixto();
+                m.setSeparado(modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado"));
+                m.setPond_teo(Float.parseFloat(jTextField1.getText()));
+                m.setPond_parct(Float.parseFloat(jTextField2.getText()));
+                m.setLim_teo(Byte.parseByte(jTextField3.getText()));
+                m.setNotas((byte) (Byte.parseByte(jTextField3.getText()) + 
+                        Byte.parseByte(jTextField4.getText())));
+                nr = m;
+            }
+            nr.setNombre(nomAsign.getText());
+            pp.ramoNuevo(nr);
+            this.dispose();
+            pp.setTitle("EasyNotes");
+            pp.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        if (!jTextField1.getText().equals("")) {
+            if (Double.valueOf(jTextField1.getText()) > 100) {
+                JOptionPane.showMessageDialog(null, "Ponderacion Teorica incorrecta",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
     private void validarCantNotas(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 

@@ -2,7 +2,7 @@ package clases;
 public class Ramo {
 
 	private String nombre;
-	protected float[][] notas;
+	protected byte notas;
 	private Archivo archivo;
 
         public Ramo(){
@@ -21,15 +21,13 @@ public class Ramo {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	protected float[] ponderar() {
-		
-		throw new UnsupportedOperationException();
+        
+        public byte getNotas() {
+		return this.notas;
 	}
-
-	public void agregarNotas() {
-		
-		throw new UnsupportedOperationException();
+        
+	public void setNotas(byte notas) {
+		this.notas = notas;
 	}
-
+        
 }
