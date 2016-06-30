@@ -5,6 +5,7 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import javax.swing.JOptionPane;
 import clases.Ramo;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,8 +17,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      * Creates new form PaginaPrincipal
      */
     int x, y;
-    static byte an = 0;
-    static Ramo[] ramos = new Ramo[9];
+    static ArrayList<Ramo> ramos = new ArrayList<>();
     
 
     public PaginaPrincipal() {
@@ -28,29 +28,29 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
     
     private void inicioBotones(){
-        switch (an) {
+        switch (ramos.size()) {
             case 9:
-                asign9.setText(ramos[8].getNombre());
+                asign9.setText(ramos.get(8).getNombre());
             case 8:
-                asign8.setText(ramos[7].getNombre());
+                asign8.setText(ramos.get(7).getNombre());
             case 7:
-                asign7.setText(ramos[6].getNombre());
+                asign7.setText(ramos.get(6).getNombre());
             case 6:
-                asign6.setText(ramos[5].getNombre());
+                asign6.setText(ramos.get(5).getNombre());
             case 5:
-                asign5.setText(ramos[4].getNombre());
+                asign5.setText(ramos.get(4).getNombre());
             case 4:
-                asign4.setText(ramos[3].getNombre());
+                asign4.setText(ramos.get(3).getNombre());
             case 3:
-                asign3.setText(ramos[2].getNombre());
+                asign3.setText(ramos.get(2).getNombre());
             case 2:
-                asign2.setText(ramos[1].getNombre());
+                asign2.setText(ramos.get(1).getNombre());
             case 1:
-                asign1.setText(ramos[0].getNombre());
+                asign1.setText(ramos.get(0).getNombre());
             case 0:
                 break;
         }
-        switch (an) {
+        switch (ramos.size()) {
             case 0:
                 asign1.setVisible(false);
             case 1:
@@ -562,7 +562,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonReiniciarActionPerformed
 
     private void agregar(){
-        if (an<9) {
+        if (ramos.size()<9) {
             this.dispose();
             AgregarRamo ar = new AgregarRamo();
             ar.setTitle("AGREGAR ASIGNATURA");
@@ -576,7 +576,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }
     
     public void ramoNuevo(Ramo rn){
-        switch (an) {
+        switch (ramos.size()) {
             case 0:
                 asign1.setVisible(true);
                 asign1.setText(rn.getNombre());
@@ -614,7 +614,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 asign9.setText(rn.getNombre());
                 break;
         }
-        ramos[an++] = rn;
+        ramos.add(rn);
     }
     
     private void reiniciar(){
@@ -623,8 +623,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?", 
                 "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
-            for (Ramo ramo : ramos) {ramo = null;}
-            switch (an) {
+            switch (ramos.size()) {
                 case 9:
                     asign9.setVisible(false);
                 case 8:
@@ -646,7 +645,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 case 0:
                     break;
             }
-            an = 0;
+            ramos.clear();
         }
     }
     private void asignatura(int n){
