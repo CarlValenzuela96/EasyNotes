@@ -10,6 +10,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,10 @@ public class InterfazMixto extends javax.swing.JFrame {
      * Creates new form TPseparado
      */
     int x, y;
+    double[] notasT;
+    double[] pondT;
+    double[] notasP;
+    double[] pondP;
 
     public InterfazMixto() {
         initComponents();
@@ -30,28 +35,27 @@ public class InterfazMixto extends javax.swing.JFrame {
         promGral.setVisible(true);
         jLabel17.setVisible(true);
     }
-public void ingresarRamo(Mixto s){
+
+    public void ingresarRamo(Mixto s) {
         nombreAsign.setText(s.getNombre());
         tipoAprob.setText(s.getTipo());
         pondTeo.setText(String.valueOf(s.getPond_teo()));
         pondPract.setText(String.valueOf(s.getPond_parct()));
         jLabel15.setText(Integer.toString(s.getCantNT()));
         jLabel16.setText(Integer.toString(s.getCantNP()));
-       
-       
-        if(s.getTipo().equals("TEORICO - PRACTICO por Separado")){
-           promGral.setVisible(false);
-           jLabel17.setVisible(false); 
+
+        if (s.getTipo().equals("TEORICO - PRACTICO por Separado")) {
+            promGral.setVisible(false);
+            jLabel17.setVisible(false);
         }
-        if(s.getTipo().equals("TEORICO - PRACTICO en Conjunto")){
-           promGral.setVisible(true);
-           jLabel17.setVisible(true); 
-        }      
-        switch(s.getCantNP()){
+        if (s.getTipo().equals("TEORICO - PRACTICO en Conjunto")) {
+            promGral.setVisible(true);
+            jLabel17.setVisible(true);
+        }
+        switch (s.getCantNP()) {
             case 1:
                 np2.setVisible(false);
                 pp2.setVisible(false);
-                
             case 2:
                 np3.setVisible(false);
                 pp3.setVisible(false);
@@ -72,10 +76,12 @@ public void ingresarRamo(Mixto s){
                 pp8.setVisible(false);
             case 8:
                 break;
-        }switch(s.getCantNT()){
+        }
+        switch (s.getCantNT()) {
             case 1:
                 nt2.setVisible(false);
-                pt2.setVisible(false);                
+                pt2.setVisible(false);
+
             case 2:
                 nt3.setVisible(false);
                 pt3.setVisible(false);
@@ -98,6 +104,7 @@ public void ingresarRamo(Mixto s){
                 break;
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -171,6 +178,7 @@ public void ingresarRamo(Mixto s){
         botonMin = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         tipoAprob = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -630,6 +638,13 @@ public void ingresarRamo(Mixto s){
         tipoAprob.setForeground(new java.awt.Color(61, 138, 247));
         tipoAprob.setText("jLabel19");
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
         jcMousePanel1Layout.setHorizontalGroup(
@@ -725,14 +740,18 @@ public void ingresarRamo(Mixto s){
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(80, 80, 80)
-                                .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(52, 52, 52))
+                            .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel12)
+                                .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton1)
+                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                        .addGap(80, 80, 80)
+                                        .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(75, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                         .addComponent(jLabel17)
@@ -893,7 +912,9 @@ public void ingresarRamo(Mixto s){
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -1087,82 +1108,82 @@ public void ingresarRamo(Mixto s){
 
     private void nt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt1KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt1.getText(),evt);
+        validacionNota(nt1.getText(), evt);
     }//GEN-LAST:event_nt1KeyTyped
 
     private void nt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt2KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt2.getText(),evt);
+        validacionNota(nt2.getText(), evt);
     }//GEN-LAST:event_nt2KeyTyped
 
     private void nt3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt3KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt3.getText(),evt);
+        validacionNota(nt3.getText(), evt);
     }//GEN-LAST:event_nt3KeyTyped
 
     private void nt4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt4KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt4.getText(),evt);
+        validacionNota(nt4.getText(), evt);
     }//GEN-LAST:event_nt4KeyTyped
 
     private void nt5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt5KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt5.getText(),evt);
+        validacionNota(nt5.getText(), evt);
     }//GEN-LAST:event_nt5KeyTyped
 
     private void nt6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt6KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt6.getText(),evt);
+        validacionNota(nt6.getText(), evt);
     }//GEN-LAST:event_nt6KeyTyped
 
     private void nt7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt7KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt7.getText(),evt);
+        validacionNota(nt7.getText(), evt);
     }//GEN-LAST:event_nt7KeyTyped
 
     private void nt8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt8KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt8.getText(),evt);
+        validacionNota(nt8.getText(), evt);
     }//GEN-LAST:event_nt8KeyTyped
 
     private void np1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np1KeyTyped
         // TODO add your handling code here:
-        validacionNota(np1.getText(),evt);
+        validacionNota(np1.getText(), evt);
     }//GEN-LAST:event_np1KeyTyped
 
     private void np2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np2KeyTyped
         // TODO add your handling code here:
-        validacionNota(np2.getText(),evt);
+        validacionNota(np2.getText(), evt);
     }//GEN-LAST:event_np2KeyTyped
 
     private void np3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np3KeyTyped
         // TODO add your handling code here:
-        validacionNota(np3.getText(),evt);
+        validacionNota(np3.getText(), evt);
     }//GEN-LAST:event_np3KeyTyped
 
     private void np4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np4KeyTyped
         // TODO add your handling code here:
-        validacionNota(np4.getText(),evt);
+        validacionNota(np4.getText(), evt);
     }//GEN-LAST:event_np4KeyTyped
 
     private void np5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np5KeyTyped
         // TODO add your handling code here:
-        validacionNota(np5.getText(),evt);
+        validacionNota(np5.getText(), evt);
     }//GEN-LAST:event_np5KeyTyped
 
     private void np6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np6KeyTyped
         // TODO add your handling code here:
-        validacionNota(np6.getText(),evt);
+        validacionNota(np6.getText(), evt);
     }//GEN-LAST:event_np6KeyTyped
 
     private void np7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np7KeyTyped
         // TODO add your handling code here:
-        validacionNota(np7.getText(),evt);
+        validacionNota(np7.getText(), evt);
     }//GEN-LAST:event_np7KeyTyped
 
     private void np8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np8KeyTyped
         // TODO add your handling code here:
-        validacionNota(np8.getText(),evt);
+        validacionNota(np8.getText(), evt);
     }//GEN-LAST:event_np8KeyTyped
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
@@ -1173,9 +1194,244 @@ public void ingresarRamo(Mixto s){
         } catch (IOException ex) {
             Logger.getLogger(InterfazMixto.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }//GEN-LAST:event_guardarActionPerformed
 
-    private void validacionNota(String cadena, java.awt.event.KeyEvent evt){
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Mixto m = new Mixto();
+
+        switch (Integer.parseInt(jLabel16.getText())) {
+            case 1:
+                this.notasP = new double[1];
+                notasP[0] = Double.parseDouble(np1.getText());
+                this.pondP = new double[1];
+                pondP[0] = Double.parseDouble(pp1.getText());
+
+                break;
+            case 2:
+                this.notasP = new double[2];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                this.pondP = new double[2];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+
+                break;
+            case 3:
+                this.notasP = new double[3];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                this.pondP = new double[3];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                break;
+            case 4:
+                this.notasP = new double[4];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                this.pondP = new double[4];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                break;
+            case 5:
+                this.notasP = new double[5];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                notasP[4] = Double.parseDouble(np5.getText());
+
+                this.pondP = new double[5];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                pondP[4] = Double.parseDouble(pp5.getText());
+                break;
+            case 6:
+                this.notasP = new double[6];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                notasP[4] = Double.parseDouble(np5.getText());
+                notasP[5] = Double.parseDouble(np6.getText());
+                this.pondP = new double[6];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                pondP[4] = Double.parseDouble(pp5.getText());
+                pondP[5] = Double.parseDouble(pp6.getText());
+                break;
+            case 7:
+                this.notasP = new double[7];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                notasP[4] = Double.parseDouble(np5.getText());
+                notasP[5] = Double.parseDouble(np6.getText());
+                notasP[6] = Double.parseDouble(np7.getText());
+
+                this.pondP = new double[7];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                pondP[4] = Double.parseDouble(pp5.getText());
+                pondP[5] = Double.parseDouble(pp6.getText());
+                pondP[6] = Double.parseDouble(pp7.getText());
+                break;
+            case 8:
+                this.notasP = new double[8];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                notasP[4] = Double.parseDouble(np5.getText());
+                notasP[5] = Double.parseDouble(np6.getText());
+                notasP[6] = Double.parseDouble(np7.getText());
+                notasP[7] = Double.parseDouble(np8.getText());
+
+                this.pondP = new double[8];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                pondP[4] = Double.parseDouble(pp5.getText());
+                pondP[5] = Double.parseDouble(pp6.getText());
+                pondP[6] = Double.parseDouble(pp7.getText());
+                pondP[7] = Double.parseDouble(pp8.getText());
+                break;
+        }
+        switch (Integer.parseInt(jLabel15.getText())) {
+            case 1:
+                this.notasT = new double[1];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                this.pondT = new double[1];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                break;
+            case 2:
+                this.notasT = new double[2];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+
+                this.pondT = new double[2];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                break;
+            case 3:
+                 this.notasT = new double[3];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+
+                this.pondT = new double[3];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                break;
+            case 4:
+                this.notasT = new double[4];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                this.pondT = new double[4];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                break;
+            case 5:
+                this.notasT = new double[5];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                notasT[4] = Double.parseDouble(nt5.getText());
+
+                this.pondT = new double[5];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                pondT[4] = Double.parseDouble(pt5.getText());
+                break;
+            case 6:
+                this.notasT = new double[6];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                notasT[4] = Double.parseDouble(nt5.getText());
+                notasT[5] = Double.parseDouble(nt6.getText());
+                this.pondT = new double[6];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                pondT[4] = Double.parseDouble(pt5.getText());
+                pondT[5] = Double.parseDouble(pt6.getText());
+                break;
+            case 7:
+                this.notasT = new double[7];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                notasT[4] = Double.parseDouble(nt5.getText());
+                notasT[5] = Double.parseDouble(nt6.getText());
+                notasT[6] = Double.parseDouble(nt7.getText());
+
+                this.pondT = new double[7];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                pondT[4] = Double.parseDouble(pt5.getText());
+                pondT[5] = Double.parseDouble(pt6.getText());
+                pondT[6] = Double.parseDouble(pt7.getText());
+                break;
+            case 8: 
+                this.notasT = new double[8];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                notasT[4] = Double.parseDouble(nt5.getText());
+                notasT[5] = Double.parseDouble(nt6.getText());
+                notasT[6] = Double.parseDouble(nt7.getText());
+                notasT[7] = Double.parseDouble(nt8.getText());
+
+                this.pondT = new double[8];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                pondT[4] = Double.parseDouble(pt5.getText());
+                pondT[5] = Double.parseDouble(pt6.getText());
+                pondT[6] = Double.parseDouble(pt7.getText());
+                pondT[7] = Double.parseDouble(pt8.getText());
+                break;
+        }
+        double a = m.calcPromedioSimple(this.notasT, this.pondT);
+        double b = m.calcPromedioSimple(this.notasP, this.pondP);
+        double c = m.calcPromedioTotal(a, b, Double.parseDouble(pondTeo.getText()), Double.parseDouble(pondPract.getText()));
+        promT.setText(String.valueOf(a));
+        promP.setText(String.valueOf(b));
+        promGral.setText(String.valueOf(c));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
         if (!(c >= '1' && c <= '7') && c != '.') {
@@ -1259,6 +1515,7 @@ public void ingresarRamo(Mixto s){
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonMin;
     private javax.swing.JButton guardar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

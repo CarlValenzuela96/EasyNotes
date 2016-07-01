@@ -32,12 +32,22 @@ public class Ramo {
         this.tipo = tipo;
     }
 
-     public void crearArchivoSimple(String nombre,String tipo,String cantN ) throws IOException {
-
-        archivo.crearArchivoSimple(nombre,tipo,cantN);
+    public double calcPromedioSimple(double[] notas, double[] pond) {
+        double cont = 0;
+        for (int i = 0; i < notas.length; i++) {
+            cont = cont + (notas[i] * (pond[i] / 100));
+        }
+        double prom = cont;
+        return prom;
     }
-    public void crearArchivoMixto(String nombre,String tipo,String cantNT, String cantNP,String pondTeo, String pondPract) throws IOException {
 
-        archivo.crearArchivoMixto(nombre,tipo,cantNT,cantNP,pondTeo,pondPract);
+    public void crearArchivoSimple(String nombre, String tipo, String cantN) throws IOException {
+
+        archivo.crearArchivoSimple(nombre, tipo, cantN);
+    }
+
+    public void crearArchivoMixto(String nombre, String tipo, String cantNT, String cantNP, String pondTeo, String pondPract) throws IOException {
+
+        archivo.crearArchivoMixto(nombre, tipo, cantNT, cantNP, pondTeo, pondPract);
     }
 }

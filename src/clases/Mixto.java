@@ -63,14 +63,7 @@ public class Mixto extends Ramo {
 		this.lim_teo = lim_teo;
 	}
 
-	public double calcPromedioSimple(double[]notas,double[]pond ) {
-            double cont=0;
-            for (int j = 0; j <notas.length; j++) {
-            cont= cont + (notas[j]*(pond[j]/100));
-            }
-            double prom= cont;
-                return prom;
-	}
+	
         
         public double calcPromedioTotal(double promT, double promP, double pondT, double pondP) {
             

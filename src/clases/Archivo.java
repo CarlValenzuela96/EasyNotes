@@ -40,11 +40,12 @@ public class Archivo {
 
             fw = new FileWriter(f,true);
             bw = new BufferedWriter(fw); 
+           
             bw.newLine();
-            bw.write("1");
-            bw.newLine();
-            bw.write("2");
-        
+             bw.write("1");
+              bw.newLine();
+             bw.write("2");
+       
         bw.close();
         fw.close();
         }
