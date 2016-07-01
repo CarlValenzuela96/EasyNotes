@@ -32,8 +32,12 @@ public class Ramo {
         this.tipo = tipo;
     }
 
-    public void crearArchivo() throws IOException {
+     public void crearArchivoSimple(String nombre,String tipo,String cantN ) throws IOException {
 
-        archivo.crearArchivo(this.nombre);
+        archivo.crearArchivoSimple(nombre,tipo,cantN);
+    }
+    public void crearArchivoMixto(String nombre,String tipo,String cantNT, String cantNP,String pondTeo, String pondPract) throws IOException {
+
+        archivo.crearArchivoMixto(nombre,tipo,cantNT,cantNP,pondTeo,pondPract);
     }
 }
