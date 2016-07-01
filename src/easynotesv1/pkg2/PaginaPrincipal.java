@@ -766,29 +766,40 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                 + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?", 
                 "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
+            Archivo ar = new Archivo();
             switch (ramos.size()) {
                 case 9:
                     asign9.setVisible(false);
+                    ar.eliminarArchivo(asign9.getText());
                 case 8:
                     asign8.setVisible(false);
+                    ar.eliminarArchivo(asign8.getText());
                 case 7:
                     asign7.setVisible(false);
+                    ar.eliminarArchivo(asign7.getText());
                 case 6:
                     asign6.setVisible(false);
+                    ar.eliminarArchivo(asign6.getText());
                 case 5:
                     asign5.setVisible(false);
+                    ar.eliminarArchivo(asign5.getText());
                 case 4:
                     asign4.setVisible(false);
+                    ar.eliminarArchivo(asign4.getText());
                 case 3:
                     asign3.setVisible(false);
+                    ar.eliminarArchivo(asign3.getText());
                 case 2:
                     asign2.setVisible(false);
+                    ar.eliminarArchivo(asign2.getText());
                 case 1:
                     asign1.setVisible(false);
+                    ar.eliminarArchivo(asign1.getText());
                 case 0:
                     break;
             }
             ramos.clear();
+           
         }
     }
     

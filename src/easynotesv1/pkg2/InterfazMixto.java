@@ -7,6 +7,9 @@ package easynotesv1.pkg2;
 
 import clases.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,7 +37,8 @@ public void ingresarRamo(Mixto s){
         pondPract.setText(String.valueOf(s.getPond_parct()));
         jLabel15.setText(Integer.toString(s.getCantNT()));
         jLabel16.setText(Integer.toString(s.getCantNP()));
-        
+       
+       
         if(s.getTipo().equals("TEORICO - PRACTICO por Separado")){
            promGral.setVisible(false);
            jLabel17.setVisible(false); 
@@ -47,6 +51,7 @@ public void ingresarRamo(Mixto s){
             case 1:
                 np2.setVisible(false);
                 pp2.setVisible(false);
+                
             case 2:
                 np3.setVisible(false);
                 pp3.setVisible(false);
@@ -70,7 +75,7 @@ public void ingresarRamo(Mixto s){
         }switch(s.getCantNT()){
             case 1:
                 nt2.setVisible(false);
-                pt2.setVisible(false);
+                pt2.setVisible(false);                
             case 2:
                 nt3.setVisible(false);
                 pt3.setVisible(false);
@@ -574,6 +579,11 @@ public void ingresarRamo(Mixto s){
         guardar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         botonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/salir.png"))); // NOI18N
         botonCerrar.setBorder(null);
@@ -1154,6 +1164,16 @@ public void ingresarRamo(Mixto s){
         // TODO add your handling code here:
         validacionNota(np8.getText(),evt);
     }//GEN-LAST:event_np8KeyTyped
+
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        // TODO add your handling code here:
+        Archivo ar = new Archivo();
+        try {
+            ar.agregarNotasMixto(nombreAsign.getText());
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazMixto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_guardarActionPerformed
 
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt){
         char c = evt.getKeyChar();

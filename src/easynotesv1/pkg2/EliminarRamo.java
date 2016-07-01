@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package easynotesv1.pkg2;
-
+import clases.*;
 import java.awt.*;
 import javax.swing.JOptionPane;
 
@@ -293,7 +293,9 @@ public class EliminarRamo extends javax.swing.JFrame {
     private void elim(){
         this.dispose();
         PaginaPrincipal pp = new PaginaPrincipal();
+        Archivo ar = new Archivo();
         pp.elim(nomAsign.getSelectedIndex());
+        ar.eliminarArchivo(String.valueOf(nomAsign.getSelectedItem()));
         pp.setTitle("EasyNotes");
         pp.setVisible(true);
     }
