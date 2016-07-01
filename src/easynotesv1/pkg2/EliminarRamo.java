@@ -6,7 +6,6 @@
 package easynotesv1.pkg2;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,7 +22,13 @@ public class EliminarRamo extends javax.swing.JFrame {
     public EliminarRamo() {
         initComponents();
         setLocationRelativeTo(null);
-        Error.setVisible(false);
+        
+    }
+    public void nombres(String[] n){
+        for (String string : n) {
+            nomAsign.addItem(string);
+        }
+        nomAsign.setSelectedIndex(0);
     }
 
     /**
@@ -41,12 +46,11 @@ public class EliminarRamo extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        nomAsign = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jcMousePanel4 = new jcMousePanel.jcMousePanel();
-        Error = new javax.swing.JLabel();
+        nomAsign = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -99,17 +103,6 @@ public class EliminarRamo extends javax.swing.JFrame {
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
-            }
-        });
-
-        nomAsign.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomAsignActionPerformed(evt);
-            }
-        });
-        nomAsign.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nomAsignKeyTyped(evt);
             }
         });
 
@@ -168,8 +161,12 @@ public class EliminarRamo extends javax.swing.JFrame {
             .addGap(0, 71, Short.MAX_VALUE)
         );
 
-        Error.setForeground(new java.awt.Color(61, 138, 247));
-        Error.setText("jLabel3");
+        nomAsign.setMaximumRowCount(9);
+        nomAsign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nomAsignActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
@@ -182,7 +179,7 @@ public class EliminarRamo extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(235, Short.MAX_VALUE)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -195,10 +192,8 @@ public class EliminarRamo extends javax.swing.JFrame {
                 .addGap(93, 93, 93)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nomAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Error, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(186, Short.MAX_VALUE))
+                .addComponent(nomAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                 .addGap(162, 162, 162)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -223,14 +218,11 @@ public class EliminarRamo extends javax.swing.JFrame {
                 .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(81, 81, 81)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomAsign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel2)
+                    .addComponent(nomAsign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(163, 163, 163)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(Error)
-                        .addGap(143, 143, 143)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(76, Short.MAX_VALUE))
         );
@@ -253,16 +245,7 @@ public class EliminarRamo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if (!nomAsign.getText().equals("")) {
-            this.dispose();
-            PaginaPrincipal pp = new PaginaPrincipal();
-
-            pp.setTitle("EasyNotes");
-            pp.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-        }
+        elim();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -273,14 +256,11 @@ public class EliminarRamo extends javax.swing.JFrame {
         pp.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void nomAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomAsignActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_nomAsignActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+        int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se"
+                + " eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida",
+                JOptionPane.YES_NO_OPTION);
 
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
@@ -294,20 +274,6 @@ public class EliminarRamo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
 
-    private void nomAsignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomAsignKeyTyped
-        // TODO add your handling code here:
-        char c = evt.getKeyChar();
-
-        if (!Character.isLetter(c)&&c!=KeyEvent.VK_SPACE) {
-            evt.consume();
-            Error.setVisible(true);
-            Error.setText("Ingresa Solo Letras");
-        }
-        if (nomAsign.getText().length()>=22){
-            evt.consume();
-        }
-    }//GEN-LAST:event_nomAsignKeyTyped
-
     private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         // TODO add your handling code here:
         x = evt.getX();
@@ -320,6 +286,17 @@ public class EliminarRamo extends javax.swing.JFrame {
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel1MouseDragged
 
+    private void nomAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomAsignActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomAsignActionPerformed
+
+    private void elim(){
+        this.dispose();
+        PaginaPrincipal pp = new PaginaPrincipal();
+        pp.elim(nomAsign.getSelectedIndex());
+        pp.setTitle("EasyNotes");
+        pp.setVisible(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -377,6 +354,38 @@ public class EliminarRamo extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -387,7 +396,6 @@ public class EliminarRamo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel Error;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -397,7 +405,7 @@ public class EliminarRamo extends javax.swing.JFrame {
     private jcMousePanel.jcMousePanel jcMousePanel1;
     private jcMousePanel.jcMousePanel jcMousePanel3;
     private jcMousePanel.jcMousePanel jcMousePanel4;
-    private javax.swing.JTextField nomAsign;
+    private javax.swing.JComboBox<String> nomAsign;
     private javax.swing.JLabel nombreAsign;
     // End of variables declaration//GEN-END:variables
 }

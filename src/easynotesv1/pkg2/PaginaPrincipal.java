@@ -3,10 +3,7 @@ package easynotesv1.pkg2;
 import clases.*;
 import java.awt.MouseInfo;
 import java.awt.Point;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -355,6 +352,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign6.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign6.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign6ActionPerformed(evt);
+            }
+        });
 
         asign8.setForeground(new java.awt.Color(0, 102, 204));
         asign8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
@@ -380,6 +382,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign2ActionPerformed(evt);
+            }
+        });
 
         asign1.setForeground(new java.awt.Color(0, 102, 204));
         asign1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
@@ -405,6 +412,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign4ActionPerformed(evt);
+            }
+        });
 
         asign9.setForeground(new java.awt.Color(0, 102, 204));
         asign9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
@@ -415,6 +427,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign9.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign9.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign9ActionPerformed(evt);
+            }
+        });
 
         asign3.setForeground(new java.awt.Color(0, 102, 204));
         asign3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
@@ -425,6 +442,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign3ActionPerformed(evt);
+            }
+        });
 
         asign7.setForeground(new java.awt.Color(0, 102, 204));
         asign7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
@@ -435,6 +457,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asign7.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         asign7.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -560,16 +587,11 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         // TODO add your handling code here:
        agregar();
-       
-
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        EliminarRamo er = new EliminarRamo();
-        er.setTitle("ELIMINAR ASIGNATURA");
-        er.setVisible(true);
+        borrar();
     }//GEN-LAST:event_botonBorrarActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -599,28 +621,53 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel13MouseDragged
     // se paso a publio y statico en (customize code ) para poder agregar y ser visible desde agregar ramo
     private void asign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign1ActionPerformed
-
-        // dependiendo de la opcion que se ingreso sebiera abrir al pinchar en el ramo, si es TPconjunto o TPseparado
-        //en este caso sera TPseparado para probar
-        //this.dispose();
-        //TPseparado ts= new TPseparado();
-        //ts.setTitle("TPseparado");
-        //ts.setVisible(true);
-        asignatura(1);
+  asignatura(0);
     }//GEN-LAST:event_asign1ActionPerformed
 
     private void asign8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign8ActionPerformed
         // TODO add your handling code here:
+        asignatura(7);
     }//GEN-LAST:event_asign8ActionPerformed
 
     private void asign5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign5ActionPerformed
         // TODO add your handling code here:
+        asignatura(4);
     }//GEN-LAST:event_asign5ActionPerformed
 
     private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
         // TODO add your handling code here:
         reiniciar();
     }//GEN-LAST:event_botonReiniciarActionPerformed
+
+    private void asign2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign2ActionPerformed
+        // TODO add your handling code here:
+        asignatura(1);
+    }//GEN-LAST:event_asign2ActionPerformed
+
+    private void asign3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign3ActionPerformed
+        // TODO add your handling code here:
+        asignatura(2);
+    }//GEN-LAST:event_asign3ActionPerformed
+
+    private void asign4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign4ActionPerformed
+        // TODO add your handling code here:
+        asignatura(3);
+    }//GEN-LAST:event_asign4ActionPerformed
+
+    private void asign6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign6ActionPerformed
+        // TODO add your handling code here:
+        asignatura(5);
+    }//GEN-LAST:event_asign6ActionPerformed
+
+    private void asign7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign7ActionPerformed
+        // TODO add your handling code here:
+        asignatura(6);
+    }//GEN-LAST:event_asign7ActionPerformed
+
+    private void asign9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign9ActionPerformed
+        // TODO add your handling code here:
+        asignatura(8);
+    }//GEN-LAST:event_asign9ActionPerformed
     private void agregar(){
         if (ramos.size()<9) {
             this.dispose();
@@ -677,7 +724,42 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
         ramos.add(rn);
     }
-    
+     private void asignatura(int n){
+        Ramo r = ramos.get(n);
+        this.dispose();
+        if(r.getTipo().equals("TEORICO - PRACTICO por Separado")||r.getTipo().equals("TEORICO - PRACTICO en Conjunto")){
+            InterfazMixto s = new InterfazMixto();
+            s.ingresarRamo((Mixto) r);
+            s.setTitle(r.getNombre());
+            s.setVisible(true);
+        }else 
+        if (r.getTipo().equals("Teórico")||r.getTipo().equals("Práctico")){
+            InterfazSimple s = new InterfazSimple();
+            s.ingresarRamo((Simple) r);
+            s.setTitle(r.getNombre());
+            s.setVisible(true);
+        }
+    }
+     private void borrar(){
+        if (!ramos.isEmpty()) {
+            this.dispose();
+            String n = "";
+            for (Ramo ramo : ramos) {
+                n += ramo.getNombre() + ":";
+            }
+            EliminarRamo er = new EliminarRamo();
+            er.nombres(n.split(":"));
+            er.setTitle("ELIMINAR ASIGNATURA");
+            er.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "La lista de ramos ya está vacía",
+                    "Nada que hacer", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }  
+    public void elim(int i){
+        ramos.remove(i);
+        inicioBotones();
+    }
     private void reiniciar(){
         int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
                 + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
@@ -710,9 +792,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }
     
-    private void asignatura(int n){
-        
-    }
+   
 
     /**
      * @param args the command line arguments

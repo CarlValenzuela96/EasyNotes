@@ -5,6 +5,7 @@
  */
 package easynotesv1.pkg2;
 
+import clases.Simple;
 import java.awt.*;
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,37 @@ public class InterfazSimple extends javax.swing.JFrame {
     public InterfazSimple() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    public void ingresarRamo(Simple s){
+        nombreAsign.setText(s.getNombre());
+        tipoAprob.setText(s.getTipo());
+        jLabel15.setText(Integer.toString(s.getNotas()));
+        switch(s.getNotas()){
+            case 1:
+                nt2.setVisible(false);
+                pt2.setVisible(false);
+            case 2:
+                nt3.setVisible(false);
+                pt3.setVisible(false);
+            case 3:
+                nt4.setVisible(false);
+                pt4.setVisible(false);
+            case 4:
+                nt5.setVisible(false);
+                pt5.setVisible(false);
+            case 5:
+                nt6.setVisible(false);
+                pt6.setVisible(false);
+            case 6:
+                nt7.setVisible(false);
+                pt7.setVisible(false);
+            case 7:
+                nt8.setVisible(false);
+                pt8.setVisible(false);
+            case 8:
+                break;
+        }
     }
 
     /**

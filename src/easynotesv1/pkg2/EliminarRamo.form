@@ -56,7 +56,7 @@
                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="235" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="jcMousePanel3" min="-2" pref="297" max="-2" attributes="0"/>
                               <Component id="nombreAsign" min="-2" pref="285" max="-2" attributes="0"/>
@@ -73,11 +73,8 @@
                   <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="nomAsign" min="-2" pref="345" max="-2" attributes="0"/>
-                      <Component id="Error" min="-2" pref="136" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="186" max="32767" attributes="0"/>
+                  <Component id="nomAsign" min="-2" pref="311" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="162" max="-2" attributes="0"/>
@@ -109,16 +106,12 @@
                   <Component id="jcMousePanel3" min="-2" pref="9" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="nomAsign" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="nomAsign" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="Error" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
-                          <Component id="jButton2" min="-2" pref="53" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jButton2" min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="53" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="76" max="32767" attributes="0"/>
@@ -215,12 +208,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="nomAsign">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomAsignActionPerformed"/>
-            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nomAsignKeyTyped"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JButton" name="jButton3">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -311,13 +298,16 @@
             </DimensionLayout>
           </Layout>
         </Container>
-        <Component class="javax.swing.JLabel" name="Error">
+        <Component class="javax.swing.JComboBox" name="nomAsign">
           <Properties>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f7" green="8a" red="3d" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="jLabel3"/>
+            <Property name="maximumRowCount" type="int" value="9"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nomAsignActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

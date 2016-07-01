@@ -8,9 +8,6 @@ package easynotesv1.pkg2;
 import clases.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -407,12 +404,9 @@ public class AgregarRamo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
-        try {
             // TODO add your handling code here:
             agregar();
-        } catch (IOException ex) {
-            Logger.getLogger(AgregarRamo.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_crearAsignActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -549,34 +543,42 @@ public class AgregarRamo extends javax.swing.JFrame {
         Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel12MouseDragged
-  private void agregar() throws IOException{
+     private void agregar(){
         PaginaPrincipal pp = new PaginaPrincipal();
+        
         if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
-            Ramo nr;
+            Ramo nr= new Ramo();
             if (jTextField1.getText().equals("100")){
                 Simple s = new Simple();
                 s.setTipo("Teórico");
                 s.setNotas(Byte.parseByte(jTextField3.getText()));
                 nr = s;
-            } else if (jTextField2.getText().equals("100")){
+            } else if (jTextField1.getText().equals("0")){
                 Simple s = new Simple();
                 s.setTipo("Práctico");
                 s.setNotas(Byte.parseByte(jTextField4.getText()));
                 nr = s;
-            } else {
+            } else  if (Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
                 Mixto m = new Mixto();
-                m.setSeparado(modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado"));
-                m.setPond_teo(Float.parseFloat(jTextField1.getText()));
-                m.setPond_parct(Float.parseFloat(jTextField2.getText()));
+                m.setTipo("TEORICO - PRACTICO por Separado");
+                m.setPond_teo(Double.parseDouble(jTextField1.getText()));
+                m.setPond_parct(Double.parseDouble(jTextField2.getText()));
                 m.setLim_teo(Byte.parseByte(jTextField3.getText()));
-                m.setNotas((byte) (Byte.parseByte(jTextField3.getText()) + 
-                        Byte.parseByte(jTextField4.getText())));
+                m.setCantNT((byte)Byte.parseByte(jTextField3.getText()));
+                m.setCantNP((byte)Byte.parseByte(jTextField4.getText()));
+                nr = m;
+            }else if(Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")){
+                 Mixto m = new Mixto();
+                m.setTipo("TEORICO - PRACTICO en Conjunto");
+                m.setPond_teo(Double.parseDouble(jTextField1.getText()));
+                m.setPond_parct(Double.parseDouble(jTextField2.getText()));
+                m.setLim_teo(Byte.parseByte(jTextField3.getText()));
+                m.setCantNT((byte)Byte.parseByte(jTextField3.getText()));
+                m.setCantNP((byte)Byte.parseByte(jTextField4.getText()));
                 nr = m;
             }
             nr.setNombre(nomAsign.getText());
-            
             pp.ramoNuevo(nr);
-            nr.crearArchivo();
             this.dispose();
             pp.setTitle("EasyNotes");
             pp.setVisible(true);
