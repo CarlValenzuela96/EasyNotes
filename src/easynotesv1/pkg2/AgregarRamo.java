@@ -28,7 +28,7 @@ public class AgregarRamo extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         jTextField2.setEditable(false);
-       
+
     }
 
     /**
@@ -413,7 +413,7 @@ public class AgregarRamo extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(AgregarRamo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_crearAsignActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -431,7 +431,7 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void modoAprobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoAprobActionPerformed
         // TODO add your handling code here:
-         if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")) {
+        if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")) {
             jTextField1.setText("");
             jTextField2.setText("");
         }
@@ -449,18 +449,18 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        if (!jTextField1.getText().equals("") && jTextField1.getText().charAt(0)!='.'){
-            if(Double.valueOf(jTextField1.getText()) <= 100){
-              double pondP = 100 - Double.parseDouble(jTextField1.getText());
-            jTextField2.setText(String.valueOf(pondP));
+        if (!jTextField1.getText().equals("") && jTextField1.getText().charAt(0) != '.') {
+            if (Double.valueOf(jTextField1.getText()) <= 100) {
+                double pondP = 100 - Double.parseDouble(jTextField1.getText());
+                jTextField2.setText(String.valueOf(pondP));
 
-            jTextField4.setText("");
-            jTextField4.setEditable(true);
-            jTextField3.setText("");
-            jTextField3.setEditable(true);
+                jTextField4.setText("");
+                jTextField4.setEditable(true);
+                jTextField3.setText("");
+                jTextField3.setEditable(true);
             }
         }
-        if (!jTextField1.getText().equals("")&&jTextField1.getText().charAt(0)!='.') {
+        if (!jTextField1.getText().equals("") && jTextField1.getText().charAt(0) != '.') {
             if (Double.valueOf(jTextField1.getText()) > 100) {
                 jLabel11.setText("Introduce Ponderacion menor a 100");
 
@@ -476,7 +476,7 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-         int resp = JOptionPane.showConfirmDialog(null,
+        int resp = JOptionPane.showConfirmDialog(null,
                 "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
@@ -491,7 +491,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void nomAsignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomAsignKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if ((c<'a' || c>'z') && (c<'A' || c>'Z')&&c!=KeyEvent.VK_SPACE) {
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != KeyEvent.VK_SPACE) {
             evt.consume();
         }
         if (nomAsign.getText().length() >= 22) {
@@ -503,7 +503,7 @@ public class AgregarRamo extends javax.swing.JFrame {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if ((c< '0' || c>'9')&&c!=KeyEvent.VK_PERIOD) {
+        if ((c < '0' || c > '9') && c != KeyEvent.VK_PERIOD) {
             evt.consume();
         }
 
@@ -528,7 +528,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
         // TODO add your handling code here:
         validarCantNotas(jTextField3.getText(), evt);
-        
+
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -551,49 +551,76 @@ public class AgregarRamo extends javax.swing.JFrame {
         Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel12MouseDragged
-     private void agregar() throws IOException{
+    private void agregar() throws IOException {
         PaginaPrincipal pp = new PaginaPrincipal();
-        
+
         if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
-            Ramo nr= new Ramo();
-            if (jTextField1.getText().equals("100")){
+            Ramo nr = new Ramo();
+            if (jTextField1.getText().equals("100")) {
                 Simple s = new Simple();
                 s.setTipo("Teórico");
                 s.setNotas(Byte.parseByte(jTextField3.getText()));
                 nr = s;
                 //nr.crearArchivoSimple(nomAsign.getText(), s.getTipo(), String.valueOf(s.getNotas()));
-            } else if (jTextField1.getText().equals("0")){
+            } else if (jTextField1.getText().equals("0")) {
                 Simple s = new Simple();
                 s.setTipo("Práctico");
                 s.setNotas(Byte.parseByte(jTextField4.getText()));
                 nr = s;
                 //nr.crearArchivoSimple(nomAsign.getText(), s.getTipo(), String.valueOf(s.getNotas()));
-            } else  if (Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
+            } else if (Double.parseDouble(jTextField1.getText()) != 100 && Double.parseDouble(jTextField2.getText()) != 100 && modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")) {
                 Mixto m = new Mixto();
                 m.setTipo("TEORICO - PRACTICO por Separado");
                 m.setPond_teo(Double.parseDouble(jTextField1.getText()));
                 m.setPond_parct(Double.parseDouble(jTextField2.getText()));
                 m.setLim_teo(Byte.parseByte(jTextField3.getText()));
-                m.setCantNT((byte)Byte.parseByte(jTextField3.getText()));
-                m.setCantNP((byte)Byte.parseByte(jTextField4.getText()));
+                m.setCantNT((byte) Byte.parseByte(jTextField3.getText()));
+                m.setCantNP((byte) Byte.parseByte(jTextField4.getText()));
                 nr = m;
                 //nr.crearArchivoMixto(nomAsign.getText(), m.getTipo(), String.valueOf(m.getCantNT()), String.valueOf(m.getCantNP()),String.valueOf(m.getPond_teo()),String.valueOf(m.getPond_parct()));
-            }else if(Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")){
-                 Mixto m = new Mixto();
+            } else if (Double.parseDouble(jTextField1.getText()) != 100 && Double.parseDouble(jTextField2.getText()) != 100 && modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")) {
+                Mixto m = new Mixto();
                 m.setTipo("TEORICO - PRACTICO en Conjunto");
                 m.setPond_teo(Double.parseDouble(jTextField1.getText()));
                 m.setPond_parct(Double.parseDouble(jTextField2.getText()));
                 m.setLim_teo(Byte.parseByte(jTextField3.getText()));
-                m.setCantNT((byte)Byte.parseByte(jTextField3.getText()));
-                m.setCantNP((byte)Byte.parseByte(jTextField4.getText()));
+                m.setCantNT((byte) Byte.parseByte(jTextField3.getText()));
+                m.setCantNP((byte) Byte.parseByte(jTextField4.getText()));
                 nr = m;
                 //nr.crearArchivoMixto(nomAsign.getText(), m.getTipo(), String.valueOf(m.getCantNT()), String.valueOf(m.getCantNP()),String.valueOf(m.getPond_teo()),String.valueOf(m.getPond_parct()));
             }
-            nr.setNombre(nomAsign.getText());
-            pp.ramoNuevo(nr);
-            this.dispose();
-            pp.setTitle("EasyNotes");
-            pp.setVisible(true);
+            boolean resp = false;
+
+            for (Ramo ramo : PaginaPrincipal.ramos) {
+                if (ramo.getNombre().equals(nomAsign.getText())) {
+                    resp = true;
+                    break;
+
+                }
+
+            }
+            if (!resp) {
+                nr.setNombre(nomAsign.getText());
+                pp.ramoNuevo(nr);
+                this.dispose();
+                pp.setTitle("EasyNotes");
+                pp.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Este ramo ya existe",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+
+                this.modoAprob.setSelectedIndex(0);
+                nomAsign.setText("");
+                jTextField1.setText("");
+                jTextField2.setText("");
+                jTextField3.setText("");
+                jTextField4.setText("");
+            }
+            // nr.setNombre(nomAsign.getText());
+            //pp.ramoNuevo(nr);
+            //this.dispose();
+            //pp.setTitle("EasyNotes");
+            //pp.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -605,7 +632,7 @@ public class AgregarRamo extends javax.swing.JFrame {
             }
         }
     }
-    
+
     private void validarCantNotas(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
@@ -616,8 +643,7 @@ public class AgregarRamo extends javax.swing.JFrame {
             evt.consume();
         }
     }
-   
-    
+
     /**
      * @param args the command line arguments
      */
