@@ -41,7 +41,7 @@ public class Archivo {
             String linea;
 
             while ((linea = br.readLine()) != null) {
-                datos = linea.split(linea);
+                datos = linea.split("%");
             }
         }
         return datos;

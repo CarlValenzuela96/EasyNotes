@@ -5,6 +5,10 @@
  */
 package easynotesv1.pkg2;
 
+import clases.*;
+import java.io.File;
+import java.io.IOException;
+
 /**
  *
  * @author carlos
@@ -14,7 +18,7 @@ public class EasyNotesV12 {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         Inicio i = new Inicio();
         i.setVisible(true);
@@ -34,6 +38,29 @@ public class EasyNotesV12 {
         i.dispose();
         
         PaginaPrincipal pp= new PaginaPrincipal();
+        
+        for (File ramo : new File("Ramos").listFiles()) {
+            Archivo carga = new Archivo();
+            String[] l = carga.leerArchivoRamo(ramo.getName().replace(".txt",""));
+            Ramo leer;
+            if(l.length==3){
+                Simple s = new Simple();
+                s.setNotas(Byte.parseByte(l[2]));
+                leer = s;
+            }else{
+                Mixto m = new Mixto();
+                m.setCantNT(Byte.parseByte(l[2]));
+                m.setCantNP(Byte.parseByte(l[3]));
+                m.setPond_parct(Double.parseDouble(l[4]));
+                m.setPond_teo(Double.parseDouble(l[5]));
+                leer = m;
+            }
+            leer.setNombre(l[0]);
+            leer.setTipo(l[1]);
+            leer.asignarArchivo(carga);
+            pp.ramoNuevo(leer);
+        }
+        
         pp.setVisible(true);
     
     }
