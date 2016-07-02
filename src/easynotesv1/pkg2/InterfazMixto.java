@@ -23,6 +23,7 @@ public class InterfazMixto extends javax.swing.JFrame {
      * Creates new form TPseparado
      */
     int x, y;
+
     double[] notasT;
     double[] pondT;
     double[] notasP;
@@ -538,6 +539,11 @@ public class InterfazMixto extends javax.swing.JFrame {
                 promTActionPerformed(evt);
             }
         });
+        promT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                promTKeyTyped(evt);
+            }
+        });
 
         jLabel13.setForeground(new java.awt.Color(61, 138, 247));
         jLabel13.setText("PROMEDIO");
@@ -638,7 +644,16 @@ public class InterfazMixto extends javax.swing.JFrame {
         tipoAprob.setForeground(new java.awt.Color(61, 138, 247));
         tipoAprob.setText("jLabel19");
 
-        jButton1.setText("jButton1");
+        jButton1.setForeground(new java.awt.Color(0, 102, 204));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
+        jButton1.setText("Calcular Promedio");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -753,7 +768,7 @@ public class InterfazMixto extends javax.swing.JFrame {
                                         .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(75, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
                         .addComponent(jLabel17)
                         .addGap(34, 34, 34))))
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
@@ -784,7 +799,7 @@ public class InterfazMixto extends javax.swing.JFrame {
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addContainerGap(451, Short.MAX_VALUE)
+                        .addContainerGap(476, Short.MAX_VALUE)
                         .addComponent(jLabel14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                         .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -836,7 +851,7 @@ public class InterfazMixto extends javax.swing.JFrame {
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tipoAprob))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(pondTeo)
@@ -912,7 +927,7 @@ public class InterfazMixto extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(29, 29, 29)
                 .addComponent(jLabel14)
@@ -923,7 +938,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1075,15 +1090,20 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     private void pagPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagPrincipalActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        PaginaPrincipal pp = new PaginaPrincipal();
-        pp.setTitle("EasyNotes");
-        pp.setVisible(true);
+        int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea ir al Menú igualmente?", "Volver Menu Principal", JOptionPane.YES_NO_OPTION);
+        if (JOptionPane.OK_OPTION == resp) {
+            this.dispose();
+            PaginaPrincipal pp = new PaginaPrincipal();
+            pp.setTitle("EasyNotes");
+            pp.setVisible(true);
+        }
     }//GEN-LAST:event_pagPrincipalActionPerformed
 
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+        int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
         }
@@ -1188,17 +1208,13 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         // TODO add your handling code here:
-        Archivo ar = new Archivo();
-        try {
-            ar.agregarNotasMixto(nombreAsign.getText());
-        } catch (IOException ex) {
-            Logger.getLogger(InterfazMixto.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
 
     }//GEN-LAST:event_guardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+
         Mixto m = new Mixto();
 
         switch (Integer.parseInt(jLabel16.getText())) {
@@ -1329,7 +1345,7 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pondT[1] = Double.parseDouble(pt2.getText());
                 break;
             case 3:
-                 this.notasT = new double[3];
+                this.notasT = new double[3];
                 notasT[0] = Double.parseDouble(nt1.getText());
                 notasT[1] = Double.parseDouble(nt2.getText());
                 notasT[2] = Double.parseDouble(nt3.getText());
@@ -1401,7 +1417,7 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pondT[5] = Double.parseDouble(pt6.getText());
                 pondT[6] = Double.parseDouble(pt7.getText());
                 break;
-            case 8: 
+            case 8:
                 this.notasT = new double[8];
                 notasT[0] = Double.parseDouble(nt1.getText());
                 notasT[1] = Double.parseDouble(nt2.getText());
@@ -1423,18 +1439,55 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pondT[7] = Double.parseDouble(pt8.getText());
                 break;
         }
-        double a = m.calcPromedioSimple(this.notasT, this.pondT);
-        double b = m.calcPromedioSimple(this.notasP, this.pondP);
-        double c = m.calcPromedioTotal(a, b, Double.parseDouble(pondTeo.getText()), Double.parseDouble(pondPract.getText()));
-        promT.setText(String.valueOf(a));
-        promP.setText(String.valueOf(b));
-        promGral.setText(String.valueOf(c));
+        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
+            if (tipoAprob.getText().equals("TEORICO - PRACTICO por Separado")) {
+                double a = m.calcPromedioSimple(this.notasT, this.pondT);
+                double b = m.calcPromedioSimple(this.notasP, this.pondP);
+                promT.setText(String.valueOf(a));
+                promP.setText(String.valueOf(b));
+            } else if (tipoAprob.getText().equals("TEORICO - PRACTICO en Conjunto")) {
+                double a = m.calcPromedioSimple(this.notasT, this.pondT);
+                double b = m.calcPromedioSimple(this.notasP, this.pondP);
+                double c = m.calcPromedioTotal(a, b, Double.parseDouble(pondTeo.getText()), Double.parseDouble(pondPract.getText()));
+                promT.setText(String.valueOf(a));
+                promP.setText(String.valueOf(b));
+                promGral.setText(String.valueOf(c));
+            }
+
+        } else if (sumPond(this.pondT) != 100) {
+            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (validarNota(this.notasT) == false) {
+            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
+    double sumPond(double pondT[]) {
+        double cont = 0;
+        for (int i = 0; i < pondT.length; i++) {
+            cont = cont + pondT[i];
+        }
+        return cont;
+    }
+
+    boolean validarNota(double notaT[]) {
+        boolean pasa = true;
+        for (int i = 0; i < notaT.length; i++) {
+            if (notaT[i] > 7 || notaT[i] <= 0) {
+                pasa = false;
+            }
+        }
+        return pasa;
+    }
+    private void promTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promTKeyTyped
+        // TODO add your handling code here:
+        validacionNota(promT.getText(), evt);
+    }//GEN-LAST:event_promTKeyTyped
 
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
-        if (!(c >= '1' && c <= '7') && c != '.') {
+        if (!(c >= '0' && c <= '9') && c != '.') {
             evt.consume();
         }
         if ((c == '.') && cadena.contains(".")) {

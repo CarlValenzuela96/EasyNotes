@@ -18,23 +18,23 @@ public class InterfazSimple extends javax.swing.JFrame {
     /**
      * Creates new form TPseparado
      */
-    int x,y;
+    int x, y;
     double notasT[];
     double pondT[];
+
     /**
      * Creates new form InterfazSimple
      */
-    
     public InterfazSimple() {
         initComponents();
         setLocationRelativeTo(null);
     }
 
-    public void ingresarRamo(Simple s){
+    public void ingresarRamo(Simple s) {
         nombreAsign.setText(s.getNombre());
         tipoAprob.setText(s.getTipo());
         jLabel15.setText(Integer.toString(s.getNotas()));
-        switch(s.getNotas()){
+        switch (s.getNotas()) {
             case 1:
                 nt2.setVisible(false);
                 pt2.setVisible(false);
@@ -302,6 +302,11 @@ public class InterfazSimple extends javax.swing.JFrame {
                 promTActionPerformed(evt);
             }
         });
+        promT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                promTKeyTyped(evt);
+            }
+        });
 
         jLabel14.setForeground(new java.awt.Color(61, 138, 247));
         jLabel14.setText("NOTA: ingresar las calificaciones y ponderaciones en los recuadros");
@@ -376,10 +381,24 @@ public class InterfazSimple extends javax.swing.JFrame {
         tipoAprob.setForeground(new java.awt.Color(61, 138, 247));
         tipoAprob.setText("jLabel17");
 
-        jButton1.setText("jButton1");
+        jButton1.setForeground(new java.awt.Color(0, 102, 204));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
+        jButton1.setText("Calcular Promedio");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jButton1KeyTyped(evt);
             }
         });
 
@@ -471,9 +490,9 @@ public class InterfazSimple extends javax.swing.JFrame {
                             .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(420, 420, 420)
+                        .addGap(360, 360, 360)
                         .addComponent(jButton1)))
-                .addGap(65, 65, 65))
+                .addGap(72, 72, 72))
         );
         jcMousePanel1Layout.setVerticalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -486,7 +505,7 @@ public class InterfazSimple extends javax.swing.JFrame {
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
@@ -535,9 +554,9 @@ public class InterfazSimple extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(37, 37, 37)
+                .addGap(85, 85, 85)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -626,15 +645,20 @@ public class InterfazSimple extends javax.swing.JFrame {
 
     private void paginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paginaPrincipalActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        PaginaPrincipal pp= new PaginaPrincipal();
+          int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea ir al Menú igualmente?", "Volver Menu Principal", JOptionPane.YES_NO_OPTION);
+        if (JOptionPane.OK_OPTION == resp) {
+            this.dispose();
+        PaginaPrincipal pp = new PaginaPrincipal();
         pp.setTitle("EasyNotes");
         pp.setVisible(true);
+        }
+        
     }//GEN-LAST:event_paginaPrincipalActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-       int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+         int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
         }
@@ -642,65 +666,66 @@ public class InterfazSimple extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-         setExtendedState(ICONIFIED);
+        setExtendedState(ICONIFIED);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jLabel18MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MousePressed
         // TODO add your handling code here:
-        x=evt.getX();
-        y=evt.getY();
+        x = evt.getX();
+        y = evt.getY();
     }//GEN-LAST:event_jLabel18MousePressed
 
     private void jLabel18MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseDragged
         // TODO add your handling code here:
-          Point point = MouseInfo.getPointerInfo().getLocation();
+        Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel18MouseDragged
 
     private void nt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt1KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt1.getText(),evt);
+        validacionNota(nt1.getText(), evt);
     }//GEN-LAST:event_nt1KeyTyped
 
     private void nt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt2KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt2.getText(),evt);
+        validacionNota(nt2.getText(), evt);
     }//GEN-LAST:event_nt2KeyTyped
 
     private void nt3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt3KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt3.getText(),evt);
+        validacionNota(nt3.getText(), evt);
     }//GEN-LAST:event_nt3KeyTyped
 
     private void nt4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt4KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt4.getText(),evt);
+        validacionNota(nt4.getText(), evt);
     }//GEN-LAST:event_nt4KeyTyped
 
     private void nt5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt5KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt5.getText(),evt);
+        validacionNota(nt5.getText(), evt);
     }//GEN-LAST:event_nt5KeyTyped
 
     private void nt6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt6KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt6.getText(),evt);
+        validacionNota(nt6.getText(), evt);
     }//GEN-LAST:event_nt6KeyTyped
 
     private void nt7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt7KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt7.getText(),evt);
+        validacionNota(nt7.getText(), evt);
     }//GEN-LAST:event_nt7KeyTyped
 
     private void nt8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt8KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt8.getText(),evt);
+        validacionNota(nt8.getText(), evt);
     }//GEN-LAST:event_nt8KeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Simple s = new Simple();
-         switch (Integer.parseInt(jLabel15.getText())) {
+
+        switch (Integer.parseInt(jLabel15.getText())) {
             case 1:
                 this.notasT = new double[1];
                 notasT[0] = Double.parseDouble(nt1.getText());
@@ -717,7 +742,7 @@ public class InterfazSimple extends javax.swing.JFrame {
                 pondT[1] = Double.parseDouble(pt2.getText());
                 break;
             case 3:
-                 this.notasT = new double[3];
+                this.notasT = new double[3];
                 notasT[0] = Double.parseDouble(nt1.getText());
                 notasT[1] = Double.parseDouble(nt2.getText());
                 notasT[2] = Double.parseDouble(nt3.getText());
@@ -789,7 +814,7 @@ public class InterfazSimple extends javax.swing.JFrame {
                 pondT[5] = Double.parseDouble(pt6.getText());
                 pondT[6] = Double.parseDouble(pt7.getText());
                 break;
-            case 8: 
+            case 8:
                 this.notasT = new double[8];
                 notasT[0] = Double.parseDouble(nt1.getText());
                 notasT[1] = Double.parseDouble(nt2.getText());
@@ -811,15 +836,50 @@ public class InterfazSimple extends javax.swing.JFrame {
                 pondT[7] = Double.parseDouble(pt8.getText());
                 break;
         }
-        double a = s.calcPromedioSimple(this.notasT, this.pondT);
-        
-        promT.setText(String.valueOf(a));
-      
+
+        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
+            double a = s.calcPromedioSimple(this.notasT, this.pondT);
+            promT.setText(String.valueOf(a));
+        } else if (sumPond(this.pondT) != 100) {
+            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (validarNota(this.notasT) == false) {
+            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
-   private void validacionNota(String cadena, java.awt.event.KeyEvent evt){
+
+    double sumPond(double pondT[]) {
+        double cont = 0;
+        for (int i = 0; i < pondT.length; i++) {
+            cont = cont + pondT[i];
+        }
+        return cont;
+    }
+
+    boolean validarNota(double notaT[]) {
+        boolean pasa = true;
+        for (int i = 0; i < notaT.length; i++) {
+            if (notaT[i] > 7 || notaT[i] <= 0) {
+                pasa = false;
+            }
+        }
+        return pasa;
+    }
+    private void jButton1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyTyped
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jButton1KeyTyped
+
+    private void promTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promTKeyTyped
+        // TODO add your handling code here: 
+        validacionNota(promT.getText(), evt);
+    }//GEN-LAST:event_promTKeyTyped
+    private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
-        if (!(c >= '1' && c <= '7') && c != '.') {
+        if (!(c >= '0' && c <= '9') && c != '.') {
             evt.consume();
         }
         if ((c == '.') && cadena.contains(".")) {
@@ -829,6 +889,7 @@ public class InterfazSimple extends javax.swing.JFrame {
             evt.consume();
         }
     }
+
     /**
      * @param args the command line arguments
      */

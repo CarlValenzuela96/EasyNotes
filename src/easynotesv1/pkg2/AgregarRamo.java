@@ -476,7 +476,8 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+         int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
         }
@@ -490,7 +491,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void nomAsignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomAsignKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if ((c<'a' || c>'z') && (c<'A' || c>'Z')) {
+        if ((c<'a' || c>'z') && (c<'A' || c>'Z')&&c!=KeyEvent.VK_SPACE) {
             evt.consume();
         }
         if (nomAsign.getText().length() >= 22) {
@@ -560,13 +561,13 @@ public class AgregarRamo extends javax.swing.JFrame {
                 s.setTipo("Teórico");
                 s.setNotas(Byte.parseByte(jTextField3.getText()));
                 nr = s;
-                nr.crearArchivoSimple(nomAsign.getText(), s.getTipo(), String.valueOf(s.getNotas()));
+                //nr.crearArchivoSimple(nomAsign.getText(), s.getTipo(), String.valueOf(s.getNotas()));
             } else if (jTextField1.getText().equals("0")){
                 Simple s = new Simple();
                 s.setTipo("Práctico");
                 s.setNotas(Byte.parseByte(jTextField4.getText()));
                 nr = s;
-                nr.crearArchivoSimple(nomAsign.getText(), s.getTipo(), String.valueOf(s.getNotas()));
+                //nr.crearArchivoSimple(nomAsign.getText(), s.getTipo(), String.valueOf(s.getNotas()));
             } else  if (Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
                 Mixto m = new Mixto();
                 m.setTipo("TEORICO - PRACTICO por Separado");
@@ -576,7 +577,7 @@ public class AgregarRamo extends javax.swing.JFrame {
                 m.setCantNT((byte)Byte.parseByte(jTextField3.getText()));
                 m.setCantNP((byte)Byte.parseByte(jTextField4.getText()));
                 nr = m;
-                nr.crearArchivoMixto(nomAsign.getText(), m.getTipo(), String.valueOf(m.getCantNT()), String.valueOf(m.getCantNP()),String.valueOf(m.getPond_teo()),String.valueOf(m.getPond_parct()));
+                //nr.crearArchivoMixto(nomAsign.getText(), m.getTipo(), String.valueOf(m.getCantNT()), String.valueOf(m.getCantNP()),String.valueOf(m.getPond_teo()),String.valueOf(m.getPond_parct()));
             }else if(Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")){
                  Mixto m = new Mixto();
                 m.setTipo("TEORICO - PRACTICO en Conjunto");
@@ -586,7 +587,7 @@ public class AgregarRamo extends javax.swing.JFrame {
                 m.setCantNT((byte)Byte.parseByte(jTextField3.getText()));
                 m.setCantNP((byte)Byte.parseByte(jTextField4.getText()));
                 nr = m;
-                nr.crearArchivoMixto(nomAsign.getText(), m.getTipo(), String.valueOf(m.getCantNT()), String.valueOf(m.getCantNP()),String.valueOf(m.getPond_teo()),String.valueOf(m.getPond_parct()));
+                //nr.crearArchivoMixto(nomAsign.getText(), m.getTipo(), String.valueOf(m.getCantNT()), String.valueOf(m.getCantNP()),String.valueOf(m.getPond_teo()),String.valueOf(m.getPond_parct()));
             }
             nr.setNombre(nomAsign.getText());
             pp.ramoNuevo(nr);

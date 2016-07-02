@@ -30,24 +30,35 @@ public class Archivo {
 
 //        throw new UnsupportedOperationException();
     }
+//lee el archivo para poder agregar notas
 
-    public void agregarNotasMixto(String nombre) throws IOException {
+    public String[] leerArchivoRamo(String nombre) throws IOException {
+        File f = new File("Ramos//" + nombre + ".txt");
+        String[] datos = null;
+        if (f.exists()) {
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                datos = linea.split(linea);
+            }
+        }
+        return datos;
+    }
+
+    void agregarNotasMixto(String nombre, String[] datos) throws IOException {
         File f = new File("Ramos//" + nombre + ".txt");
         FileWriter fw;
         BufferedWriter bw;
 
         if (f.exists()) {
 
-            fw = new FileWriter(f,true);
-            bw = new BufferedWriter(fw); 
-           
+            fw = new FileWriter(f, true);
+            bw = new BufferedWriter(fw);
             bw.newLine();
-             bw.write("1");
-              bw.newLine();
-             bw.write("2");
-       
-        bw.close();
-        fw.close();
+            
+
         }
     }
 
