@@ -5,7 +5,12 @@
  */
 package easynotesv1.pkg2;
 
+import clases.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -19,10 +24,86 @@ public class InterfazMixto extends javax.swing.JFrame {
      */
     int x, y;
 
+    double[] notasT;
+    double[] pondT;
+    double[] notasP;
+    double[] pondP;
+
     public InterfazMixto() {
         initComponents();
         setLocationRelativeTo(null);
         promGral.setEditable(false);
+        promGral.setVisible(true);
+        jLabel17.setVisible(true);
+    }
+
+    public void ingresarRamo(Mixto s) {
+        nombreAsign.setText(s.getNombre());
+        tipoAprob.setText(s.getTipo());
+        pondTeo.setText(String.valueOf(s.getPond_teo()));
+        pondPract.setText(String.valueOf(s.getPond_parct()));
+        jLabel15.setText(Integer.toString(s.getCantNT()));
+        jLabel16.setText(Integer.toString(s.getCantNP()));
+
+        if (s.getTipo().equals("TEORICO - PRACTICO por Separado")) {
+            promGral.setVisible(false);
+            jLabel17.setVisible(false);
+        }
+        if (s.getTipo().equals("TEORICO - PRACTICO en Conjunto")) {
+            promGral.setVisible(true);
+            jLabel17.setVisible(true);
+        }
+        switch (s.getCantNP()) {
+            case 1:
+                np2.setVisible(false);
+                pp2.setVisible(false);
+            case 2:
+                np3.setVisible(false);
+                pp3.setVisible(false);
+            case 3:
+                np4.setVisible(false);
+                pp4.setVisible(false);
+            case 4:
+                np5.setVisible(false);
+                pp5.setVisible(false);
+            case 5:
+                np6.setVisible(false);
+                pp6.setVisible(false);
+            case 6:
+                np7.setVisible(false);
+                pp7.setVisible(false);
+            case 7:
+                np8.setVisible(false);
+                pp8.setVisible(false);
+            case 8:
+                break;
+        }
+        switch (s.getCantNT()) {
+            case 1:
+                nt2.setVisible(false);
+                pt2.setVisible(false);
+
+            case 2:
+                nt3.setVisible(false);
+                pt3.setVisible(false);
+            case 3:
+                nt4.setVisible(false);
+                pt4.setVisible(false);
+            case 4:
+                nt5.setVisible(false);
+                pt5.setVisible(false);
+            case 5:
+                nt6.setVisible(false);
+                pt6.setVisible(false);
+            case 6:
+                nt7.setVisible(false);
+                pt7.setVisible(false);
+            case 7:
+                nt8.setVisible(false);
+                pt8.setVisible(false);
+            case 8:
+                break;
+        }
     }
 
     /**
@@ -98,6 +179,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         botonMin = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         tipoAprob = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -457,6 +539,11 @@ public class InterfazMixto extends javax.swing.JFrame {
                 promTActionPerformed(evt);
             }
         });
+        promT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                promTKeyTyped(evt);
+            }
+        });
 
         jLabel13.setForeground(new java.awt.Color(61, 138, 247));
         jLabel13.setText("PROMEDIO");
@@ -506,6 +593,11 @@ public class InterfazMixto extends javax.swing.JFrame {
         guardar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         botonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/salir.png"))); // NOI18N
         botonCerrar.setBorder(null);
@@ -552,145 +644,162 @@ public class InterfazMixto extends javax.swing.JFrame {
         tipoAprob.setForeground(new java.awt.Color(61, 138, 247));
         tipoAprob.setText("jLabel19");
 
+        jButton1.setForeground(new java.awt.Color(0, 102, 204));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
+        jButton1.setText("Calcular Promedio");
+        jButton1.setBorder(null);
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
         jcMousePanel1Layout.setHorizontalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(43, 43, 43)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel9))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel11)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel16))
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(np1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(np2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(np3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(np4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(np5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(np6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(np7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(np8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(pp1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pp2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pp3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pp5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pp6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pp7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pp8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel8))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel15))
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(nt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(nt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(nt3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(nt4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(nt5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(nt6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(nt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(nt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(pt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pt3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pt4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pt5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pt6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel16))
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
+                                .addComponent(np1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(np2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(np3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(np4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(np5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(np6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(np7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(np8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addComponent(pp1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pp2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pp3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pp5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pp6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pp7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pp8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel15))
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addComponent(nt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nt3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nt4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nt5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nt6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addComponent(pt1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pt2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pt3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pt4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pt5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pt6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel12)
+                                .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton1)
                                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel13)
                                     .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel12)
-                                    .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                                         .addGap(80, 80, 80)
-                                        .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(52, 52, 52))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel17))
-                                .addGap(34, 34, 34))))
+                                        .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(75, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                        .addComponent(jLabel17)
+                        .addGap(34, 34, 34))))
+            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                .addGap(226, 226, 226)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tipoAprob))
+            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                .addGap(168, 168, 168)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pondTeo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pondPract)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(226, 226, 226)
-                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tipoAprob))
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(168, 168, 168)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pondTeo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(pondPract)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addContainerGap(451, Short.MAX_VALUE)
+                        .addContainerGap(476, Short.MAX_VALUE)
                         .addComponent(jLabel14))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                         .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -703,8 +812,13 @@ public class InterfazMixto extends javax.swing.JFrame {
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pagPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(122, 122, 122)
-                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addGap(122, 122, 122)
+                                .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addGap(138, 138, 138)
+                                .addComponent(nombreAsign)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -718,11 +832,15 @@ public class InterfazMixto extends javax.swing.JFrame {
                         .addComponent(botonMin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreAsign, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jcMousePanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
@@ -733,7 +851,7 @@ public class InterfazMixto extends javax.swing.JFrame {
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(tipoAprob))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(pondTeo)
@@ -809,7 +927,9 @@ public class InterfazMixto extends javax.swing.JFrame {
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(29, 29, 29)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -818,7 +938,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 780, Short.MAX_VALUE)
+            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -970,15 +1090,20 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     private void pagPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagPrincipalActionPerformed
         // TODO add your handling code here:
-        this.dispose();
-        PaginaPrincipal pp = new PaginaPrincipal();
-        pp.setTitle("EasyNotes");
-        pp.setVisible(true);
+        int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea ir al Menú igualmente?", "Volver Menu Principal", JOptionPane.YES_NO_OPTION);
+        if (JOptionPane.OK_OPTION == resp) {
+            this.dispose();
+            PaginaPrincipal pp = new PaginaPrincipal();
+            pp.setTitle("EasyNotes");
+            pp.setVisible(true);
+        }
     }//GEN-LAST:event_pagPrincipalActionPerformed
 
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
         // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+        int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
         }
@@ -1003,88 +1128,366 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     private void nt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt1KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt1.getText(),evt);
+        validacionNota(nt1.getText(), evt);
     }//GEN-LAST:event_nt1KeyTyped
 
     private void nt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt2KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt2.getText(),evt);
+        validacionNota(nt2.getText(), evt);
     }//GEN-LAST:event_nt2KeyTyped
 
     private void nt3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt3KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt3.getText(),evt);
+        validacionNota(nt3.getText(), evt);
     }//GEN-LAST:event_nt3KeyTyped
 
     private void nt4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt4KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt4.getText(),evt);
+        validacionNota(nt4.getText(), evt);
     }//GEN-LAST:event_nt4KeyTyped
 
     private void nt5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt5KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt5.getText(),evt);
+        validacionNota(nt5.getText(), evt);
     }//GEN-LAST:event_nt5KeyTyped
 
     private void nt6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt6KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt6.getText(),evt);
+        validacionNota(nt6.getText(), evt);
     }//GEN-LAST:event_nt6KeyTyped
 
     private void nt7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt7KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt7.getText(),evt);
+        validacionNota(nt7.getText(), evt);
     }//GEN-LAST:event_nt7KeyTyped
 
     private void nt8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nt8KeyTyped
         // TODO add your handling code here:
-        validacionNota(nt8.getText(),evt);
+        validacionNota(nt8.getText(), evt);
     }//GEN-LAST:event_nt8KeyTyped
 
     private void np1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np1KeyTyped
         // TODO add your handling code here:
-        validacionNota(np1.getText(),evt);
+        validacionNota(np1.getText(), evt);
     }//GEN-LAST:event_np1KeyTyped
 
     private void np2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np2KeyTyped
         // TODO add your handling code here:
-        validacionNota(np2.getText(),evt);
+        validacionNota(np2.getText(), evt);
     }//GEN-LAST:event_np2KeyTyped
 
     private void np3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np3KeyTyped
         // TODO add your handling code here:
-        validacionNota(np3.getText(),evt);
+        validacionNota(np3.getText(), evt);
     }//GEN-LAST:event_np3KeyTyped
 
     private void np4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np4KeyTyped
         // TODO add your handling code here:
-        validacionNota(np4.getText(),evt);
+        validacionNota(np4.getText(), evt);
     }//GEN-LAST:event_np4KeyTyped
 
     private void np5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np5KeyTyped
         // TODO add your handling code here:
-        validacionNota(np5.getText(),evt);
+        validacionNota(np5.getText(), evt);
     }//GEN-LAST:event_np5KeyTyped
 
     private void np6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np6KeyTyped
         // TODO add your handling code here:
-        validacionNota(np6.getText(),evt);
+        validacionNota(np6.getText(), evt);
     }//GEN-LAST:event_np6KeyTyped
 
     private void np7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np7KeyTyped
         // TODO add your handling code here:
-        validacionNota(np7.getText(),evt);
+        validacionNota(np7.getText(), evt);
     }//GEN-LAST:event_np7KeyTyped
 
     private void np8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_np8KeyTyped
         // TODO add your handling code here:
-        validacionNota(np8.getText(),evt);
+        validacionNota(np8.getText(), evt);
     }//GEN-LAST:event_np8KeyTyped
 
-    private void validacionNota(String cadena, java.awt.event.KeyEvent evt){
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_guardarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+        Mixto m = new Mixto();
+
+        switch (Integer.parseInt(jLabel16.getText())) {
+            case 1:
+                this.notasP = new double[1];
+                notasP[0] = Double.parseDouble(np1.getText());
+                this.pondP = new double[1];
+                pondP[0] = Double.parseDouble(pp1.getText());
+
+                break;
+            case 2:
+                this.notasP = new double[2];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                this.pondP = new double[2];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+
+                break;
+            case 3:
+                this.notasP = new double[3];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                this.pondP = new double[3];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                break;
+            case 4:
+                this.notasP = new double[4];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                this.pondP = new double[4];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                break;
+            case 5:
+                this.notasP = new double[5];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                notasP[4] = Double.parseDouble(np5.getText());
+
+                this.pondP = new double[5];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                pondP[4] = Double.parseDouble(pp5.getText());
+                break;
+            case 6:
+                this.notasP = new double[6];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                notasP[4] = Double.parseDouble(np5.getText());
+                notasP[5] = Double.parseDouble(np6.getText());
+                this.pondP = new double[6];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                pondP[4] = Double.parseDouble(pp5.getText());
+                pondP[5] = Double.parseDouble(pp6.getText());
+                break;
+            case 7:
+                this.notasP = new double[7];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                notasP[4] = Double.parseDouble(np5.getText());
+                notasP[5] = Double.parseDouble(np6.getText());
+                notasP[6] = Double.parseDouble(np7.getText());
+
+                this.pondP = new double[7];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                pondP[4] = Double.parseDouble(pp5.getText());
+                pondP[5] = Double.parseDouble(pp6.getText());
+                pondP[6] = Double.parseDouble(pp7.getText());
+                break;
+            case 8:
+                this.notasP = new double[8];
+                notasP[0] = Double.parseDouble(np1.getText());
+                notasP[1] = Double.parseDouble(np2.getText());
+                notasP[2] = Double.parseDouble(np3.getText());
+                notasP[3] = Double.parseDouble(np4.getText());
+                notasP[4] = Double.parseDouble(np5.getText());
+                notasP[5] = Double.parseDouble(np6.getText());
+                notasP[6] = Double.parseDouble(np7.getText());
+                notasP[7] = Double.parseDouble(np8.getText());
+
+                this.pondP = new double[8];
+                pondP[0] = Double.parseDouble(pp1.getText());
+                pondP[1] = Double.parseDouble(pp2.getText());
+                pondP[2] = Double.parseDouble(pp3.getText());
+                pondP[3] = Double.parseDouble(pp4.getText());
+                pondP[4] = Double.parseDouble(pp5.getText());
+                pondP[5] = Double.parseDouble(pp6.getText());
+                pondP[6] = Double.parseDouble(pp7.getText());
+                pondP[7] = Double.parseDouble(pp8.getText());
+                break;
+        }
+        switch (Integer.parseInt(jLabel15.getText())) {
+            case 1:
+                this.notasT = new double[1];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                this.pondT = new double[1];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                break;
+            case 2:
+                this.notasT = new double[2];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+
+                this.pondT = new double[2];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                break;
+            case 3:
+                this.notasT = new double[3];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+
+                this.pondT = new double[3];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                break;
+            case 4:
+                this.notasT = new double[4];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                this.pondT = new double[4];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                break;
+            case 5:
+                this.notasT = new double[5];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                notasT[4] = Double.parseDouble(nt5.getText());
+
+                this.pondT = new double[5];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                pondT[4] = Double.parseDouble(pt5.getText());
+                break;
+            case 6:
+                this.notasT = new double[6];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                notasT[4] = Double.parseDouble(nt5.getText());
+                notasT[5] = Double.parseDouble(nt6.getText());
+                this.pondT = new double[6];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                pondT[4] = Double.parseDouble(pt5.getText());
+                pondT[5] = Double.parseDouble(pt6.getText());
+                break;
+            case 7:
+                this.notasT = new double[7];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                notasT[4] = Double.parseDouble(nt5.getText());
+                notasT[5] = Double.parseDouble(nt6.getText());
+                notasT[6] = Double.parseDouble(nt7.getText());
+
+                this.pondT = new double[7];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                pondT[4] = Double.parseDouble(pt5.getText());
+                pondT[5] = Double.parseDouble(pt6.getText());
+                pondT[6] = Double.parseDouble(pt7.getText());
+                break;
+            case 8:
+                this.notasT = new double[8];
+                notasT[0] = Double.parseDouble(nt1.getText());
+                notasT[1] = Double.parseDouble(nt2.getText());
+                notasT[2] = Double.parseDouble(nt3.getText());
+                notasT[3] = Double.parseDouble(nt4.getText());
+                notasT[4] = Double.parseDouble(nt5.getText());
+                notasT[5] = Double.parseDouble(nt6.getText());
+                notasT[6] = Double.parseDouble(nt7.getText());
+                notasT[7] = Double.parseDouble(nt8.getText());
+
+                this.pondT = new double[8];
+                pondT[0] = Double.parseDouble(pt1.getText());
+                pondT[1] = Double.parseDouble(pt2.getText());
+                pondT[2] = Double.parseDouble(pt3.getText());
+                pondT[3] = Double.parseDouble(pt4.getText());
+                pondT[4] = Double.parseDouble(pt5.getText());
+                pondT[5] = Double.parseDouble(pt6.getText());
+                pondT[6] = Double.parseDouble(pt7.getText());
+                pondT[7] = Double.parseDouble(pt8.getText());
+                break;
+        }
+        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
+            if (tipoAprob.getText().equals("TEORICO - PRACTICO por Separado")) {
+                double a = m.calcPromedioSimple(this.notasT, this.pondT);
+                double b = m.calcPromedioSimple(this.notasP, this.pondP);
+                promT.setText(String.valueOf(a));
+                promP.setText(String.valueOf(b));
+            } else if (tipoAprob.getText().equals("TEORICO - PRACTICO en Conjunto")) {
+                double a = m.calcPromedioSimple(this.notasT, this.pondT);
+                double b = m.calcPromedioSimple(this.notasP, this.pondP);
+                double c = m.calcPromedioTotal(a, b, Double.parseDouble(pondTeo.getText()), Double.parseDouble(pondPract.getText()));
+                promT.setText(String.valueOf(a));
+                promP.setText(String.valueOf(b));
+                promGral.setText(String.valueOf(c));
+            }
+
+        } else if (sumPond(this.pondT) != 100) {
+            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (validarNota(this.notasT) == false) {
+            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+    double sumPond(double pondT[]) {
+        double cont = 0;
+        for (int i = 0; i < pondT.length; i++) {
+            cont = cont + pondT[i];
+        }
+        return cont;
+    }
+
+    boolean validarNota(double notaT[]) {
+        boolean pasa = true;
+        for (int i = 0; i < notaT.length; i++) {
+            if (notaT[i] > 7 || notaT[i] <= 0) {
+                pasa = false;
+            }
+        }
+        return pasa;
+    }
+    private void promTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promTKeyTyped
+        // TODO add your handling code here:
+        validacionNota(promT.getText(), evt);
+    }//GEN-LAST:event_promTKeyTyped
+
+    private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
-        if (!(c >= '1' && c <= '7') && c != '.') {
+        if (!(c >= '0' && c <= '9') && c != '.') {
             evt.consume();
         }
         if ((c == '.') && cadena.contains(".")) {
@@ -1152,38 +1555,6 @@ public class InterfazMixto extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1197,6 +1568,7 @@ public class InterfazMixto extends javax.swing.JFrame {
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonMin;
     private javax.swing.JButton guardar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -1,33 +1,53 @@
 package clases;
+
+import java.io.IOException;
+
 public class Ramo {
 
-	private String nombre;
-	protected byte notas;
-	private Archivo archivo;
+    private String nombre;
+    private String tipo;
+    private Archivo archivo;
 
-        public Ramo(){
-            
-        }
-        
-        public Ramo(String nombre){
-            this.nombre=nombre;
-        }
-        
-	public String getNombre() {
-		return this.nombre;
-	}
+    public Ramo() {
+        this.archivo = new Archivo();
+    }
 
-	
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-        
-        public byte getNotas() {
-		return this.notas;
-	}
-        
-	public void setNotas(byte notas) {
-		this.notas = notas;
-	}
-        
+    public Ramo(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getTipo() {
+        return this.tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public double calcPromedioSimple(double[] notas, double[] pond) {
+        double cont = 0;
+        for (int i = 0; i < notas.length; i++) {
+            cont = cont + (notas[i] * (pond[i] / 100));
+        }
+        double prom = cont;
+        return prom;
+    }
+
+    public void crearArchivoSimple(String nombre, String tipo, String cantN) throws IOException {
+
+        archivo.crearArchivoSimple(nombre, tipo, cantN);
+    }
+
+    public void crearArchivoMixto(String nombre, String tipo, String cantNT, String cantNP, String pondTeo, String pondPract) throws IOException {
+
+        archivo.crearArchivoMixto(nombre, tipo, cantNT, cantNP, pondTeo, pondPract);
+    }
 }

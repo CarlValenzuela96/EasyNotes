@@ -3,6 +3,7 @@ package easynotesv1.pkg2;
 
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import clases.*;
 import java.util.ArrayList;
@@ -352,6 +353,51 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        asign2.setForeground(new java.awt.Color(0, 102, 204));
+        asign2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
+        asign2.setBorder(null);
+        asign2.setBorderPainted(false);
+        asign2.setContentAreaFilled(false);
+        asign2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign2ActionPerformed(evt);
+            }
+        });
+
+        asign1.setForeground(new java.awt.Color(0, 102, 204));
+        asign1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
+        asign1.setBorder(null);
+        asign1.setBorderPainted(false);
+        asign1.setContentAreaFilled(false);
+        asign1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign1ActionPerformed(evt);
+            }
+        });
+
+        asign4.setForeground(new java.awt.Color(0, 102, 204));
+        asign4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
+        asign4.setBorder(null);
+        asign4.setBorderPainted(false);
+        asign4.setContentAreaFilled(false);
+        asign4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign4ActionPerformed(evt);
+            }
+        });
+
         asign9.setForeground(new java.awt.Color(0, 102, 204));
         asign9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
         asign9.setText("jButton1");
@@ -370,9 +416,37 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
         jLabel1.setForeground(new java.awt.Color(61, 138, 247));
         jLabel1.setText("Permite crear y definir las ");
+        asign3.setForeground(new java.awt.Color(0, 102, 204));
+        asign3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
+        asign3.setBorder(null);
+        asign3.setBorderPainted(false);
+        asign3.setContentAreaFilled(false);
+        asign3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign3ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setForeground(new java.awt.Color(61, 138, 247));
         jLabel2.setText("especificaciones de la ");
+        asign7.setForeground(new java.awt.Color(0, 102, 204));
+        asign7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
+        asign7.setBorder(null);
+        asign7.setBorderPainted(false);
+        asign7.setContentAreaFilled(false);
+        asign7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        asign7.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign7.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        asign7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asign7ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setForeground(new java.awt.Color(61, 138, 247));
         jLabel3.setText("asignatura (cantidad de notas,");
@@ -587,6 +661,16 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asignatura(0);
     }//GEN-LAST:event_asign1ActionPerformed
 
+    private void asign8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign8ActionPerformed
+        // TODO add your handling code here:
+        asignatura(7);
+    }//GEN-LAST:event_asign8ActionPerformed
+
+    private void asign5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign5ActionPerformed
+        // TODO add your handling code here:
+        asignatura(4);
+    }//GEN-LAST:event_asign5ActionPerformed
+
     private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
         // TODO add your handling code here:
         reiniciar();
@@ -607,11 +691,6 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asignatura(3);
     }//GEN-LAST:event_asign4ActionPerformed
 
-    private void asign5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign5ActionPerformed
-        // TODO add your handling code here:
-        asignatura(4);
-    }//GEN-LAST:event_asign5ActionPerformed
-
     private void asign6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign6ActionPerformed
         // TODO add your handling code here:
         asignatura(5);
@@ -622,16 +701,10 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         asignatura(6);
     }//GEN-LAST:event_asign7ActionPerformed
 
-    private void asign8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign8ActionPerformed
-        // TODO add your handling code here:
-        asignatura(7);
-    }//GEN-LAST:event_asign8ActionPerformed
-
     private void asign9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign9ActionPerformed
         // TODO add your handling code here:
         asignatura(8);
     }//GEN-LAST:event_asign9ActionPerformed
-
     private void agregar(){
         if (ramos.size()<9) {
             this.dispose();
@@ -639,6 +712,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             ar.setTitle("AGREGAR ASIGNATURA");
             ar.setVisible(true);
             ar.setResizable(false);
+            
         } else {
             JOptionPane.showMessageDialog(null, "Ya tiene el máximo de\n9 "
                     + "asignaturas creadas.", "Límite alcanzado",
@@ -687,56 +761,23 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
         ramos.add(rn);
     }
-    
-    private void reiniciar(){
-        if (!ramos.isEmpty()) {
-            int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
-                    + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
-                    + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?",
-                    "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
-            if (JOptionPane.OK_OPTION == resp) {
-                switch (ramos.size()) {
-                    case 9:
-                        asign9.setVisible(false);
-                    case 8:
-                        asign8.setVisible(false);
-                    case 7:
-                        asign7.setVisible(false);
-                    case 6:
-                        asign6.setVisible(false);
-                    case 5:
-                        asign5.setVisible(false);
-                    case 4:
-                        asign4.setVisible(false);
-                    case 3:
-                        asign3.setVisible(false);
-                    case 2:
-                        asign2.setVisible(false);
-                    case 1:
-                        asign1.setVisible(false);
-                    case 0:
-                        break;
-                }
-                ramos.clear();
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "La lista de ramos ya está vacía",
-                    "Nada que hacer", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
-    private void asignatura(int n){
+     private void asignatura(int n){
         Ramo r = ramos.get(n);
         this.dispose();
-        if(r.getClass().getName().equals("Mixto")){
-        }else{
+        if(r.getTipo().equals("TEORICO - PRACTICO por Separado")||r.getTipo().equals("TEORICO - PRACTICO en Conjunto")){
+            InterfazMixto s = new InterfazMixto();
+            s.ingresarRamo((Mixto) r);
+            s.setTitle(r.getNombre());
+            s.setVisible(true);
+        }else 
+        if (r.getTipo().equals("Teórico")||r.getTipo().equals("Práctico")){
             InterfazSimple s = new InterfazSimple();
             s.ingresarRamo((Simple) r);
             s.setTitle(r.getNombre());
             s.setVisible(true);
         }
     }
-    
-    private void borrar(){
+     private void borrar(){
         if (!ramos.isEmpty()) {
             this.dispose();
             String n = "";
@@ -751,11 +792,52 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La lista de ramos ya está vacía",
                     "Nada que hacer", JOptionPane.INFORMATION_MESSAGE);
         }
-    }
-    
+    }  
     public void elim(int i){
         ramos.remove(i);
         inicioBotones();
+    }
+    private void reiniciar(){
+        int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
+                + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
+                + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?", 
+                "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
+        if (JOptionPane.OK_OPTION == resp) {
+            Archivo ar = new Archivo();
+            switch (ramos.size()) {
+                case 9:
+                    asign9.setVisible(false);
+                    ar.eliminarArchivo(asign9.getText());
+                case 8:
+                    asign8.setVisible(false);
+                    ar.eliminarArchivo(asign8.getText());
+                case 7:
+                    asign7.setVisible(false);
+                    ar.eliminarArchivo(asign7.getText());
+                case 6:
+                    asign6.setVisible(false);
+                    ar.eliminarArchivo(asign6.getText());
+                case 5:
+                    asign5.setVisible(false);
+                    ar.eliminarArchivo(asign5.getText());
+                case 4:
+                    asign4.setVisible(false);
+                    ar.eliminarArchivo(asign4.getText());
+                case 3:
+                    asign3.setVisible(false);
+                    ar.eliminarArchivo(asign3.getText());
+                case 2:
+                    asign2.setVisible(false);
+                    ar.eliminarArchivo(asign2.getText());
+                case 1:
+                    asign1.setVisible(false);
+                    ar.eliminarArchivo(asign1.getText());
+                case 0:
+                    break;
+            }
+            ramos.clear();
+           
+        }
     }
     
     /**
@@ -790,8 +872,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new PaginaPrincipal().setVisible(true);
-
+              
+                    new PaginaPrincipal().setVisible(true);
             }
         });
     }
