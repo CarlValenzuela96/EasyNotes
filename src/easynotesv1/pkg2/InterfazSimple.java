@@ -108,6 +108,7 @@ public class InterfazSimple extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -445,6 +446,8 @@ public class InterfazSimple extends javax.swing.JFrame {
 
         jLabel2.setText(".");
 
+        jLabel3.setText(".");
+
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
         jcMousePanel1Layout.setHorizontalGroup(
@@ -533,7 +536,8 @@ public class InterfazSimple extends javax.swing.JFrame {
                         .addGap(41, 41, 41)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)))
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel3)))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
@@ -599,7 +603,9 @@ public class InterfazSimple extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -1004,10 +1010,14 @@ public class InterfazSimple extends javax.swing.JFrame {
             if (a >= 4) {
                 promT.setForeground(Color.black);
                 promT.setText(String.valueOf(a));
+                jLabel3.setForeground(Color.yellow);
+                jLabel3.setText("APROBRADO!!");
             }
             if (a < 4) {
                 promT.setForeground(Color.red);
                 promT.setText(String.valueOf(a));
+                jLabel3.setForeground(Color.red);
+                jLabel3.setText("REPROBADO!!");
             }
         } else if (sumPond(this.pondT) != 100) {
             JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
@@ -1201,6 +1211,7 @@ public class InterfazSimple extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
