@@ -105,6 +105,7 @@ public class InterfazSimple extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         tipoAprob = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -302,6 +303,11 @@ public class InterfazSimple extends javax.swing.JFrame {
                 promTActionPerformed(evt);
             }
         });
+        promT.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                promTKeyTyped(evt);
+            }
+        });
 
         jLabel14.setForeground(new java.awt.Color(61, 138, 247));
         jLabel14.setText("NOTA: ingresar las calificaciones y ponderaciones en los recuadros");
@@ -376,10 +382,17 @@ public class InterfazSimple extends javax.swing.JFrame {
         tipoAprob.setForeground(new java.awt.Color(61, 138, 247));
         tipoAprob.setText("jLabel17");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Calcular Promedio");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Calcular Nota Faltante");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -426,7 +439,10 @@ public class InterfazSimple extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(40, 40, 40)
+                        .addComponent(jButton1))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -538,7 +554,9 @@ public class InterfazSimple extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(63, 63, 63)
                 .addComponent(jLabel14)
                 .addContainerGap())
@@ -627,16 +645,19 @@ public class InterfazSimple extends javax.swing.JFrame {
     }//GEN-LAST:event_promTActionPerformed
 
     private void paginaPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paginaPrincipalActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        PaginaPrincipal pp= new PaginaPrincipal();
-        pp.setTitle("EasyNotes");
-        pp.setVisible(true);
+        int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardados se eliminarán.\n ¿Desea ir al Menú igualmente?", "Volver Menu Principal", JOptionPane.YES_NO_OPTION);
+        if (JOptionPane.OK_OPTION == resp) {
+            this.dispose();
+            PaginaPrincipal pp = new PaginaPrincipal();
+            pp.setTitle("EasyNotes");
+            pp.setVisible(true);
+        }
     }//GEN-LAST:event_paginaPrincipalActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-       int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+        int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
         }
@@ -655,7 +676,7 @@ public class InterfazSimple extends javax.swing.JFrame {
 
     private void jLabel18MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseDragged
         // TODO add your handling code here:
-          Point point = MouseInfo.getPointerInfo().getLocation();
+        Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel18MouseDragged
 
@@ -700,128 +721,287 @@ public class InterfazSimple extends javax.swing.JFrame {
     }//GEN-LAST:event_nt8KeyTyped
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Simple s = new Simple();
-        switch (Integer.parseInt(jLabel15.getText())) {
-            case 1:
-            this.notasT = new double[1];
-            notasT[0] = Double.parseDouble(nt1.getText());
-            this.pondT = new double[1];
-            pondT[0] = Double.parseDouble(pt1.getText());
-            break;
-            case 2:
-            this.notasT = new double[2];
-            notasT[0] = Double.parseDouble(nt1.getText());
-            notasT[1] = Double.parseDouble(nt2.getText());
-
-            this.pondT = new double[2];
-            pondT[0] = Double.parseDouble(pt1.getText());
-            pondT[1] = Double.parseDouble(pt2.getText());
-            break;
-            case 3:
-            this.notasT = new double[3];
-            notasT[0] = Double.parseDouble(nt1.getText());
-            notasT[1] = Double.parseDouble(nt2.getText());
-            notasT[2] = Double.parseDouble(nt3.getText());
-
-            this.pondT = new double[3];
-            pondT[0] = Double.parseDouble(pt1.getText());
-            pondT[1] = Double.parseDouble(pt2.getText());
-            pondT[2] = Double.parseDouble(pt3.getText());
-            break;
-            case 4:
-            this.notasT = new double[4];
-            notasT[0] = Double.parseDouble(nt1.getText());
-            notasT[1] = Double.parseDouble(nt2.getText());
-            notasT[2] = Double.parseDouble(nt3.getText());
-            notasT[3] = Double.parseDouble(nt4.getText());
-            this.pondT = new double[4];
-            pondT[0] = Double.parseDouble(pt1.getText());
-            pondT[1] = Double.parseDouble(pt2.getText());
-            pondT[2] = Double.parseDouble(pt3.getText());
-            pondT[3] = Double.parseDouble(pt4.getText());
-            break;
-            case 5:
-            this.notasT = new double[5];
-            notasT[0] = Double.parseDouble(nt1.getText());
-            notasT[1] = Double.parseDouble(nt2.getText());
-            notasT[2] = Double.parseDouble(nt3.getText());
-            notasT[3] = Double.parseDouble(nt4.getText());
-            notasT[4] = Double.parseDouble(nt5.getText());
-
-            this.pondT = new double[5];
-            pondT[0] = Double.parseDouble(pt1.getText());
-            pondT[1] = Double.parseDouble(pt2.getText());
-            pondT[2] = Double.parseDouble(pt3.getText());
-            pondT[3] = Double.parseDouble(pt4.getText());
-            pondT[4] = Double.parseDouble(pt5.getText());
-            break;
-            case 6:
-            this.notasT = new double[6];
-            notasT[0] = Double.parseDouble(nt1.getText());
-            notasT[1] = Double.parseDouble(nt2.getText());
-            notasT[2] = Double.parseDouble(nt3.getText());
-            notasT[3] = Double.parseDouble(nt4.getText());
-            notasT[4] = Double.parseDouble(nt5.getText());
-            notasT[5] = Double.parseDouble(nt6.getText());
-            this.pondT = new double[6];
-            pondT[0] = Double.parseDouble(pt1.getText());
-            pondT[1] = Double.parseDouble(pt2.getText());
-            pondT[2] = Double.parseDouble(pt3.getText());
-            pondT[3] = Double.parseDouble(pt4.getText());
-            pondT[4] = Double.parseDouble(pt5.getText());
-            pondT[5] = Double.parseDouble(pt6.getText());
-            break;
-            case 7:
-            this.notasT = new double[7];
-            notasT[0] = Double.parseDouble(nt1.getText());
-            notasT[1] = Double.parseDouble(nt2.getText());
-            notasT[2] = Double.parseDouble(nt3.getText());
-            notasT[3] = Double.parseDouble(nt4.getText());
-            notasT[4] = Double.parseDouble(nt5.getText());
-            notasT[5] = Double.parseDouble(nt6.getText());
-            notasT[6] = Double.parseDouble(nt7.getText());
-
-            this.pondT = new double[7];
-            pondT[0] = Double.parseDouble(pt1.getText());
-            pondT[1] = Double.parseDouble(pt2.getText());
-            pondT[2] = Double.parseDouble(pt3.getText());
-            pondT[3] = Double.parseDouble(pt4.getText());
-            pondT[4] = Double.parseDouble(pt5.getText());
-            pondT[5] = Double.parseDouble(pt6.getText());
-            pondT[6] = Double.parseDouble(pt7.getText());
-            break;
-            case 8:
-            this.notasT = new double[8];
-            notasT[0] = Double.parseDouble(nt1.getText());
-            notasT[1] = Double.parseDouble(nt2.getText());
-            notasT[2] = Double.parseDouble(nt3.getText());
-            notasT[3] = Double.parseDouble(nt4.getText());
-            notasT[4] = Double.parseDouble(nt5.getText());
-            notasT[5] = Double.parseDouble(nt6.getText());
-            notasT[6] = Double.parseDouble(nt7.getText());
-            notasT[7] = Double.parseDouble(nt8.getText());
-
-            this.pondT = new double[8];
-            pondT[0] = Double.parseDouble(pt1.getText());
-            pondT[1] = Double.parseDouble(pt2.getText());
-            pondT[2] = Double.parseDouble(pt3.getText());
-            pondT[3] = Double.parseDouble(pt4.getText());
-            pondT[4] = Double.parseDouble(pt5.getText());
-            pondT[5] = Double.parseDouble(pt6.getText());
-            pondT[6] = Double.parseDouble(pt7.getText());
-            pondT[7] = Double.parseDouble(pt8.getText());
-            break;
-        }
-        double a = s.calcPromedioSimple(this.notasT, this.pondT);
-
-        promT.setText(String.valueOf(a));
+        crearArreglo(evt);
 
     }//GEN-LAST:event_jButton1ActionPerformed
-   private void validacionNota(String cadena, java.awt.event.KeyEvent evt){
+
+    void crearArreglo(java.awt.event.ActionEvent evt) {
+
+        switch (Integer.parseInt(jLabel15.getText())) {
+            case 1:
+                if (!nt1.getText().equals("") && !pt1.getText().equals("")) {
+                    this.notasT = new double[1];
+                    notasT[0] = Double.parseDouble(nt1.getText());
+                    this.pondT = new double[1];
+                    pondT[0] = Double.parseDouble(pt1.getText());
+                    if (jButton1 == evt.getSource()) {
+                        calcularProm();
+                    } else if (jButton2 == evt.getSource()) {
+                        calcularNotaFaltante();
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+            case 2:
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")) {
+                    this.notasT = new double[2];
+                    notasT[0] = Double.parseDouble(nt1.getText());
+                    notasT[1] = Double.parseDouble(nt2.getText());
+
+                    this.pondT = new double[2];
+                    pondT[0] = Double.parseDouble(pt1.getText());
+                    pondT[1] = Double.parseDouble(pt2.getText());
+                    if (jButton1 == evt.getSource()) {
+                        calcularProm();
+                    } else if (jButton2 == evt.getSource()) {
+                        calcularNotaFaltante();
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+            case 3:
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                        && !nt3.getText().equals("") && !pt3.getText().equals("")) {
+                    this.notasT = new double[3];
+                    notasT[0] = Double.parseDouble(nt1.getText());
+                    notasT[1] = Double.parseDouble(nt2.getText());
+                    notasT[2] = Double.parseDouble(nt3.getText());
+
+                    this.pondT = new double[3];
+                    pondT[0] = Double.parseDouble(pt1.getText());
+                    pondT[1] = Double.parseDouble(pt2.getText());
+                    pondT[2] = Double.parseDouble(pt3.getText());
+                    if (jButton1 == evt.getSource()) {
+                        calcularProm();
+                    } else if (jButton2 == evt.getSource()) {
+                        calcularNotaFaltante();
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+            case 4:
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                        && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")) {
+                    this.notasT = new double[4];
+                    notasT[0] = Double.parseDouble(nt1.getText());
+                    notasT[1] = Double.parseDouble(nt2.getText());
+                    notasT[2] = Double.parseDouble(nt3.getText());
+                    notasT[3] = Double.parseDouble(nt4.getText());
+                    this.pondT = new double[4];
+                    pondT[0] = Double.parseDouble(pt1.getText());
+                    pondT[1] = Double.parseDouble(pt2.getText());
+                    pondT[2] = Double.parseDouble(pt3.getText());
+                    pondT[3] = Double.parseDouble(pt4.getText());
+                    if (jButton1 == evt.getSource()) {
+                        calcularProm();
+                    } else if (jButton2 == evt.getSource()) {
+                        calcularNotaFaltante();
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+
+            case 5:
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                        && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                        && !nt5.getText().equals("") && !pt5.getText().equals("")) {
+                    this.notasT = new double[5];
+                    notasT[0] = Double.parseDouble(nt1.getText());
+                    notasT[1] = Double.parseDouble(nt2.getText());
+                    notasT[2] = Double.parseDouble(nt3.getText());
+                    notasT[3] = Double.parseDouble(nt4.getText());
+                    notasT[4] = Double.parseDouble(nt5.getText());
+
+                    this.pondT = new double[5];
+                    pondT[0] = Double.parseDouble(pt1.getText());
+                    pondT[1] = Double.parseDouble(pt2.getText());
+                    pondT[2] = Double.parseDouble(pt3.getText());
+                    pondT[3] = Double.parseDouble(pt4.getText());
+                    pondT[4] = Double.parseDouble(pt5.getText());
+                    if (jButton1 == evt.getSource()) {
+                        calcularProm();
+                    } else if (jButton2 == evt.getSource()) {
+                        calcularNotaFaltante();
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+            case 6:
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                        && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                        && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")) {
+                    this.notasT = new double[6];
+                    notasT[0] = Double.parseDouble(nt1.getText());
+                    notasT[1] = Double.parseDouble(nt2.getText());
+                    notasT[2] = Double.parseDouble(nt3.getText());
+                    notasT[3] = Double.parseDouble(nt4.getText());
+                    notasT[4] = Double.parseDouble(nt5.getText());
+                    notasT[5] = Double.parseDouble(nt6.getText());
+                    this.pondT = new double[6];
+                    pondT[0] = Double.parseDouble(pt1.getText());
+                    pondT[1] = Double.parseDouble(pt2.getText());
+                    pondT[2] = Double.parseDouble(pt3.getText());
+                    pondT[3] = Double.parseDouble(pt4.getText());
+                    pondT[4] = Double.parseDouble(pt5.getText());
+                    pondT[5] = Double.parseDouble(pt6.getText());
+                    if (jButton1 == evt.getSource()) {
+                        calcularProm();
+                    } else if (jButton2 == evt.getSource()) {
+                        calcularNotaFaltante();
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+
+            case 7:
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                        && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                        && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
+                        && !nt7.getText().equals("") && !pt7.getText().equals("")) {
+                    this.notasT = new double[7];
+                    notasT[0] = Double.parseDouble(nt1.getText());
+                    notasT[1] = Double.parseDouble(nt2.getText());
+                    notasT[2] = Double.parseDouble(nt3.getText());
+                    notasT[3] = Double.parseDouble(nt4.getText());
+                    notasT[4] = Double.parseDouble(nt5.getText());
+                    notasT[5] = Double.parseDouble(nt6.getText());
+                    notasT[6] = Double.parseDouble(nt7.getText());
+
+                    this.pondT = new double[7];
+                    pondT[0] = Double.parseDouble(pt1.getText());
+                    pondT[1] = Double.parseDouble(pt2.getText());
+                    pondT[2] = Double.parseDouble(pt3.getText());
+                    pondT[3] = Double.parseDouble(pt4.getText());
+                    pondT[4] = Double.parseDouble(pt5.getText());
+                    pondT[5] = Double.parseDouble(pt6.getText());
+                    pondT[6] = Double.parseDouble(pt7.getText());
+                    if (jButton1 == evt.getSource()) {
+                        calcularProm();
+                    } else if (jButton2 == evt.getSource()) {
+                        calcularNotaFaltante();
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+            case 8:
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                        && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                        && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
+                        && !nt7.getText().equals("") && !pt7.getText().equals("") && !nt8.getText().equals("") && !pt8.getText().equals("")) {
+                    this.notasT = new double[8];
+                    notasT[0] = Double.parseDouble(nt1.getText());
+                    notasT[1] = Double.parseDouble(nt2.getText());
+                    notasT[2] = Double.parseDouble(nt3.getText());
+                    notasT[3] = Double.parseDouble(nt4.getText());
+                    notasT[4] = Double.parseDouble(nt5.getText());
+                    notasT[5] = Double.parseDouble(nt6.getText());
+                    notasT[6] = Double.parseDouble(nt7.getText());
+                    notasT[7] = Double.parseDouble(nt8.getText());
+
+                    this.pondT = new double[8];
+                    pondT[0] = Double.parseDouble(pt1.getText());
+                    pondT[1] = Double.parseDouble(pt2.getText());
+                    pondT[2] = Double.parseDouble(pt3.getText());
+                    pondT[3] = Double.parseDouble(pt4.getText());
+                    pondT[4] = Double.parseDouble(pt5.getText());
+                    pondT[5] = Double.parseDouble(pt6.getText());
+                    pondT[6] = Double.parseDouble(pt7.getText());
+                    pondT[7] = Double.parseDouble(pt8.getText());
+                    if (jButton1 == evt.getSource()) {
+                        calcularProm();
+                    } else if (jButton2 == evt.getSource()) {
+                        calcularNotaFaltante();
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+        }
+    }
+    
+    void calcularProm() {
+        Simple s = new Simple();
+        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
+            double a = s.calcPromedioSimple(this.notasT, this.pondT);
+            if (a >= 4) {
+                promT.setForeground(Color.black);
+                promT.setText(String.valueOf(a));
+            }
+            if (a < 4) {
+                promT.setForeground(Color.red);
+                promT.setText(String.valueOf(a));
+            }
+        } else if (sumPond(this.pondT) != 100) {
+            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (validarNota(this.notasT) == false) {
+            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    void calcularNotaFaltante() {
+        Simple s = new Simple();
+        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true && this.notasT.length >= 2) {
+            double a = s.calcNotaFaltante(notasT, pondT);
+            JOptionPane.showMessageDialog(null, "     Necesitas un:\n " + "             "+String.valueOf(a) +
+                    "\n    En la última evaluacion,\n para aprobar la asignatura con un 4",
+                    "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+        } else if (sumPond(this.pondT) != 100) {
+            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (validarNota(this.notasT) == false) {
+            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (this.notasT.length < 2) {
+            JOptionPane.showMessageDialog(null, "Cantidad de notas debe se superior a 1",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }
+    
+    void mensajeError() {
+        JOptionPane.showMessageDialog(null, "Por favor llene todos los recuadros",
+                "ERROR", JOptionPane.WARNING_MESSAGE);
+    }
+    
+    private void promTKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promTKeyTyped
+        validacionNota(promT.getText(), evt);
+    }//GEN-LAST:event_promTKeyTyped
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        crearArreglo(evt);
+    }//GEN-LAST:event_jButton2ActionPerformed
+   
+    double sumPond(double pondT[]) {
+        double cont = 0;
+        for (int i = 0; i < pondT.length; i++) {
+            cont = cont + pondT[i];
+        }
+        return cont;
+    }
+    
+    boolean validarNota(double notaT[]) {
+        boolean pasa = true;
+        for (int i = 0; i < notaT.length; i++) {
+            if (notaT[i] > 7 || notaT[i] <= 0) {
+                pasa = false;
+            }
+        }
+        return pasa;
+    }
+    
+    private void validacionNota(String cadena, java.awt.event.KeyEvent evt){
         char c = evt.getKeyChar();
 
-        if (!(c >= '1' && c <= '7') && c != '.') {
+        if (!(c >= '0' && c <= '9') && c != '.') {
             evt.consume();
         }
         if ((c == '.') && cadena.contains(".")) {
@@ -932,6 +1112,7 @@ public class InterfazSimple extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton guardar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;

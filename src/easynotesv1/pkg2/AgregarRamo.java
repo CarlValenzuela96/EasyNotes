@@ -411,11 +411,32 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
-        PaginaPrincipal pp = new PaginaPrincipal();
-        this.dispose();
-        pp.setVisible(true);
-        pp.setTitle("EasyNotes");
-        pp.setVisible(true);
+               
+        if(!nomAsign.getText().equals("") || !jTextField2.getText().equals("") || !jTextField3.getText().equals("") || !jTextField4.getText().equals("") || !jTextField1.getText().equals("") ){
+                    int resp = JOptionPane.showConfirmDialog(null,
+                    "Los Datos no guardados se eliminarán.\n ¿Desea volver al Menu Principal?", "Volver Menu Principal ANO", JOptionPane.YES_NO_OPTION);
+                    if (JOptionPane.OK_OPTION == resp) {
+                        PaginaPrincipal pp = new PaginaPrincipal();
+                        this.dispose();
+                        pp.setVisible(true);
+                        pp.setTitle("EasyNotes");
+                        pp.setVisible(true);
+                    }
+        }
+        if(nomAsign.getText().equals("") && jTextField2.getText().equals("") && jTextField3.getText().equals("") && jTextField4.getText().equals("") && jTextField1.getText().equals("") ){
+            
+            
+            PaginaPrincipal pp = new PaginaPrincipal();
+            this.dispose();
+            pp.setVisible(true);
+            pp.setTitle("EasyNotes");
+            pp.setVisible(true);
+            
+                
+        }
+        
+        
+       
     }//GEN-LAST:event_cancelarActionPerformed
 
     private void nomAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomAsignActionPerformed
@@ -444,18 +465,19 @@ public class AgregarRamo extends javax.swing.JFrame {
         // TODO add your handling code here:
         if (!jTextField1.getText().equals("") && jTextField1.getText().charAt(0)!='.'){
             if(Double.valueOf(jTextField1.getText()) <= 100){
-              double pondP = 100 - Double.parseDouble(jTextField1.getText());
-            jTextField2.setText(String.valueOf(pondP));
+                double pondP = 100 - Double.parseDouble(jTextField1.getText());
+                jTextField2.setText(String.valueOf(pondP));
 
-            jTextField4.setText("");
-            jTextField4.setEditable(true);
-            jTextField3.setText("");
-            jTextField3.setEditable(true);
+                jTextField4.setText("");
+                jTextField4.setEditable(true);
+                jTextField3.setText("");
+                jTextField3.setEditable(true);
             }
         }
         if (!jTextField1.getText().equals("")&&jTextField1.getText().charAt(0)!='.') {
             if (Double.valueOf(jTextField1.getText()) > 100) {
                 jLabel11.setText("Introduce Ponderacion menor a 100");
+                jTextField2.setText("");
 
             } else if (Double.valueOf(jTextField1.getText()) == 100) {
                 jTextField4.setText("0");
@@ -468,8 +490,9 @@ public class AgregarRamo extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-        int resp = JOptionPane.showConfirmDialog(null, "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?");
+       // TODO add your handling code here:
+        int resp = JOptionPane.showConfirmDialog(null,
+                "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
         }
@@ -483,7 +506,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void nomAsignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomAsignKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if ((c<'a' || c>'z') && (c<'A' || c>'Z')) {
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != KeyEvent.VK_SPACE) {
             evt.consume();
         }
         if (nomAsign.getText().length() >= 22) {
@@ -495,14 +518,14 @@ public class AgregarRamo extends javax.swing.JFrame {
         // TODO add your handling code here:
         char c = evt.getKeyChar();
 
-        if ((c< '0' || c>'9')) {
+        if ((c< '0' || c>'9') && c!=KeyEvent.VK_PERIOD) {
             evt.consume();
         }
 
         if ((c == KeyEvent.VK_PERIOD) && jTextField1.getText().contains(".")) {
             evt.consume();
         }
-        if (jTextField1.getText().length() >= 5) {
+        if (jTextField1.getText().length() >= 3) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField1KeyTyped
@@ -547,7 +570,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void agregar() throws IOException{
         PaginaPrincipal pp = new PaginaPrincipal();
         
-        if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
+        if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100 && !modoAprob.getSelectedItem().equals("------------SELECCIONAR------------")) {
             Ramo nr= new Ramo();
             if (jTextField1.getText().equals("100")){
                 Simple s = new Simple();
@@ -561,7 +584,7 @@ public class AgregarRamo extends javax.swing.JFrame {
                 s.setNotas(Byte.parseByte(jTextField4.getText()));
                 nr = s;
                 nr.crearArchivoSimple(nomAsign.getText(), s.getTipo(), String.valueOf(s.getNotas()));
-            } else  if (Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
+            } else  if (Double.parseDouble(jTextField1.getText())!=100 && Double.parseDouble(jTextField2.getText())!=100 && modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
                 Mixto m = new Mixto();
                 m.setTipo("TEORICO - PRACTICO por Separado");
                 m.setPond_teo(Double.parseDouble(jTextField1.getText()));
@@ -571,7 +594,7 @@ public class AgregarRamo extends javax.swing.JFrame {
                 m.setCantNP((byte)Byte.parseByte(jTextField4.getText()));
                 nr = m;
                 nr.crearArchivoMixto(nomAsign.getText(), m.getTipo(), String.valueOf(m.getCantNT()), String.valueOf(m.getCantNP()),String.valueOf(m.getPond_teo()),String.valueOf(m.getPond_parct()));
-            }else if(Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")){
+            } else if (Double.parseDouble(jTextField1.getText())!=100 && Double.parseDouble(jTextField2.getText())!=100 && modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")){
                  Mixto m = new Mixto();
                 m.setTipo("TEORICO - PRACTICO en Conjunto");
                 m.setPond_teo(Double.parseDouble(jTextField1.getText()));

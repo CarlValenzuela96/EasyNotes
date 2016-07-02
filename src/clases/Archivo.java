@@ -30,6 +30,23 @@ public class Archivo {
 
 //        throw new UnsupportedOperationException();
     }
+    
+    //lee el archivo para poder agregar notas
+
+    public String[] leerArchivoRamo(String nombre) throws IOException {
+        File f = new File("Ramos//" + nombre + ".txt");
+        String[] datos = null;
+        if (f.exists()) {
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            String linea;
+
+            while ((linea = br.readLine()) != null) {
+                datos = linea.split(linea);
+            }
+        }
+        return datos;
+    }
 
     public void agregarNotasMixto(String nombre) throws IOException {
         File f = new File("Ramos//" + nombre + ".txt");
@@ -75,6 +92,7 @@ public class Archivo {
 
 //        throw new UnsupportedOperationException();
     }
+    
 
     public void editarArchivo() {
 

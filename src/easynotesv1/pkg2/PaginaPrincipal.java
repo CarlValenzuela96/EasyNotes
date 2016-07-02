@@ -605,7 +605,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
         ramos.add(rn);
     }
-    
+    //FALTA QUE AL REINICIAR SE ELIMINEN TODOS LOS DAROS GUARDADOS EN EL ARCHIVO
     private void reiniciar(){
         if (!ramos.isEmpty()) {
             int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "

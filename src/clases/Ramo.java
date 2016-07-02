@@ -32,6 +32,17 @@ public class Ramo {
         this.tipo = tipo;
     }
 
+    public double calcNotaFaltante(double[]notas,double[]pond){
+        double cont=0; 
+        int tam=notas.length;
+        for (int i = 0; i < tam-1; i++) {
+            cont = cont + (notas[i] * (pond[i] / 100));
+        }
+        double nf=(4-cont)/(pond[tam-1]/100);
+        
+        return nf;
+    }
+    
     public double calcPromedioSimple(double[] notas, double[] pond) {
         double cont = 0;
         for (int i = 0; i < notas.length; i++) {

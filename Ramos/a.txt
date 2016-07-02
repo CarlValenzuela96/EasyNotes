@@ -1,0 +1,44 @@
+a%Teórico%2
+a%TEORICO - PRACTICO en Conjunto%3%1%1.0%99.0
+A%TEORICO - PRACTICO por Separado%3%1%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%1%1%50.0%50.0
+A%TEORICO - PRACTICO en Conjunto%3%1%22.0%78.0
+A%TEORICO - PRACTICO en Conjunto%2%2%22.0%78.0
+A%TEORICO - PRACTICO en Conjunto%2%2%22.0%78.0
+A%TEORICO - PRACTICO en Conjunto%2%2%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%2%1%33.0%67.0
+1
+2
+a%TEORICO - PRACTICO en Conjunto%2%1%23.0%77.0
+a%Teórico%2
+a%TEORICO - PRACTICO en Conjunto%2%2%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%2%2%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%3%1%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%2%2%22.0%78.0
+a%TEORICO - PRACTICO en Conjunto%3%1%22.0%78.0
+a%TEORICO - PRACTICO en Conjunto%2%2%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%3%1%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%8%8%22.0%78.0
+a%TEORICO - PRACTICO en Conjunto%3%1%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%1%1%22.0%78.0
+a%TEORICO - PRACTICO en Conjunto%1%1%1.0%99.0
+a%TEORICO - PRACTICO en Conjunto%1%1%1.0%99.0
+a%TEORICO - PRACTICO en Conjunto%1%1%1.0%99.0
+a%TEORICO - PRACTICO en Conjunto%1%1%1.0%99.0
+a%TEORICO - PRACTICO en Conjunto%1%1%1.0%99.0
+a%TEORICO - PRACTICO en Conjunto%2%1%22.0%78.0
+a%TEORICO - PRACTICO por Separado%3%1%22.0%78.0
+a%TEORICO - PRACTICO en Conjunto%2%2%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%2%2%2.0%98.0
+a%TEORICO - PRACTICO en Conjunto%2%2%23.0%77.0
+a%TEORICO - PRACTICO por Separado%2%2%33.0%67.0
+a%TEORICO - PRACTICO por Separado%2%2%2.0%98.0
+a%Práctico%2
+a%Teórico%2
+a%Práctico%2
+a%TEORICO - PRACTICO en Conjunto%2%2%22.0%78.0
+a%TEORICO - PRACTICO en Conjunto%1%1%22.0%78.0
+a%TEORICO - PRACTICO por Separado%1%1%22.0%78.0
+a%Práctico%1
+a%Práctico%2
+a%TEORICO - PRACTICO en Conjunto%2%2%22.0%78.0
