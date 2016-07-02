@@ -5,10 +5,13 @@
  */
 package easynotesv1.pkg2;
 
-import clases.Semestre;
+import clases.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.*;
 
 /**
  *
@@ -38,9 +41,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void initComponents() {
 
         jcMousePanel1 = new jcMousePanel.jcMousePanel();
-        jcMousePanel3 = new jcMousePanel.jcMousePanel();
         nombreAsign = new javax.swing.JLabel();
-        jcMousePanel4 = new jcMousePanel.jcMousePanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -58,47 +59,24 @@ public class AgregarRamo extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        modoAprob = new javax.swing.JComboBox<>();
+        modoAprob = new javax.swing.JComboBox<String>();
         jButton4 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        jcMousePanel3 = new jcMousePanel.jcMousePanel();
+        jcMousePanel4 = new jcMousePanel.jcMousePanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         jcMousePanel1.setForeground(new java.awt.Color(61, 138, 247));
         jcMousePanel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/FondoVentanaDeg.png"))); // NOI18N
-
-        jcMousePanel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/line.png"))); // NOI18N
-
-        javax.swing.GroupLayout jcMousePanel3Layout = new javax.swing.GroupLayout(jcMousePanel3);
-        jcMousePanel3.setLayout(jcMousePanel3Layout);
-        jcMousePanel3Layout.setHorizontalGroup(
-            jcMousePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 284, Short.MAX_VALUE)
-        );
-        jcMousePanel3Layout.setVerticalGroup(
-            jcMousePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
+        jcMousePanel1.setVisibleLogo(false);
 
         nombreAsign.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         nombreAsign.setForeground(new java.awt.Color(61, 138, 247));
         nombreAsign.setText("CREAR ASIGNATURA");
-
-        jcMousePanel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/LogoEasyNotes.png"))); // NOI18N
-
-        javax.swing.GroupLayout jcMousePanel4Layout = new javax.swing.GroupLayout(jcMousePanel4);
-        jcMousePanel4.setLayout(jcMousePanel4Layout);
-        jcMousePanel4Layout.setHorizontalGroup(
-            jcMousePanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 143, Short.MAX_VALUE)
-        );
-        jcMousePanel4Layout.setVerticalGroup(
-            jcMousePanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 72, Short.MAX_VALUE)
-        );
 
         jLabel1.setForeground(new java.awt.Color(61, 138, 247));
         jLabel1.setText("TIPO APROBACION:");
@@ -211,7 +189,7 @@ public class AgregarRamo extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(61, 138, 247));
         jLabel10.setText("%");
 
-        modoAprob.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TEORICO - PRACTICO en Conjunto", "TEORICO - PRACTICO por Separado" }));
+        modoAprob.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "------------SELECCIONAR------------", "TEORICO - PRACTICO en Conjunto", "TEORICO - PRACTICO por Separado" }));
         modoAprob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modoAprobActionPerformed(evt);
@@ -262,77 +240,95 @@ public class AgregarRamo extends javax.swing.JFrame {
             }
         });
 
+        jcMousePanel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/line.png"))); // NOI18N
+        jcMousePanel3.setVisibleLogo(false);
+
+        javax.swing.GroupLayout jcMousePanel3Layout = new javax.swing.GroupLayout(jcMousePanel3);
+        jcMousePanel3.setLayout(jcMousePanel3Layout);
+        jcMousePanel3Layout.setHorizontalGroup(
+            jcMousePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 261, Short.MAX_VALUE)
+        );
+        jcMousePanel3Layout.setVerticalGroup(
+            jcMousePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 11, Short.MAX_VALUE)
+        );
+
+        jcMousePanel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/LogoEasyNotes.png"))); // NOI18N
+        jcMousePanel4.setVisibleLogo(false);
+
+        javax.swing.GroupLayout jcMousePanel4Layout = new javax.swing.GroupLayout(jcMousePanel4);
+        jcMousePanel4.setLayout(jcMousePanel4Layout);
+        jcMousePanel4Layout.setHorizontalGroup(
+            jcMousePanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 152, Short.MAX_VALUE)
+        );
+        jcMousePanel4Layout.setVerticalGroup(
+            jcMousePanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 78, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
         jcMousePanel1Layout.setHorizontalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(90, 90, 90))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(nombreAsign)
+                        .addGap(112, 112, 112))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(110, 110, 110)))
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(crearAsign)
+                    .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42))
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(18, 18, 18)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(modoAprob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(407, 407, 407)
-                                .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel10))
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(52, 52, 52)
-                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel3))
-                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel11))
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel10))
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel8))
-                                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jLabel9))))
-                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addComponent(modoAprob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addComponent(nomAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE))
+                                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel9))
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel7)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel11))
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel8)))
+                        .addGap(0, 232, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(103, 103, 103))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(nombreAsign)
-                                .addGap(130, 130, 130)))))
-                .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(crearAsign)
-                .addGap(59, 59, 59))
         );
         jcMousePanel1Layout.setVerticalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -342,99 +338,82 @@ public class AgregarRamo extends javax.swing.JFrame {
                         .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(59, 59, 59)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                        .addGap(5, 5, 5)
                         .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
+                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nomAsign, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(modoAprob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(17, 17, 17)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
                     .addComponent(jLabel7)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
-                .addGap(40, 40, 40)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
-                .addGap(18, 18, 18)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(crearAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43))
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addGap(18, 18, 18)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(crearAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(89, 89, 89))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
-        // TODO add your handling code here:
-        PaginaPrincipal pp = new PaginaPrincipal();
-        Semestre se = new Semestre();
-        if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
-            
-            if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
-                
-                se.agregarRamo(nomAsign.getText());
-                pp.asign1.setText(nomAsign.getText());
-                pp.asign1.setVisible(true);
-            }
-            
-            
-            
-            this.dispose();
-            pp.setTitle("EasyNotes");
-            pp.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-        }
-        if (!jTextField1.getText().equals("")) {
-            if (Double.valueOf(jTextField1.getText()) > 100) {
-                JOptionPane.showMessageDialog(null, "Ponderacion Teorica incorrecta",
-                        "ERROR", JOptionPane.WARNING_MESSAGE);
-            }
+        try {
+            // TODO add your handling code here:
+            agregar();
+        } catch (IOException ex) {
+            Logger.getLogger(AgregarRamo.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_crearAsignActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
-        this.dispose();
         PaginaPrincipal pp = new PaginaPrincipal();
+        this.dispose();
+        pp.setVisible(true);
         pp.setTitle("EasyNotes");
         pp.setVisible(true);
     }//GEN-LAST:event_cancelarActionPerformed
@@ -445,22 +424,13 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void modoAprobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modoAprobActionPerformed
         // TODO add your handling code here:
-        if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")) {
-            jTextField1.setText("50");
-            jTextField2.setText("50");
-            jTextField1.setEditable(false);
-            jLabel11.setVisible(false);
+         if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")) {
+            jTextField1.setText("");
+            jTextField2.setText("");
         }
         if (modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")) {
             jTextField1.setText("");
             jTextField2.setText("");
-            jTextField1.setEditable(true);
-            jLabel11.setVisible(true);
-            if (!jTextField1.getText().equals("")) {
-                double pondP = 100 - Double.parseDouble(jTextField1.getText());
-                jTextField2.setText(String.valueOf(pondP));
-
-            }
         }
     }//GEN-LAST:event_modoAprobActionPerformed
 
@@ -472,17 +442,18 @@ public class AgregarRamo extends javax.swing.JFrame {
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
-        if (!jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100 ){
-            double pondP = 100 - Double.parseDouble(jTextField1.getText());
+        if (!jTextField1.getText().equals("") && jTextField1.getText().charAt(0)!='.'){
+            if(Double.valueOf(jTextField1.getText()) <= 100){
+              double pondP = 100 - Double.parseDouble(jTextField1.getText());
             jTextField2.setText(String.valueOf(pondP));
 
             jTextField4.setText("");
             jTextField4.setEditable(true);
             jTextField3.setText("");
             jTextField3.setEditable(true);
-
+            }
         }
-        if (!jTextField1.getText().equals("")) {
+        if (!jTextField1.getText().equals("")&&jTextField1.getText().charAt(0)!='.') {
             if (Double.valueOf(jTextField1.getText()) > 100) {
                 jLabel11.setText("Introduce Ponderacion menor a 100");
 
@@ -573,6 +544,83 @@ public class AgregarRamo extends javax.swing.JFrame {
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel12MouseDragged
 
+    private void agregar() throws IOException{
+        PaginaPrincipal pp = new PaginaPrincipal();
+        
+        if (!nomAsign.getText().equals("") && !jTextField2.getText().equals("") && !jTextField3.getText().equals("") && !jTextField4.getText().equals("") && !jTextField1.getText().equals("") && Double.valueOf(jTextField1.getText()) <= 100) {
+            Ramo nr= new Ramo();
+            if (jTextField1.getText().equals("100")){
+                Simple s = new Simple();
+                s.setTipo("Teórico");
+                s.setNotas(Byte.parseByte(jTextField3.getText()));
+                nr = s;
+                nr.crearArchivoSimple(nomAsign.getText(), s.getTipo(), String.valueOf(s.getNotas()));
+            } else if (jTextField1.getText().equals("0")){
+                Simple s = new Simple();
+                s.setTipo("Práctico");
+                s.setNotas(Byte.parseByte(jTextField4.getText()));
+                nr = s;
+                nr.crearArchivoSimple(nomAsign.getText(), s.getTipo(), String.valueOf(s.getNotas()));
+            } else  if (Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO por Separado")){
+                Mixto m = new Mixto();
+                m.setTipo("TEORICO - PRACTICO por Separado");
+                m.setPond_teo(Double.parseDouble(jTextField1.getText()));
+                m.setPond_parct(Double.parseDouble(jTextField2.getText()));
+                m.setLim_teo(Byte.parseByte(jTextField3.getText()));
+                m.setCantNT((byte)Byte.parseByte(jTextField3.getText()));
+                m.setCantNP((byte)Byte.parseByte(jTextField4.getText()));
+                nr = m;
+                nr.crearArchivoMixto(nomAsign.getText(), m.getTipo(), String.valueOf(m.getCantNT()), String.valueOf(m.getCantNP()),String.valueOf(m.getPond_teo()),String.valueOf(m.getPond_parct()));
+            }else if(Double.parseDouble(jTextField1.getText())!=100&&Double.parseDouble(jTextField2.getText())!=100&&modoAprob.getSelectedItem().equals("TEORICO - PRACTICO en Conjunto")){
+                 Mixto m = new Mixto();
+                m.setTipo("TEORICO - PRACTICO en Conjunto");
+                m.setPond_teo(Double.parseDouble(jTextField1.getText()));
+                m.setPond_parct(Double.parseDouble(jTextField2.getText()));
+                m.setLim_teo(Byte.parseByte(jTextField3.getText()));
+                m.setCantNT((byte)Byte.parseByte(jTextField3.getText()));
+                m.setCantNP((byte)Byte.parseByte(jTextField4.getText()));
+                nr = m;
+                nr.crearArchivoMixto(nomAsign.getText(), m.getTipo(), String.valueOf(m.getCantNT()), String.valueOf(m.getCantNP()),String.valueOf(m.getPond_teo()),String.valueOf(m.getPond_parct()));
+            }
+            boolean resp=false;
+            
+            for (Ramo ramo : PaginaPrincipal.ramos) {
+                if (ramo.getNombre().equals(nomAsign.getText())) {
+                    resp=true;
+                    break;
+                   
+                }
+                
+            }
+            if(!resp){
+                    nr.setNombre(nomAsign.getText());
+                    pp.ramoNuevo(nr);
+                    this.dispose();
+                    pp.setTitle("EasyNotes");
+                    pp.setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Este ramo ya existe",
+                            "ERROR", JOptionPane.WARNING_MESSAGE);
+                    
+                    this.modoAprob.setSelectedIndex(0);
+                    nomAsign.setText("");
+                    jTextField1.setText("");
+                    jTextField2.setText("");
+                    jTextField3.setText("");
+                    jTextField4.setText("");
+                }
+        } else {
+            JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+        if (!jTextField1.getText().equals("")) {
+            if (Double.valueOf(jTextField1.getText()) > 100) {
+                JOptionPane.showMessageDialog(null, "Ponderacion Teorica incorrecta",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }
+    
     private void validarCantNotas(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 

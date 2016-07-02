@@ -1,25 +1,25 @@
 package clases;
+
 public class Simple extends Ramo {
 
-	private String tipo;
+    protected byte notas;
 
-	public String getTipo() {
-		return this.tipo;
-	}
+    public byte getNotas() {
+        return this.notas;
+    }
 
-	
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    public void setNotas(byte notas) {
+        this.notas = notas;
+    }
 
-	public void calcPromedio() {
-		
-		throw new UnsupportedOperationException();
-	}
+    public void calcPromedio() {
 
-	public void agregarPond() {
-		
-		throw new UnsupportedOperationException();
-	}
+        throw new UnsupportedOperationException();
+    }
+
+    public void agregarPond() {
+
+        throw new UnsupportedOperationException();
+    }
 
 }
