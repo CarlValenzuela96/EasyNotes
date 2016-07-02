@@ -28,6 +28,7 @@ public class InterfazSimple extends javax.swing.JFrame {
     public InterfazSimple() {
         initComponents();
         setLocationRelativeTo(null);
+        
     }
 
     public void ingresarRamo(Simple s) {
@@ -106,6 +107,7 @@ public class InterfazSimple extends javax.swing.JFrame {
         tipoAprob = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -393,6 +395,14 @@ public class InterfazSimple extends javax.swing.JFrame {
         jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -414,6 +424,14 @@ public class InterfazSimple extends javax.swing.JFrame {
         jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
         jButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -424,6 +442,8 @@ public class InterfazSimple extends javax.swing.JFrame {
                 jButton2KeyTyped(evt);
             }
         });
+
+        jLabel2.setText(".");
 
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
@@ -461,7 +481,9 @@ public class InterfazSimple extends javax.swing.JFrame {
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel14)))
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel14))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -582,7 +604,9 @@ public class InterfazSimple extends javax.swing.JFrame {
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
-                .addGap(90, 90, 90)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -750,8 +774,6 @@ public class InterfazSimple extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         crearArreglo(evt);
-
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     void crearArreglo(java.awt.event.ActionEvent evt) {
@@ -977,7 +999,8 @@ public class InterfazSimple extends javax.swing.JFrame {
     void calcularProm() {
         Simple s = new Simple();
         if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
-            double a = s.calcPromedioSimple(this.notasT, this.pondT);
+            double a = truncarNum(s.calcPromedioSimple(this.notasT, this.pondT));
+            
             if (a >= 4) {
                 promT.setForeground(Color.black);
                 promT.setText(String.valueOf(a));
@@ -996,19 +1019,21 @@ public class InterfazSimple extends javax.swing.JFrame {
     }
 
     void calcularNotaFaltante() {
+
         Simple s = new Simple();
         if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true && this.notasT.length >= 2) {
-            double a = s.calcNotaFaltante(notasT, pondT);
-            double b = s.calcNotaPExamen(notasT, pondT);
+            double a = truncarNum(s.calcNotaFaltante(notasT, pondT));
+            double b = truncarNum(s.calcNotaPExamen(notasT, pondT));
+            
             if (a <= 7 && b <= 7) {
                 JOptionPane.showMessageDialog(null, "Para aprobar la asignatura con un 4 necesitas un : |" + String.valueOf(a)
                         + "|, En la última evaluacion\n y \n Para poder rendir examen necesitas un: |" + String.valueOf(b) + "|, En la última evaluacion",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
-            } else if (a>7 && b<=7) {
+            } else if (a > 7 && b <= 7) {
                 JOptionPane.showMessageDialog(null, "No puedes Aprobar este Ramo, solo puedes ir a Examen\n y \n Para poder rendir examen necesitas un: |" + String.valueOf(b) + "|, En la última evaluacion",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
-            }else if(a>7 && b>7){
-                 JOptionPane.showMessageDialog(null, "Notas insuficientes para aprobar o para rendir examen, ",
+            } else if (a > 7 && b > 7) {
+                JOptionPane.showMessageDialog(null, "Notas insuficientes para aprobar o para rendir examen, ",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
             }
         } else if (sumPond(this.pondT) != 100) {
@@ -1062,14 +1087,39 @@ public class InterfazSimple extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-
+        
         crearArreglo(evt);
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton2KeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2KeyTyped
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        // TODO add your handling code here:
+        jLabel2.setVisible(true);
+        jLabel2.setForeground(Color.red);
+        jLabel2.setText("* Al oprimir Calcula nota necesaria para aprobar ramo");
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        // TODO add your handling code here:
+        jLabel2.setForeground(Color.black);
+        jLabel2.setText(".");
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        // TODO add your handling code here:
+        jLabel2.setVisible(true);
+        jLabel2.setForeground(Color.red);
+        jLabel2.setText("* Al oprimir Calcula Promedio obtenido en el ramo");
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jLabel2.setForeground(Color.black);
+        jLabel2.setText(".");
+    }//GEN-LAST:event_jButton1MouseExited
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
@@ -1082,6 +1132,11 @@ public class InterfazSimple extends javax.swing.JFrame {
         if (cadena.length() >= 5) {
             evt.consume();
         }
+    }
+    double truncarNum(double a){
+        double aux = Math.rint(a * 100) / 100;
+            a = aux;
+            return a;
     }
 
     /**
@@ -1145,6 +1200,7 @@ public class InterfazSimple extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
