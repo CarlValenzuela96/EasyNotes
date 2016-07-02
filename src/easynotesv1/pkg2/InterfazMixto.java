@@ -180,6 +180,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         tipoAprob = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -660,6 +661,22 @@ public class InterfazMixto extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setForeground(new java.awt.Color(0, 102, 204));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
+        jButton2.setText("Calcular Nota Faltante");
+        jButton2.setBorder(null);
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jcMousePanel1Layout = new javax.swing.GroupLayout(jcMousePanel1);
         jcMousePanel1.setLayout(jcMousePanel1Layout);
         jcMousePanel1Layout.setHorizontalGroup(
@@ -750,27 +767,26 @@ public class InterfazMixto extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(pt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jButton2))
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel12)
-                                .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel12)
+                            .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jButton1)
-                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                        .addGap(80, 80, 80)
-                                        .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(75, Short.MAX_VALUE))
+                                .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                    .addGap(80, 80, 80)
+                                    .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel17)
-                        .addGap(34, 34, 34))))
+                        .addGap(48, 48, 48))))
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                 .addGap(226, 226, 226)
                 .addComponent(jLabel1)
@@ -928,7 +944,9 @@ public class InterfazMixto extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addGap(29, 29, 29)
                 .addComponent(jLabel14)
                 .addContainerGap())
@@ -1216,7 +1234,33 @@ public class InterfazMixto extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Mixto m = new Mixto();
+        crearArreglo();
+        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
+            if (tipoAprob.getText().equals("TEORICO - PRACTICO por Separado")) {
+                double a = m.calcPromedioSimple(this.notasT, this.pondT);
+                double b = m.calcPromedioSimple(this.notasP, this.pondP);
+                promT.setText(String.valueOf(a));
+                promP.setText(String.valueOf(b));
+            } else if (tipoAprob.getText().equals("TEORICO - PRACTICO en Conjunto")) {
+                double a = m.calcPromedioSimple(this.notasT, this.pondT);
+                double b = m.calcPromedioSimple(this.notasP, this.pondP);
+                double c = m.calcPromedioTotal(a, b, Double.parseDouble(pondTeo.getText()), Double.parseDouble(pondPract.getText()));
+                promT.setText(String.valueOf(a));
+                promP.setText(String.valueOf(b));
+                promGral.setText(String.valueOf(c));
+            }
 
+        } else if (sumPond(this.pondT) != 100) {
+            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (validarNota(this.notasT) == false) {
+            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    void crearArreglo() {
         switch (Integer.parseInt(jLabel16.getText())) {
             case 1:
                 this.notasP = new double[1];
@@ -1439,29 +1483,8 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pondT[7] = Double.parseDouble(pt8.getText());
                 break;
         }
-        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
-            if (tipoAprob.getText().equals("TEORICO - PRACTICO por Separado")) {
-                double a = m.calcPromedioSimple(this.notasT, this.pondT);
-                double b = m.calcPromedioSimple(this.notasP, this.pondP);
-                promT.setText(String.valueOf(a));
-                promP.setText(String.valueOf(b));
-            } else if (tipoAprob.getText().equals("TEORICO - PRACTICO en Conjunto")) {
-                double a = m.calcPromedioSimple(this.notasT, this.pondT);
-                double b = m.calcPromedioSimple(this.notasP, this.pondP);
-                double c = m.calcPromedioTotal(a, b, Double.parseDouble(pondTeo.getText()), Double.parseDouble(pondPract.getText()));
-                promT.setText(String.valueOf(a));
-                promP.setText(String.valueOf(b));
-                promGral.setText(String.valueOf(c));
-            }
+    }
 
-        } else if (sumPond(this.pondT) != 100) {
-            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else if (validarNota(this.notasT) == false) {
-            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
-                    "ERROR", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
     double sumPond(double pondT[]) {
         double cont = 0;
         for (int i = 0; i < pondT.length; i++) {
@@ -1483,6 +1506,14 @@ public class InterfazMixto extends javax.swing.JFrame {
         // TODO add your handling code here:
         validacionNota(promT.getText(), evt);
     }//GEN-LAST:event_promTKeyTyped
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Mixto m = new Mixto();
+        crearArreglo();
+        
+        m.calcNotaFaltante(notasT, pondT);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
@@ -1569,6 +1600,7 @@ public class InterfazMixto extends javax.swing.JFrame {
     private javax.swing.JButton botonMin;
     private javax.swing.JButton guardar;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

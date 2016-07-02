@@ -40,6 +40,17 @@ public class Ramo {
         double prom = cont;
         return prom;
     }
+    
+    public double calcNotaFaltante(double[]notas,double[]pond){
+        double cont=0; 
+        int tam=notas.length;
+        for (int i = 0; i < tam-1; i++) {
+            cont = cont + (notas[i] * (pond[i] / 100));
+        }
+        double nf=(4-cont)/(pond[tam-1]/100);
+        
+        return nf;
+    }
 
     public void crearArchivoSimple(String nombre, String tipo, String cantN) throws IOException {
 
