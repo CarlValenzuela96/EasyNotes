@@ -298,6 +298,7 @@ public class InterfazSimple extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(61, 138, 247));
         jLabel12.setText("PROMEDIO ");
 
+        promT.setEditable(false);
         promT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 promTActionPerformed(evt);
@@ -529,7 +530,6 @@ public class InterfazSimple extends javax.swing.JFrame {
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                                 .addGap(20, 20, 20)
@@ -758,7 +758,7 @@ public class InterfazSimple extends javax.swing.JFrame {
 
         switch (Integer.parseInt(jLabel15.getText())) {
             case 1:
-                if (!nt1.getText().equals("") && !pt1.getText().equals("")) {
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.') {
                     this.notasT = new double[1];
                     notasT[0] = Double.parseDouble(nt1.getText());
                     this.pondT = new double[1];
@@ -773,7 +773,8 @@ public class InterfazSimple extends javax.swing.JFrame {
                 }
                 break;
             case 2:
-                if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")) {
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                        && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.') {
                     this.notasT = new double[2];
                     notasT[0] = Double.parseDouble(nt1.getText());
                     notasT[1] = Double.parseDouble(nt2.getText());
@@ -792,7 +793,9 @@ public class InterfazSimple extends javax.swing.JFrame {
                 break;
             case 3:
                 if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
-                        && !nt3.getText().equals("") && !pt3.getText().equals("")) {
+                        && !nt3.getText().equals("") && !pt3.getText().equals("")
+                        && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                        && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.') {
                     this.notasT = new double[3];
                     notasT[0] = Double.parseDouble(nt1.getText());
                     notasT[1] = Double.parseDouble(nt2.getText());
@@ -813,7 +816,9 @@ public class InterfazSimple extends javax.swing.JFrame {
                 break;
             case 4:
                 if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
-                        && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")) {
+                        && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                        && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                        && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.') {
                     this.notasT = new double[4];
                     notasT[0] = Double.parseDouble(nt1.getText());
                     notasT[1] = Double.parseDouble(nt2.getText());
@@ -837,7 +842,10 @@ public class InterfazSimple extends javax.swing.JFrame {
             case 5:
                 if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
                         && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
-                        && !nt5.getText().equals("") && !pt5.getText().equals("")) {
+                        && !nt5.getText().equals("") && !pt5.getText().equals("")
+                        && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                        && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                        && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.') {
                     this.notasT = new double[5];
                     notasT[0] = Double.parseDouble(nt1.getText());
                     notasT[1] = Double.parseDouble(nt2.getText());
@@ -863,7 +871,10 @@ public class InterfazSimple extends javax.swing.JFrame {
             case 6:
                 if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
                         && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
-                        && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")) {
+                        && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
+                        && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                        && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                        && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.' && nt6.getText().charAt(0) != '.' && pt6.getText().charAt(0) != '.') {
                     this.notasT = new double[6];
                     notasT[0] = Double.parseDouble(nt1.getText());
                     notasT[1] = Double.parseDouble(nt2.getText());
@@ -892,7 +903,11 @@ public class InterfazSimple extends javax.swing.JFrame {
                 if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
                         && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
                         && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
-                        && !nt7.getText().equals("") && !pt7.getText().equals("")) {
+                        && !nt7.getText().equals("") && !pt7.getText().equals("")
+                        && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                        && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                        && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.' && nt6.getText().charAt(0) != '.' && pt6.getText().charAt(0) != '.'
+                        && nt7.getText().charAt(0) != '.' && pt7.getText().charAt(0) != '.') {
                     this.notasT = new double[7];
                     notasT[0] = Double.parseDouble(nt1.getText());
                     notasT[1] = Double.parseDouble(nt2.getText());
@@ -923,7 +938,11 @@ public class InterfazSimple extends javax.swing.JFrame {
                 if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
                         && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
                         && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
-                        && !nt7.getText().equals("") && !pt7.getText().equals("") && !nt8.getText().equals("") && !pt8.getText().equals("")) {
+                        && !nt7.getText().equals("") && !pt7.getText().equals("") && !nt8.getText().equals("") && !pt8.getText().equals("")
+                        && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                        && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                        && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.' && nt6.getText().charAt(0) != '.' && pt6.getText().charAt(0) != '.'
+                        && nt7.getText().charAt(0) != '.' && pt7.getText().charAt(0) != '.' && nt8.getText().charAt(0) != '.' && pt8.getText().charAt(0) != '.') {
                     this.notasT = new double[8];
                     notasT[0] = Double.parseDouble(nt1.getText());
                     notasT[1] = Double.parseDouble(nt2.getText());
@@ -980,9 +999,18 @@ public class InterfazSimple extends javax.swing.JFrame {
         Simple s = new Simple();
         if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true && this.notasT.length >= 2) {
             double a = s.calcNotaFaltante(notasT, pondT);
-            JOptionPane.showMessageDialog(null, "     Necesitas un:\n " + "             "+String.valueOf(a) +
-                    "\n    En la última evaluacion,\n para aprobar la asignatura con un 4",
-                    "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+            double b = s.calcNotaPExamen(notasT, pondT);
+            if (a <= 7 && b <= 7) {
+                JOptionPane.showMessageDialog(null, "Para aprobar la asignatura con un 4 necesitas un : |" + String.valueOf(a)
+                        + "|, En la última evaluacion\n y \n Para poder rendir examen necesitas un: |" + String.valueOf(b) + "|, En la última evaluacion",
+                        "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+            } else if (a>7 && b<=7) {
+                JOptionPane.showMessageDialog(null, "No puedes Aprobar este Ramo, solo puedes ir a Examen\n y \n Para poder rendir examen necesitas un: |" + String.valueOf(b) + "|, En la última evaluacion",
+                        "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+            }else if(a>7 && b>7){
+                 JOptionPane.showMessageDialog(null, "Notas insuficientes para aprobar o para rendir examen, ",
+                        "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+            }
         } else if (sumPond(this.pondT) != 100) {
             JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
                     "ERROR", JOptionPane.WARNING_MESSAGE);

@@ -32,7 +32,6 @@ public class InterfazMixto extends javax.swing.JFrame {
     public InterfazMixto() {
         initComponents();
         setLocationRelativeTo(null);
-        promGral.setEditable(false);
         promGral.setVisible(true);
         jLabel17.setVisible(true);
     }
@@ -535,6 +534,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         jLabel12.setForeground(new java.awt.Color(61, 138, 247));
         jLabel12.setText("PROMEDIO");
 
+        promT.setEditable(false);
         promT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 promTActionPerformed(evt);
@@ -549,6 +549,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(61, 138, 247));
         jLabel13.setText("PROMEDIO");
 
+        promP.setEditable(false);
         promP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 promPActionPerformed(evt);
@@ -581,6 +582,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         jLabel17.setForeground(new java.awt.Color(61, 138, 247));
         jLabel17.setText("PROMEDIO GENERAL");
 
+        promGral.setEditable(false);
         promGral.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 promGralActionPerformed(evt);
@@ -777,9 +779,7 @@ public class InterfazMixto extends javax.swing.JFrame {
                             .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jButton1)
-                                .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                    .addGap(80, 80, 80)
-                                    .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -1251,7 +1251,7 @@ public class InterfazMixto extends javax.swing.JFrame {
             }
 
         } else if (sumPond(this.pondT) != 100) {
-            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+            JOptionPane.showMessageDialog(null, "Ponderacion Teorica no suma 100",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         } else if (validarNota(this.notasT) == false) {
             JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
