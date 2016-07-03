@@ -1192,7 +1192,7 @@ public class InterfazSimple extends javax.swing.JFrame {
             double a = truncarNum(s.calcNotaFaltante(notasT, pondT));
             double b = truncarNum(s.calcNotaPExamen(notasT, pondT));
 
-            if (a <= 7 && b <= 7) {
+            if ((a <= 7 && b <= 7)&&(a >= 1 && b >= 1)) {
                 JOptionPane.showMessageDialog(null, "Para aprobar la asignatura con un 4 necesitas un : |" + String.valueOf(a)
                         + "|, En la última evaluacion\n y \n Para poder rendir examen necesitas un: |" + String.valueOf(b) + "|, En la última evaluacion",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
