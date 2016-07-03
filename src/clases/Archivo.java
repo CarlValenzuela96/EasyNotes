@@ -34,7 +34,7 @@ public class Archivo {
 
     public String[][] leerArchivoRamo(String nombre) throws IOException {
         File f = new File("Ramos//" + nombre + ".txt");
-        String[][] datos = null;
+        String[][] datos = new String[3][8];
         if (f.exists()) {
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);

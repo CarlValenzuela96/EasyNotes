@@ -46,7 +46,7 @@ public class EasyNotesV12 {
             Archivo carga = new Archivo();
             String[][] l = carga.leerArchivoRamo(ramo.getName().replace(".txt",""));
             Ramo leer;
-            if(l.length==3){
+            if(l[0][1].equals("Teórico")||l[0][1].equals("Práctico")){
                 Simple s = new Simple();
                 s.setNotas(Byte.parseByte(l[0][2]));
                 leer = s;

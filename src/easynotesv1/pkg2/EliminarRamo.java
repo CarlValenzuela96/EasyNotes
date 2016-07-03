@@ -300,7 +300,7 @@ public class EliminarRamo extends javax.swing.JFrame {
         PaginaPrincipal pp = new PaginaPrincipal();
         Archivo ar = new Archivo();
         pp.elim(nomAsign.getSelectedIndex());
-        ar.eliminarArchivo(String.valueOf(nomAsign.getSelectedItem()));
+        ar.eliminarArchivo(nomAsign.getItemAt(nomAsign.getSelectedIndex()));
         pp.setTitle("EasyNotes");
         pp.setVisible(true);
     }
