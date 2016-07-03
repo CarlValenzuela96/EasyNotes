@@ -68,7 +68,10 @@ public class Archivo {
             while ((linea = br.readLine()) != null) {
                 datos[i++] = linea.split("%");
             }
+            br.close();
+            fr.close();
         }
+
         return datos;
     }
 
@@ -76,24 +79,12 @@ public class Archivo {
 
         throw new UnsupportedOperationException();
     }
-     public void eliminarArchivo(String nomArchivo) {
+
+    public void eliminarArchivo(String nomArchivo) {
         File f = new File("Ramos//" + nomArchivo + ".txt");
         if (f.exists()) {
             f.delete();
         }
-    }
-
-    public void eliminarTodosArchivos() {
-        File dir = new File("Ramos");
-       File []ficheros = dir.listFiles();
-        File f;
-        if (dir.exists()) {
-            for (File fichero : ficheros) {
-                f = new File(fichero.getName().replace(".txt", ""));
-                f.delete();
-            }
-        }
-
     }
 
 }
