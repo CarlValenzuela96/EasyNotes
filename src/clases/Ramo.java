@@ -62,6 +62,10 @@ public class Ramo {
         
         return nf;
     }
+      
+        public void asignarArchivo(Archivo archivo){
+        this.archivo = archivo;
+    }
     public void crearArchivoSimple(String nombre, String tipo, String cantN) throws IOException {
 
         archivo.crearArchivoSimple(nombre, tipo, cantN);

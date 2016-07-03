@@ -7,6 +7,9 @@ package easynotesv1.pkg2;
 
 import clases.*;
 import java.awt.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.JOptionPane;
 
@@ -1344,8 +1347,7 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         // TODO add your handling code here:
-
-
+       
     }//GEN-LAST:event_guardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1355,7 +1357,9 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton1ActionPerformed
     void crearArregloTeorico(java.awt.event.ActionEvent evt) {
-        this.prom_Teo = 0;
+        if (jButton1 == evt.getSource()) {
+            this.prom_Teo = 0;
+        }
         switch (Integer.parseInt(jLabel15.getText())) {
             case 1:
                 if (!nt1.getText().equals("") && !pt1.getText().equals("") && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.') {
@@ -1732,7 +1736,9 @@ public class InterfazMixto extends javax.swing.JFrame {
     }
 
     void crearArregloPractico(java.awt.event.ActionEvent evt) {
-        this.prom_Pract = 0;
+        if (jButton4 == evt.getSource()) {
+            this.prom_Pract = 0;
+        }
         switch (Integer.parseInt(jLabel16.getText())) {
             case 1:
                 if (!np1.getText().equals("") && !pp1.getText().equals("") && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.') {
@@ -2170,7 +2176,7 @@ public class InterfazMixto extends javax.swing.JFrame {
             double a = truncarNum(s.calcNotaFaltante(notas, pond));
             double b = truncarNum(s.calcNotaPExamen(notas, pond));
 
-            if ((a <= 7 && b <= 7) && (a >= 1 && b >= 1)) {
+            if ((a <= 7 && b <= 7) && (a > 1 && b > 1)) {
                 JOptionPane.showMessageDialog(null, "Para aprobar la asignatura con un 4 necesitas un : |" + String.valueOf(a)
                         + "|, En la última evaluacion\n y \n Para poder rendir examen necesitas un: |" + String.valueOf(b) + "|, En la última evaluacion",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
@@ -2180,7 +2186,7 @@ public class InterfazMixto extends javax.swing.JFrame {
             } else if (a > 7 && b > 7) {
                 JOptionPane.showMessageDialog(null, "Notas insuficientes para aprobar o para rendir examen, ",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
-            } else if (a <= 0 && b <= 0) {
+            } else if (a <= 1 && b <= 1) {
                 JOptionPane.showMessageDialog(null, "con la nota minima (1.0) En la última evaluacion pasas es ramo",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
             }
