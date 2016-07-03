@@ -56,6 +56,16 @@ public class Ramo {
         this.archivo = archivo;
     }
 
+      public double calcNotaPExamen(double[]notas,double[]pond){
+        double cont=0; 
+        int tam=notas.length;
+        for (int i = 0; i < tam-1; i++) {
+            cont = cont + (notas[i] * (pond[i] / 100));
+        }
+        double nf=(3.6-cont)/(pond[tam-1]/100);
+        
+        return nf;
+    }
     public void crearArchivoSimple(String nombre, String tipo, String cantN) throws IOException {
 
         archivo.crearArchivoSimple(nombre, tipo, cantN);

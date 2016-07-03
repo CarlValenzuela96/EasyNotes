@@ -157,10 +157,7 @@
                               <Component id="promT" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                                      <Component id="promGral" min="-2" pref="50" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="promGral" min="-2" pref="50" max="-2" attributes="0"/>
                               </Group>
                               <Component id="promP" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="jLabel13" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -728,6 +725,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="promT">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="promTActionPerformed"/>
             <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="promTKeyTyped"/>
@@ -742,6 +742,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="promP">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="promPActionPerformed"/>
           </Events>
@@ -800,6 +803,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="promGral">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="promGralActionPerformed"/>
           </Events>
