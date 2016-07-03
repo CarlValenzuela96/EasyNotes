@@ -32,16 +32,16 @@ public class Archivo {
     }
 //lee el archivo para poder agregar notas
 
-    public String[] leerArchivoRamo(String nombre) throws IOException {
+    public String[][] leerArchivoRamo(String nombre) throws IOException {
         File f = new File("Ramos//" + nombre + ".txt");
-        String[] datos = null;
+        String[][] datos = null;
         if (f.exists()) {
             FileReader fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
             String linea;
-
+            int i = 0;
             while ((linea = br.readLine()) != null) {
-                datos = linea.split("%");
+                datos[i++] = linea.split("%");
             }
         }
         return datos;
