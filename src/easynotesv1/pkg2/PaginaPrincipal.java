@@ -635,7 +635,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
         // TODO add your handling code here:
+        
         reiniciar();
+        
     }//GEN-LAST:event_botonReiniciarActionPerformed
 
     private void asign2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign2ActionPerformed
@@ -760,12 +762,14 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         inicioBotones();
     }
     private void reiniciar(){
+        
         int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
                 + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
                 + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?", 
                 "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             Archivo ar = new Archivo();
+          
             switch (ramos.size()) {
                 case 9:
                     asign9.setVisible(false);
@@ -790,7 +794,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     ar.eliminarArchivo(asign3.getText());
                 case 2:
                     asign2.setVisible(false);
-                    ar.eliminarArchivo(asign2.getText());
+                   ar.eliminarArchivo(asign2.getText());
                 case 1:
                     asign1.setVisible(false);
                     ar.eliminarArchivo(asign1.getText());
@@ -799,6 +803,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             }
             ramos.clear();
            
+            
         }
     }
     

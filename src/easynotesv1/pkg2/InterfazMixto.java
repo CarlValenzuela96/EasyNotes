@@ -28,12 +28,16 @@ public class InterfazMixto extends javax.swing.JFrame {
     double[] pondT;
     double[] notasP;
     double[] pondP;
+    double prom_Teo;
+    double prom_Pract;
 
     public InterfazMixto() {
         initComponents();
         setLocationRelativeTo(null);
         promGral.setVisible(true);
         jLabel17.setVisible(true);
+        jButton5.setVisible(true);
+
     }
 
     public void ingresarRamo(Mixto s) {
@@ -47,10 +51,12 @@ public class InterfazMixto extends javax.swing.JFrame {
         if (s.getTipo().equals("TEORICO - PRACTICO por Separado")) {
             promGral.setVisible(false);
             jLabel17.setVisible(false);
+            jButton5.setVisible(false);
         }
         if (s.getTipo().equals("TEORICO - PRACTICO en Conjunto")) {
             promGral.setVisible(true);
             jLabel17.setVisible(true);
+            jButton5.setVisible(true);
         }
         switch (s.getCantNP()) {
             case 1:
@@ -180,6 +186,10 @@ public class InterfazMixto extends javax.swing.JFrame {
         tipoAprob = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jLabel19 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -648,15 +658,23 @@ public class InterfazMixto extends javax.swing.JFrame {
         tipoAprob.setText("jLabel19");
 
         jButton1.setForeground(new java.awt.Color(0, 102, 204));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        jButton1.setText("Calcular Promedio");
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextra.png"))); // NOI18N
+        jButton1.setText("Prom. Teorico");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
-        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton1.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -664,18 +682,100 @@ public class InterfazMixto extends javax.swing.JFrame {
         });
 
         jButton2.setForeground(new java.awt.Color(0, 102, 204));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamo.png"))); // NOI18N
-        jButton2.setText("Calcular Nota Faltante");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextra.png"))); // NOI18N
+        jButton2.setText("Calc. Teorico");
         jButton2.setBorder(null);
         jButton2.setBorderPainted(false);
         jButton2.setContentAreaFilled(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
-        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
-        jButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bRamoP.png"))); // NOI18N
+        jButton2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton2MouseExited(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setForeground(new java.awt.Color(0, 102, 204));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextra.png"))); // NOI18N
+        jButton3.setText("Calc. Practico");
+        jButton3.setBorder(null);
+        jButton3.setBorderPainted(false);
+        jButton3.setContentAreaFilled(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton3.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton3MouseExited(evt);
+            }
+        });
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText(".");
+
+        jButton4.setForeground(new java.awt.Color(0, 102, 204));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextra.png"))); // NOI18N
+        jButton4.setText("Prom. Practico");
+        jButton4.setBorder(null);
+        jButton4.setBorderPainted(false);
+        jButton4.setContentAreaFilled(false);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton4.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton4MouseExited(evt);
+            }
+        });
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setForeground(new java.awt.Color(0, 102, 204));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextra.png"))); // NOI18N
+        jButton5.setText("Prom.Gral");
+        jButton5.setBorder(null);
+        jButton5.setBorderPainted(false);
+        jButton5.setContentAreaFilled(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton5.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bextraP.png"))); // NOI18N
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton5MouseExited(evt);
+            }
+        });
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
             }
         });
 
@@ -683,51 +783,74 @@ public class InterfazMixto extends javax.swing.JFrame {
         jcMousePanel1.setLayout(jcMousePanel1Layout);
         jcMousePanel1Layout.setHorizontalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel19)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9))
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(botonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pagPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
+                                .addGap(127, 127, 127)
+                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                        .addGap(16, 16, 16)
+                                        .addComponent(nombreAsign)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9))
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addGap(108, 108, 108)
+                                .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel16))
+                                .addComponent(tipoAprob)
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel14))
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(507, 507, 507)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton3)
+                            .addComponent(jButton2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4)
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(np1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(np8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addComponent(pp1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pp8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jButton1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton5)))
+                        .addGap(0, 40, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                .addGap(161, 161, 161)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pondTeo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addGap(77, 77, 77)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pondPract)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -769,74 +892,65 @@ public class InterfazMixto extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(pt7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jButton2))
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                                .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel12)
-                            .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton1)
-                                .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel17)
-                        .addGap(48, 48, 48))))
-            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                .addGap(226, 226, 226)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tipoAprob))
-            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pondTeo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addGap(77, 77, 77)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pondPract)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addContainerGap(476, Short.MAX_VALUE)
-                        .addComponent(jLabel14))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pagPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(122, 122, 122)
-                                .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                        .addComponent(np1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(np2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(np3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(np4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(np5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(np6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(np7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(np8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                        .addComponent(pp1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pp2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pp3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pp4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pp5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pp6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pp7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(pp8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(138, 138, 138)
-                                .addComponent(nombreAsign)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel16)
+                                .addGap(319, 319, 319)
+                                .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                                .addGap(554, 554, 554)
+                                .addComponent(jLabel17)))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jcMousePanel1Layout.setVerticalGroup(
             jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -848,26 +962,23 @@ public class InterfazMixto extends javax.swing.JFrame {
                         .addComponent(botonMin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11)
+                        .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(pagPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 8, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(tipoAprob))))
                 .addGap(18, 18, 18)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tipoAprob))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(pondTeo)
@@ -875,12 +986,12 @@ public class InterfazMixto extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(pondPract)
                     .addComponent(jLabel3))
-                .addGap(50, 50, 50)
+                .addGap(30, 30, 30)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel15))
                 .addGap(14, 14, 14)
-                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nt1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -902,8 +1013,19 @@ public class InterfazMixto extends javax.swing.JFrame {
                             .addComponent(pt5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pt6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pt7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
+                            .addComponent(pt8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel17)))
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel11)
                             .addComponent(jLabel16))
@@ -934,20 +1056,19 @@ public class InterfazMixto extends javax.swing.JFrame {
                             .addGroup(jcMousePanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(promT, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(promGral, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addComponent(promP, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
+                    .addComponent(jButton5)
                     .addComponent(jButton2))
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel19)
+                .addGap(4, 4, 4)
                 .addComponent(jLabel14)
                 .addContainerGap())
         );
@@ -956,11 +1077,11 @@ public class InterfazMixto extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 805, Short.MAX_VALUE)
+            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+            .addComponent(jcMousePanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 685, Short.MAX_VALUE)
         );
 
         pack();
@@ -1226,30 +1347,780 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         // TODO add your handling code here:
-
-
+       
     }//GEN-LAST:event_guardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
-        Mixto m = new Mixto();
-        crearArreglo();
-        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
-            if (tipoAprob.getText().equals("TEORICO - PRACTICO por Separado")) {
-                double a = m.calcPromedioSimple(this.notasT, this.pondT);
-                double b = m.calcPromedioSimple(this.notasP, this.pondP);
-                promT.setText(String.valueOf(a));
-                promP.setText(String.valueOf(b));
-            } else if (tipoAprob.getText().equals("TEORICO - PRACTICO en Conjunto")) {
-                double a = m.calcPromedioSimple(this.notasT, this.pondT);
-                double b = m.calcPromedioSimple(this.notasP, this.pondP);
-                double c = m.calcPromedioTotal(a, b, Double.parseDouble(pondTeo.getText()), Double.parseDouble(pondPract.getText()));
-                promT.setText(String.valueOf(a));
-                promP.setText(String.valueOf(b));
-                promGral.setText(String.valueOf(c));
-            }
+        crearArregloTeorico(evt);
 
+    }//GEN-LAST:event_jButton1ActionPerformed
+    void crearArregloTeorico(java.awt.event.ActionEvent evt) {
+        if (jButton1 == evt.getSource()) {
+            this.prom_Teo = 0;
+        }
+        switch (Integer.parseInt(jLabel15.getText())) {
+            case 1:
+                if (!nt1.getText().equals("") && !pt1.getText().equals("") && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.') {
+                    this.notasT = new double[1];
+                    notasT[0] = Double.parseDouble(nt1.getText());
+                    this.pondT = new double[1];
+                    pondT[0] = Double.parseDouble(pt1.getText());
+                    if (jButton1 == evt.getSource()) {
+                        this.prom_Teo = calcularPromTeorico();
+                    } else if (jButton2 == evt.getSource()) {
+                        calcularNotaFaltante(pondT, notasT);
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+            case 2:
+
+                if (jButton1 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.') {
+                        this.notasT = new double[2];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+
+                        this.pondT = new double[2];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        this.prom_Teo = calcularPromTeorico();
+
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton2 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !pt2.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.') {
+                        this.notasT = new double[2];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = 1;
+
+                        this.pondT = new double[2];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+
+                        calcularNotaFaltante(pondT, notasT);
+                    } else {
+                        mensajeError();
+                    }
+                }
+
+                break;
+            case 3:
+                if (jButton1 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.') {
+                        this.notasT = new double[3];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+
+                        this.pondT = new double[3];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        this.prom_Teo = calcularPromTeorico();
+
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton2 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !pt3.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && pt3.getText().charAt(0) != '.') {
+                        this.notasT = new double[3];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = 1;
+
+                        this.pondT = new double[3];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        calcularNotaFaltante(pondT, notasT);
+                    } else {
+                        mensajeError();
+                    }
+                }
+
+                break;
+            case 4:
+
+                if (jButton1 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.') {
+                        this.notasT = new double[4];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = Double.parseDouble(nt4.getText());
+                        this.pondT = new double[4];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        this.prom_Teo = calcularPromTeorico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton2 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !pt4.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.') {
+                        this.notasT = new double[4];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = 1;
+                        this.pondT = new double[4];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        calcularNotaFaltante(pondT, notasT);
+                    } else {
+                        mensajeError();
+                    }
+                }
+
+                break;
+
+            case 5:
+                if (jButton1 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                            && !nt5.getText().equals("") && !pt5.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                            && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.') {
+                        this.notasT = new double[5];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = Double.parseDouble(nt4.getText());
+                        notasT[4] = Double.parseDouble(nt5.getText());
+
+                        this.pondT = new double[5];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        pondT[4] = Double.parseDouble(pt5.getText());
+                        this.prom_Teo = calcularPromTeorico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton2 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                            && !pt5.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                            && pt5.getText().charAt(0) != '.') {
+                        this.notasT = new double[5];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = Double.parseDouble(nt4.getText());
+                        notasT[4] = 1;
+
+                        this.pondT = new double[5];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        pondT[4] = Double.parseDouble(pt5.getText());
+                        calcularNotaFaltante(pondT, notasT);
+                    } else {
+                        mensajeError();
+                    }
+                }
+
+                break;
+            case 6:
+                if (jButton1 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                            && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                            && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.' && nt6.getText().charAt(0) != '.' && pt6.getText().charAt(0) != '.') {
+                        this.notasT = new double[6];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = Double.parseDouble(nt4.getText());
+                        notasT[4] = Double.parseDouble(nt5.getText());
+                        notasT[5] = Double.parseDouble(nt6.getText());
+                        this.pondT = new double[6];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        pondT[4] = Double.parseDouble(pt5.getText());
+                        pondT[5] = Double.parseDouble(pt6.getText());
+                        this.prom_Teo = calcularPromTeorico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton2 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                            && !nt5.getText().equals("") && !pt5.getText().equals("") && !pt6.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                            && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.' && pt6.getText().charAt(0) != '.') {
+                        this.notasT = new double[6];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = Double.parseDouble(nt4.getText());
+                        notasT[4] = Double.parseDouble(nt5.getText());
+                        notasT[5] = 1;
+                        this.pondT = new double[6];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        pondT[4] = Double.parseDouble(pt5.getText());
+                        pondT[5] = Double.parseDouble(pt6.getText());
+                        calcularNotaFaltante(pondT, notasT);
+                    } else {
+                        mensajeError();
+                    }
+                }
+                break;
+
+            case 7:
+                if (jButton1 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                            && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
+                            && !nt7.getText().equals("") && !pt7.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                            && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.' && nt6.getText().charAt(0) != '.' && pt6.getText().charAt(0) != '.'
+                            && nt7.getText().charAt(0) != '.' && pt7.getText().charAt(0) != '.') {
+                        this.notasT = new double[7];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = Double.parseDouble(nt4.getText());
+                        notasT[4] = Double.parseDouble(nt5.getText());
+                        notasT[5] = Double.parseDouble(nt6.getText());
+                        notasT[6] = Double.parseDouble(nt7.getText());
+
+                        this.pondT = new double[7];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        pondT[4] = Double.parseDouble(pt5.getText());
+                        pondT[5] = Double.parseDouble(pt6.getText());
+                        pondT[6] = Double.parseDouble(pt7.getText());
+                        this.prom_Teo = calcularPromTeorico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton2 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                            && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
+                            && !pt7.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                            && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.' && nt6.getText().charAt(0) != '.' && pt6.getText().charAt(0) != '.'
+                            && pt7.getText().charAt(0) != '.') {
+                        this.notasT = new double[7];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = Double.parseDouble(nt4.getText());
+                        notasT[4] = Double.parseDouble(nt5.getText());
+                        notasT[5] = Double.parseDouble(nt6.getText());
+                        notasT[6] = 1;
+
+                        this.pondT = new double[7];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        pondT[4] = Double.parseDouble(pt5.getText());
+                        pondT[5] = Double.parseDouble(pt6.getText());
+                        pondT[6] = Double.parseDouble(pt7.getText());
+                        calcularNotaFaltante(pondT, notasT);
+                    } else {
+                        mensajeError();
+                    }
+                }
+                break;
+            case 8:
+                if (jButton1 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                            && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
+                            && !nt7.getText().equals("") && !pt7.getText().equals("") && !nt8.getText().equals("") && !pt8.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                            && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.' && nt6.getText().charAt(0) != '.' && pt6.getText().charAt(0) != '.'
+                            && nt7.getText().charAt(0) != '.' && pt7.getText().charAt(0) != '.' && nt8.getText().charAt(0) != '.' && pt8.getText().charAt(0) != '.') {
+                        this.notasT = new double[8];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = Double.parseDouble(nt4.getText());
+                        notasT[4] = Double.parseDouble(nt5.getText());
+                        notasT[5] = Double.parseDouble(nt6.getText());
+                        notasT[6] = Double.parseDouble(nt7.getText());
+                        notasT[7] = Double.parseDouble(nt8.getText());
+
+                        this.pondT = new double[8];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        pondT[4] = Double.parseDouble(pt5.getText());
+                        pondT[5] = Double.parseDouble(pt6.getText());
+                        pondT[6] = Double.parseDouble(pt7.getText());
+                        pondT[7] = Double.parseDouble(pt8.getText());
+                        this.prom_Teo = calcularPromTeorico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton2 == evt.getSource()) {
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !nt2.getText().equals("") && !pt2.getText().equals("")
+                            && !nt3.getText().equals("") && !pt3.getText().equals("") && !nt4.getText().equals("") && !pt4.getText().equals("")
+                            && !nt5.getText().equals("") && !pt5.getText().equals("") && !nt6.getText().equals("") && !pt6.getText().equals("")
+                            && !nt7.getText().equals("") && !pt7.getText().equals("") && !pt8.getText().equals("")
+                            && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && nt2.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.'
+                            && nt3.getText().charAt(0) != '.' && pt3.getText().charAt(0) != '.' && nt4.getText().charAt(0) != '.' && pt4.getText().charAt(0) != '.'
+                            && nt5.getText().charAt(0) != '.' && pt5.getText().charAt(0) != '.' && nt6.getText().charAt(0) != '.' && pt6.getText().charAt(0) != '.'
+                            && nt7.getText().charAt(0) != '.' && pt7.getText().charAt(0) != '.' && pt8.getText().charAt(0) != '.') {
+                        this.notasT = new double[8];
+                        notasT[0] = Double.parseDouble(nt1.getText());
+                        notasT[1] = Double.parseDouble(nt2.getText());
+                        notasT[2] = Double.parseDouble(nt3.getText());
+                        notasT[3] = Double.parseDouble(nt4.getText());
+                        notasT[4] = Double.parseDouble(nt5.getText());
+                        notasT[5] = Double.parseDouble(nt6.getText());
+                        notasT[6] = Double.parseDouble(nt7.getText());
+                        notasT[7] = 1;
+
+                        this.pondT = new double[8];
+                        pondT[0] = Double.parseDouble(pt1.getText());
+                        pondT[1] = Double.parseDouble(pt2.getText());
+                        pondT[2] = Double.parseDouble(pt3.getText());
+                        pondT[3] = Double.parseDouble(pt4.getText());
+                        pondT[4] = Double.parseDouble(pt5.getText());
+                        pondT[5] = Double.parseDouble(pt6.getText());
+                        pondT[6] = Double.parseDouble(pt7.getText());
+                        pondT[7] = Double.parseDouble(pt8.getText());
+                        calcularNotaFaltante(pondT, notasT);
+                    } else {
+                        mensajeError();
+                    }
+                }
+                break;
+        }
+    }
+
+    void crearArregloPractico(java.awt.event.ActionEvent evt) {
+        if (jButton4 == evt.getSource()) {
+            this.prom_Pract = 0;
+        }
+        switch (Integer.parseInt(jLabel16.getText())) {
+            case 1:
+                if (!np1.getText().equals("") && !pp1.getText().equals("") && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.') {
+                    this.notasP = new double[1];
+                    notasP[0] = Double.parseDouble(np1.getText());
+                    this.pondP = new double[1];
+                    pondP[0] = Double.parseDouble(pp1.getText());
+                    if (jButton4 == evt.getSource()) {
+                        this.prom_Pract = calcularPromPractico();
+                    } else if (jButton3 == evt.getSource()) {
+                        calcularNotaFaltante(pondP, notasP);
+                    }
+                } else {
+                    mensajeError();
+                }
+                break;
+            case 2:
+
+                if (jButton4 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.') {
+                        this.notasP = new double[2];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        this.pondP = new double[2];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+
+                        this.prom_Pract = calcularPromPractico();
+
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton3 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !pp2.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.') {
+                        this.notasP = new double[2];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = 1;
+                        this.pondP = new double[2];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        calcularNotaFaltante(pondP, notasP);
+                    } else {
+                        mensajeError();
+                    }
+                }
+
+                break;
+            case 3:
+                if (jButton4 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.') {
+                        this.notasP = new double[3];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        this.pondP = new double[3];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        this.prom_Pract = calcularPromPractico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton3 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !pp3.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && pp3.getText().charAt(0) != '.') {
+                        this.notasP = new double[3];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = 1;
+                        this.pondP = new double[3];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        calcularNotaFaltante(pondP, notasP);
+                    } else {
+                        mensajeError();
+                    }
+                }
+
+                break;
+            case 4:
+
+                if (jButton4 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !np4.getText().equals("") && !pp4.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && np4.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.') {
+                        this.notasP = new double[4];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = Double.parseDouble(np4.getText());
+                        this.pondP = new double[4];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        this.prom_Pract = calcularPromPractico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton3 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !pp4.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.') {
+                        this.notasP = new double[4];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = 1;
+                        this.pondP = new double[4];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        calcularNotaFaltante(pondP, notasP);
+                    } else {
+                        mensajeError();
+                    }
+                }
+
+                break;
+
+            case 5:
+                if (jButton4 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !np4.getText().equals("") && !pp4.getText().equals("")
+                            && !np5.getText().equals("") && !pp5.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && np4.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.'
+                            && np5.getText().charAt(0) != '.' && pp5.getText().charAt(0) != '.') {
+                        this.notasP = new double[5];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = Double.parseDouble(np4.getText());
+                        notasP[4] = Double.parseDouble(np5.getText());
+                        this.pondP = new double[5];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        pondP[4] = Double.parseDouble(pp5.getText());
+                        this.prom_Pract = calcularPromPractico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton3 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !np4.getText().equals("") && !pp4.getText().equals("")
+                            && !pp5.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && np4.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.'
+                            && pp5.getText().charAt(0) != '.') {
+                        this.notasP = new double[5];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = Double.parseDouble(np4.getText());
+                        notasP[4] = 1;
+                        this.pondP = new double[5];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        pondP[4] = Double.parseDouble(pp5.getText());
+                        calcularNotaFaltante(pondP, notasP);
+                    } else {
+                        mensajeError();
+                    }
+                }
+
+                break;
+            case 6:
+                if (jButton4 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !np4.getText().equals("") && !pp4.getText().equals("")
+                            && !np5.getText().equals("") && !pp5.getText().equals("") && !np6.getText().equals("") && !pp6.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && np4.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.'
+                            && np5.getText().charAt(0) != '.' && pp5.getText().charAt(0) != '.' && np6.getText().charAt(0) != '.' && pp6.getText().charAt(0) != '.') {
+                        this.notasP = new double[6];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = Double.parseDouble(np4.getText());
+                        notasP[4] = Double.parseDouble(np5.getText());
+                        notasP[5] = Double.parseDouble(np6.getText());
+                        this.pondP = new double[6];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        pondP[4] = Double.parseDouble(pp5.getText());
+                        pondP[5] = Double.parseDouble(pp6.getText());
+                        this.prom_Pract = calcularPromPractico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton3 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !np4.getText().equals("") && !pp4.getText().equals("")
+                            && !np5.getText().equals("") && !pp5.getText().equals("") && !pp6.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && np4.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.'
+                            && np5.getText().charAt(0) != '.' && pp5.getText().charAt(0) != '.' && pp6.getText().charAt(0) != '.') {
+                        this.notasP = new double[6];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = Double.parseDouble(np4.getText());
+                        notasP[4] = Double.parseDouble(np5.getText());
+                        notasP[5] = 1;
+                        this.pondP = new double[6];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        pondP[4] = Double.parseDouble(pp5.getText());
+                        pondP[5] = Double.parseDouble(pp6.getText());
+                        calcularNotaFaltante(pondP, notasP);
+                    } else {
+                        mensajeError();
+                    }
+                }
+                break;
+
+            case 7:
+                if (jButton4 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !np4.getText().equals("") && !pp4.getText().equals("")
+                            && !np5.getText().equals("") && !pp5.getText().equals("") && !np6.getText().equals("") && !pp6.getText().equals("")
+                            && !np7.getText().equals("") && !pp7.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && np4.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.'
+                            && np5.getText().charAt(0) != '.' && pp5.getText().charAt(0) != '.' && np6.getText().charAt(0) != '.' && pp6.getText().charAt(0) != '.'
+                            && np7.getText().charAt(0) != '.' && pp7.getText().charAt(0) != '.') {
+                        this.notasP = new double[7];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = Double.parseDouble(np4.getText());
+                        notasP[4] = Double.parseDouble(np5.getText());
+                        notasP[5] = Double.parseDouble(np6.getText());
+                        notasP[6] = Double.parseDouble(np7.getText());
+                        this.pondP = new double[7];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        pondP[4] = Double.parseDouble(pp5.getText());
+                        pondP[5] = Double.parseDouble(pp6.getText());
+                        pondP[6] = Double.parseDouble(pp7.getText());
+                        this.prom_Pract = calcularPromPractico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton3 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !np4.getText().equals("") && !pp4.getText().equals("")
+                            && !np5.getText().equals("") && !pp5.getText().equals("") && !np6.getText().equals("") && !pp6.getText().equals("")
+                            && !pp7.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && np4.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.'
+                            && np5.getText().charAt(0) != '.' && pp5.getText().charAt(0) != '.' && np6.getText().charAt(0) != '.' && pp6.getText().charAt(0) != '.'
+                            && pp7.getText().charAt(0) != '.') {
+                        this.notasP = new double[7];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = Double.parseDouble(np4.getText());
+                        notasP[4] = Double.parseDouble(np5.getText());
+                        notasP[5] = Double.parseDouble(np6.getText());
+                        notasP[6] = 1;
+                        this.pondP = new double[7];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        pondP[4] = Double.parseDouble(pp5.getText());
+                        pondP[5] = Double.parseDouble(pp6.getText());
+                        pondP[6] = Double.parseDouble(pp7.getText());
+                        calcularNotaFaltante(pondP, notasP);
+                    } else {
+                        mensajeError();
+                    }
+                }
+                break;
+            case 8:
+                if (jButton4 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !np4.getText().equals("") && !pp4.getText().equals("")
+                            && !np5.getText().equals("") && !pp5.getText().equals("") && !np6.getText().equals("") && !pp6.getText().equals("")
+                            && !np7.getText().equals("") && !pp7.getText().equals("") && !np8.getText().equals("") && !pp8.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && np4.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.'
+                            && np5.getText().charAt(0) != '.' && pp5.getText().charAt(0) != '.' && np6.getText().charAt(0) != '.' && pp6.getText().charAt(0) != '.'
+                            && np7.getText().charAt(0) != '.' && pp7.getText().charAt(0) != '.' && np8.getText().charAt(0) != '.' && pp8.getText().charAt(0) != '.') {
+                        this.notasP = new double[8];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = Double.parseDouble(np4.getText());
+                        notasP[4] = Double.parseDouble(np5.getText());
+                        notasP[5] = Double.parseDouble(np6.getText());
+                        notasP[6] = Double.parseDouble(np7.getText());
+                        notasP[7] = Double.parseDouble(np8.getText());
+
+                        this.pondP = new double[8];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        pondP[4] = Double.parseDouble(pp5.getText());
+                        pondP[5] = Double.parseDouble(pp6.getText());
+                        pondP[6] = Double.parseDouble(pp7.getText());
+                        pondP[7] = Double.parseDouble(pp8.getText());
+                        this.prom_Pract = calcularPromPractico();
+                    } else {
+                        mensajeError();
+                    }
+                } else if (jButton3 == evt.getSource()) {
+                    if (!np1.getText().equals("") && !pp1.getText().equals("") && !np2.getText().equals("") && !pp2.getText().equals("")
+                            && !np3.getText().equals("") && !pp3.getText().equals("") && !np4.getText().equals("") && !pp4.getText().equals("")
+                            && !np5.getText().equals("") && !pp5.getText().equals("") && !np6.getText().equals("") && !pp6.getText().equals("")
+                            && !np7.getText().equals("") && !pp7.getText().equals("") && !pp8.getText().equals("")
+                            && np1.getText().charAt(0) != '.' && pp1.getText().charAt(0) != '.' && np2.getText().charAt(0) != '.' && pp2.getText().charAt(0) != '.'
+                            && np3.getText().charAt(0) != '.' && pp3.getText().charAt(0) != '.' && np4.getText().charAt(0) != '.' && pp4.getText().charAt(0) != '.'
+                            && np5.getText().charAt(0) != '.' && pp5.getText().charAt(0) != '.' && np6.getText().charAt(0) != '.' && pp6.getText().charAt(0) != '.'
+                            && np7.getText().charAt(0) != '.' && pp7.getText().charAt(0) != '.' && pp8.getText().charAt(0) != '.') {
+                        this.notasP = new double[8];
+                        notasP[0] = Double.parseDouble(np1.getText());
+                        notasP[1] = Double.parseDouble(np2.getText());
+                        notasP[2] = Double.parseDouble(np3.getText());
+                        notasP[3] = Double.parseDouble(np4.getText());
+                        notasP[4] = Double.parseDouble(np5.getText());
+                        notasP[5] = Double.parseDouble(np6.getText());
+                        notasP[6] = Double.parseDouble(np7.getText());
+                        notasP[7] = 1;
+
+                        this.pondP = new double[8];
+                        pondP[0] = Double.parseDouble(pp1.getText());
+                        pondP[1] = Double.parseDouble(pp2.getText());
+                        pondP[2] = Double.parseDouble(pp3.getText());
+                        pondP[3] = Double.parseDouble(pp4.getText());
+                        pondP[4] = Double.parseDouble(pp5.getText());
+                        pondP[5] = Double.parseDouble(pp6.getText());
+                        pondP[6] = Double.parseDouble(pp7.getText());
+                        pondP[7] = Double.parseDouble(pp8.getText());
+                        calcularNotaFaltante(pondP, notasP);
+                    } else {
+                        mensajeError();
+                    }
+                }
+                break;
+        }
+    }
+
+    double calcularPromTeorico() {
+        Mixto s = new Mixto();
+        double a = 0;
+        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
+            a = truncarNum(s.calcPromedioSimple(this.notasT, this.pondT));
+
+            if (a >= 4) {
+                promT.setForeground(Color.black);
+                promT.setText(String.valueOf(a));
+
+            }
+            if (a < 4) {
+                promT.setForeground(Color.red);
+                promT.setText(String.valueOf(a));
+
+            }
         } else if (sumPond(this.pondT) != 100) {
             JOptionPane.showMessageDialog(null, "Ponderacion Teorica no suma 100",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -1257,246 +2128,98 @@ public class InterfazMixto extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
+        return a;
+    }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    double calcularPromPractico() {
+        Simple s = new Simple();
+        double a = 0;
+        if (sumPond(this.pondP) == 100 && validarNota(this.notasP) == true) {
+            a = truncarNum(s.calcPromedioSimple(this.notasP, this.pondP));
 
-    void crearArreglo() {
-        switch (Integer.parseInt(jLabel16.getText())) {
-            case 1:
-                this.notasP = new double[1];
-                notasP[0] = Double.parseDouble(np1.getText());
-                this.pondP = new double[1];
-                pondP[0] = Double.parseDouble(pp1.getText());
+            if (a >= 4) {
+                promP.setForeground(Color.black);
+                promP.setText(String.valueOf(a));
 
-                break;
-            case 2:
-                this.notasP = new double[2];
-                notasP[0] = Double.parseDouble(np1.getText());
-                notasP[1] = Double.parseDouble(np2.getText());
-                this.pondP = new double[2];
-                pondP[0] = Double.parseDouble(pp1.getText());
-                pondP[1] = Double.parseDouble(pp2.getText());
+            }
+            if (a < 4) {
+                promP.setForeground(Color.red);
+                promP.setText(String.valueOf(a));
 
-                break;
-            case 3:
-                this.notasP = new double[3];
-                notasP[0] = Double.parseDouble(np1.getText());
-                notasP[1] = Double.parseDouble(np2.getText());
-                notasP[2] = Double.parseDouble(np3.getText());
-                this.pondP = new double[3];
-                pondP[0] = Double.parseDouble(pp1.getText());
-                pondP[1] = Double.parseDouble(pp2.getText());
-                pondP[2] = Double.parseDouble(pp3.getText());
-                break;
-            case 4:
-                this.notasP = new double[4];
-                notasP[0] = Double.parseDouble(np1.getText());
-                notasP[1] = Double.parseDouble(np2.getText());
-                notasP[2] = Double.parseDouble(np3.getText());
-                notasP[3] = Double.parseDouble(np4.getText());
-                this.pondP = new double[4];
-                pondP[0] = Double.parseDouble(pp1.getText());
-                pondP[1] = Double.parseDouble(pp2.getText());
-                pondP[2] = Double.parseDouble(pp3.getText());
-                pondP[3] = Double.parseDouble(pp4.getText());
-                break;
-            case 5:
-                this.notasP = new double[5];
-                notasP[0] = Double.parseDouble(np1.getText());
-                notasP[1] = Double.parseDouble(np2.getText());
-                notasP[2] = Double.parseDouble(np3.getText());
-                notasP[3] = Double.parseDouble(np4.getText());
-                notasP[4] = Double.parseDouble(np5.getText());
-
-                this.pondP = new double[5];
-                pondP[0] = Double.parseDouble(pp1.getText());
-                pondP[1] = Double.parseDouble(pp2.getText());
-                pondP[2] = Double.parseDouble(pp3.getText());
-                pondP[3] = Double.parseDouble(pp4.getText());
-                pondP[4] = Double.parseDouble(pp5.getText());
-                break;
-            case 6:
-                this.notasP = new double[6];
-                notasP[0] = Double.parseDouble(np1.getText());
-                notasP[1] = Double.parseDouble(np2.getText());
-                notasP[2] = Double.parseDouble(np3.getText());
-                notasP[3] = Double.parseDouble(np4.getText());
-                notasP[4] = Double.parseDouble(np5.getText());
-                notasP[5] = Double.parseDouble(np6.getText());
-                this.pondP = new double[6];
-                pondP[0] = Double.parseDouble(pp1.getText());
-                pondP[1] = Double.parseDouble(pp2.getText());
-                pondP[2] = Double.parseDouble(pp3.getText());
-                pondP[3] = Double.parseDouble(pp4.getText());
-                pondP[4] = Double.parseDouble(pp5.getText());
-                pondP[5] = Double.parseDouble(pp6.getText());
-                break;
-            case 7:
-                this.notasP = new double[7];
-                notasP[0] = Double.parseDouble(np1.getText());
-                notasP[1] = Double.parseDouble(np2.getText());
-                notasP[2] = Double.parseDouble(np3.getText());
-                notasP[3] = Double.parseDouble(np4.getText());
-                notasP[4] = Double.parseDouble(np5.getText());
-                notasP[5] = Double.parseDouble(np6.getText());
-                notasP[6] = Double.parseDouble(np7.getText());
-
-                this.pondP = new double[7];
-                pondP[0] = Double.parseDouble(pp1.getText());
-                pondP[1] = Double.parseDouble(pp2.getText());
-                pondP[2] = Double.parseDouble(pp3.getText());
-                pondP[3] = Double.parseDouble(pp4.getText());
-                pondP[4] = Double.parseDouble(pp5.getText());
-                pondP[5] = Double.parseDouble(pp6.getText());
-                pondP[6] = Double.parseDouble(pp7.getText());
-                break;
-            case 8:
-                this.notasP = new double[8];
-                notasP[0] = Double.parseDouble(np1.getText());
-                notasP[1] = Double.parseDouble(np2.getText());
-                notasP[2] = Double.parseDouble(np3.getText());
-                notasP[3] = Double.parseDouble(np4.getText());
-                notasP[4] = Double.parseDouble(np5.getText());
-                notasP[5] = Double.parseDouble(np6.getText());
-                notasP[6] = Double.parseDouble(np7.getText());
-                notasP[7] = Double.parseDouble(np8.getText());
-
-                this.pondP = new double[8];
-                pondP[0] = Double.parseDouble(pp1.getText());
-                pondP[1] = Double.parseDouble(pp2.getText());
-                pondP[2] = Double.parseDouble(pp3.getText());
-                pondP[3] = Double.parseDouble(pp4.getText());
-                pondP[4] = Double.parseDouble(pp5.getText());
-                pondP[5] = Double.parseDouble(pp6.getText());
-                pondP[6] = Double.parseDouble(pp7.getText());
-                pondP[7] = Double.parseDouble(pp8.getText());
-                break;
+            }
+        } else if (sumPond(this.pondP) != 100) {
+            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (validarNota(this.notasP) == false) {
+            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
         }
-        switch (Integer.parseInt(jLabel15.getText())) {
-            case 1:
-                this.notasT = new double[1];
-                notasT[0] = Double.parseDouble(nt1.getText());
-                this.pondT = new double[1];
-                pondT[0] = Double.parseDouble(pt1.getText());
-                break;
-            case 2:
-                this.notasT = new double[2];
-                notasT[0] = Double.parseDouble(nt1.getText());
-                notasT[1] = Double.parseDouble(nt2.getText());
+        return a;
+    }
 
-                this.pondT = new double[2];
-                pondT[0] = Double.parseDouble(pt1.getText());
-                pondT[1] = Double.parseDouble(pt2.getText());
-                break;
-            case 3:
-                this.notasT = new double[3];
-                notasT[0] = Double.parseDouble(nt1.getText());
-                notasT[1] = Double.parseDouble(nt2.getText());
-                notasT[2] = Double.parseDouble(nt3.getText());
+    void promGral() {
 
-                this.pondT = new double[3];
-                pondT[0] = Double.parseDouble(pt1.getText());
-                pondT[1] = Double.parseDouble(pt2.getText());
-                pondT[2] = Double.parseDouble(pt3.getText());
-                break;
-            case 4:
-                this.notasT = new double[4];
-                notasT[0] = Double.parseDouble(nt1.getText());
-                notasT[1] = Double.parseDouble(nt2.getText());
-                notasT[2] = Double.parseDouble(nt3.getText());
-                notasT[3] = Double.parseDouble(nt4.getText());
-                this.pondT = new double[4];
-                pondT[0] = Double.parseDouble(pt1.getText());
-                pondT[1] = Double.parseDouble(pt2.getText());
-                pondT[2] = Double.parseDouble(pt3.getText());
-                pondT[3] = Double.parseDouble(pt4.getText());
-                break;
-            case 5:
-                this.notasT = new double[5];
-                notasT[0] = Double.parseDouble(nt1.getText());
-                notasT[1] = Double.parseDouble(nt2.getText());
-                notasT[2] = Double.parseDouble(nt3.getText());
-                notasT[3] = Double.parseDouble(nt4.getText());
-                notasT[4] = Double.parseDouble(nt5.getText());
-
-                this.pondT = new double[5];
-                pondT[0] = Double.parseDouble(pt1.getText());
-                pondT[1] = Double.parseDouble(pt2.getText());
-                pondT[2] = Double.parseDouble(pt3.getText());
-                pondT[3] = Double.parseDouble(pt4.getText());
-                pondT[4] = Double.parseDouble(pt5.getText());
-                break;
-            case 6:
-                this.notasT = new double[6];
-                notasT[0] = Double.parseDouble(nt1.getText());
-                notasT[1] = Double.parseDouble(nt2.getText());
-                notasT[2] = Double.parseDouble(nt3.getText());
-                notasT[3] = Double.parseDouble(nt4.getText());
-                notasT[4] = Double.parseDouble(nt5.getText());
-                notasT[5] = Double.parseDouble(nt6.getText());
-                this.pondT = new double[6];
-                pondT[0] = Double.parseDouble(pt1.getText());
-                pondT[1] = Double.parseDouble(pt2.getText());
-                pondT[2] = Double.parseDouble(pt3.getText());
-                pondT[3] = Double.parseDouble(pt4.getText());
-                pondT[4] = Double.parseDouble(pt5.getText());
-                pondT[5] = Double.parseDouble(pt6.getText());
-                break;
-            case 7:
-                this.notasT = new double[7];
-                notasT[0] = Double.parseDouble(nt1.getText());
-                notasT[1] = Double.parseDouble(nt2.getText());
-                notasT[2] = Double.parseDouble(nt3.getText());
-                notasT[3] = Double.parseDouble(nt4.getText());
-                notasT[4] = Double.parseDouble(nt5.getText());
-                notasT[5] = Double.parseDouble(nt6.getText());
-                notasT[6] = Double.parseDouble(nt7.getText());
-
-                this.pondT = new double[7];
-                pondT[0] = Double.parseDouble(pt1.getText());
-                pondT[1] = Double.parseDouble(pt2.getText());
-                pondT[2] = Double.parseDouble(pt3.getText());
-                pondT[3] = Double.parseDouble(pt4.getText());
-                pondT[4] = Double.parseDouble(pt5.getText());
-                pondT[5] = Double.parseDouble(pt6.getText());
-                pondT[6] = Double.parseDouble(pt7.getText());
-                break;
-            case 8:
-                this.notasT = new double[8];
-                notasT[0] = Double.parseDouble(nt1.getText());
-                notasT[1] = Double.parseDouble(nt2.getText());
-                notasT[2] = Double.parseDouble(nt3.getText());
-                notasT[3] = Double.parseDouble(nt4.getText());
-                notasT[4] = Double.parseDouble(nt5.getText());
-                notasT[5] = Double.parseDouble(nt6.getText());
-                notasT[6] = Double.parseDouble(nt7.getText());
-                notasT[7] = Double.parseDouble(nt8.getText());
-
-                this.pondT = new double[8];
-                pondT[0] = Double.parseDouble(pt1.getText());
-                pondT[1] = Double.parseDouble(pt2.getText());
-                pondT[2] = Double.parseDouble(pt3.getText());
-                pondT[3] = Double.parseDouble(pt4.getText());
-                pondT[4] = Double.parseDouble(pt5.getText());
-                pondT[5] = Double.parseDouble(pt6.getText());
-                pondT[6] = Double.parseDouble(pt7.getText());
-                pondT[7] = Double.parseDouble(pt8.getText());
-                break;
+        Mixto m = new Mixto();
+        if (this.prom_Teo != 0 && this.prom_Pract != 0) {
+            double c = truncarNum(m.calcPromedioTotal(this.prom_Teo, this.prom_Pract, Double.parseDouble(pondTeo.getText()), Double.parseDouble(pondPract.getText())));
+            promGral.setText(String.valueOf(c));
+        } else {
+            mensajeError();
         }
     }
 
-    double sumPond(double pondT[]) {
+    void calcularNotaFaltante(double[] pond, double[] notas) {
+
+        Simple s = new Simple();
+        if (sumPond(pond) == 100 && validarNota(notas) == true && notas.length >= 2) {
+            notas[notas.length - 1] = 0;
+            double a = truncarNum(s.calcNotaFaltante(notas, pond));
+            double b = truncarNum(s.calcNotaPExamen(notas, pond));
+
+            if ((a <= 7 && b <= 7) && (a > 1 && b > 1)) {
+                JOptionPane.showMessageDialog(null, "Para aprobar la asignatura con un 4 necesitas un : |" + String.valueOf(a)
+                        + "|, En la última evaluacion\n y \n Para poder rendir examen necesitas un: |" + String.valueOf(b) + "|, En la última evaluacion",
+                        "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+            } else if (a > 7 && b <= 7) {
+                JOptionPane.showMessageDialog(null, "No puedes Aprobar este Ramo, solo puedes ir a Examen\n y \n Para poder rendir examen necesitas un: |" + String.valueOf(b) + "|, En la última evaluacion",
+                        "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+            } else if (a > 7 && b > 7) {
+                JOptionPane.showMessageDialog(null, "Notas insuficientes para aprobar o para rendir examen, ",
+                        "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+            } else if (a <= 1 && b <= 1) {
+                JOptionPane.showMessageDialog(null, "con la nota minima (1.0) En la última evaluacion pasas es ramo",
+                        "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+            }
+        } else if (sumPond(pond) != 100) {
+            JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (validarNota(notas) == false) {
+            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (notas.length < 2) {
+            JOptionPane.showMessageDialog(null, "Cantidad de notas debe se superior a 1",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }
+
+    }
+
+    void mensajeError() {
+        JOptionPane.showMessageDialog(null, "Por favor llene todos los recuadros",
+                "ERROR", JOptionPane.WARNING_MESSAGE);
+    }
+
+    double sumPond(double pond[]) {
         double cont = 0;
-        for (int i = 0; i < pondT.length; i++) {
-            cont = cont + pondT[i];
+        for (int i = 0; i < pond.length; i++) {
+            cont = cont + pond[i];
         }
         return cont;
     }
 
-    boolean validarNota(double notaT[]) {
+    boolean validarNota(double notas[]) {
         boolean pasa = true;
-        for (int i = 0; i < notaT.length; i++) {
-            if (notaT[i] > 7 || notaT[i] <= 0) {
+        for (int i = 0; i < notas.length; i++) {
+            if (notas[i] > 7 || notas[i] <= 0) {
                 pasa = false;
             }
         }
@@ -1509,11 +2232,93 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        Mixto m = new Mixto();
-        crearArreglo();
-        
-        m.calcNotaFaltante(notasT, pondT);
+        crearArregloTeorico(evt);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        crearArregloPractico(evt);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        jLabel19.setVisible(true);
+        jLabel19.setForeground(Color.red);
+        jLabel19.setText("* Al oprimir Calcula ultima nota Practica necesaria para aprobar ramo");
+    }//GEN-LAST:event_jButton3MouseEntered
+
+    private void jButton2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseEntered
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+        jLabel19.setVisible(true);
+        jLabel19.setForeground(Color.red);
+        jLabel19.setText("* Al oprimir Calcula ultima nota Teorica necesaria para aprobar ramo");
+    }//GEN-LAST:event_jButton2MouseEntered
+
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        // TODO add your handling code here:
+        jLabel19.setVisible(true);
+        jLabel19.setForeground(Color.red);
+        jLabel19.setText("* Al oprimir Calcula Promedio Teorico obtenido en el ramo");
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+        jLabel19.setForeground(Color.black);
+        jLabel19.setText(".");
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void jButton2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseExited
+        // TODO add your handling code here:
+        jLabel19.setForeground(Color.black);
+        jLabel19.setText(".");
+    }//GEN-LAST:event_jButton2MouseExited
+
+    private void jButton3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseExited
+        // TODO add your handling code here:
+        jLabel19.setForeground(Color.black);
+        jLabel19.setText(".");
+    }//GEN-LAST:event_jButton3MouseExited
+
+    private void jButton4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseEntered
+        // TODO add your handling code here:
+        jLabel19.setVisible(true);
+        jLabel19.setForeground(Color.red);
+        jLabel19.setText("* Al oprimir Calcula Promedio Practico obtenido en el ramo");
+    }//GEN-LAST:event_jButton4MouseEntered
+
+    private void jButton4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseExited
+        // TODO add your handling code here:
+        jLabel19.setForeground(Color.black);
+        jLabel19.setText(".");
+    }//GEN-LAST:event_jButton4MouseExited
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        crearArregloPractico(evt);
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+
+        promGral();
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseEntered
+        // TODO add your handling code here:
+        jLabel19.setVisible(true);
+        jLabel19.setForeground(Color.red);
+        jLabel19.setText("* Al oprimir Calcula Promedio General obtenido en el ramo");
+    }//GEN-LAST:event_jButton5MouseEntered
+
+    private void jButton5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseExited
+        // TODO add your handling code here:
+        jLabel19.setForeground(Color.black);
+        jLabel19.setText(".");
+    }//GEN-LAST:event_jButton5MouseExited
 
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
@@ -1527,6 +2332,12 @@ public class InterfazMixto extends javax.swing.JFrame {
         if (cadena.length() >= 5) {
             evt.consume();
         }
+    }
+
+    double truncarNum(double a) {
+        double aux = Math.rint(a * 100) / 100;
+        a = aux;
+        return a;
     }
 
     /**
@@ -1601,6 +2412,9 @@ public class InterfazMixto extends javax.swing.JFrame {
     private javax.swing.JButton guardar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1611,6 +2425,7 @@ public class InterfazMixto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

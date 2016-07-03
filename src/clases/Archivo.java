@@ -32,36 +32,6 @@ public class Archivo {
     }
 //lee el archivo para poder agregar notas
 
-    public String[][] leerArchivoRamo(String nombre) throws IOException {
-        File f = new File("Ramos//" + nombre + ".txt");
-        String[][] datos = new String[3][8];
-        if (f.exists()) {
-            FileReader fr = new FileReader(f);
-            BufferedReader br = new BufferedReader(fr);
-            String linea;
-            int i = 0;
-            while ((linea = br.readLine()) != null) {
-                datos[i++] = linea.split("%");
-            }
-        }
-        return datos;
-    }
-
-    void agregarNotasMixto(String nombre, String[] datos) throws IOException {
-        File f = new File("Ramos//" + nombre + ".txt");
-        FileWriter fw;
-        BufferedWriter bw;
-
-        if (f.exists()) {
-
-            fw = new FileWriter(f, true);
-            bw = new BufferedWriter(fw);
-            bw.newLine();
-            
-
-        }
-    }
-
     public void crearArchivoSimple(String nombre, String tipo, String cantN) throws IOException {
 
         File f = new File("Ramos//" + nombre + ".txt");
@@ -87,21 +57,43 @@ public class Archivo {
 //        throw new UnsupportedOperationException();
     }
 
+    public String[][] leerArchivoRamo(String nombre) throws IOException {
+        File f = new File("Ramos//" + nombre + ".txt");
+        String[][] datos = new String[5][8];
+        if (f.exists()) {
+            FileReader fr = new FileReader(f);
+            BufferedReader br = new BufferedReader(fr);
+            String linea;
+            int i = 0;
+            while ((linea = br.readLine()) != null) {
+                datos[i++] = linea.split("%");
+            }
+        }
+        return datos;
+    }
+
     public void editarArchivo() {
 
         throw new UnsupportedOperationException();
     }
-
-    public void leerArchivo() {
-
-        throw new UnsupportedOperationException();
-    }
-
-    public void eliminarArchivo(String nomArchivo) {
+     public void eliminarArchivo(String nomArchivo) {
         File f = new File("Ramos//" + nomArchivo + ".txt");
         if (f.exists()) {
             f.delete();
         }
+    }
+
+    public void eliminarTodosArchivos() {
+        File dir = new File("Ramos");
+       File []ficheros = dir.listFiles();
+        File f;
+        if (dir.exists()) {
+            for (File fichero : ficheros) {
+                f = new File(fichero.getName().replace(".txt", ""));
+                f.delete();
+            }
+        }
+
     }
 
 }
