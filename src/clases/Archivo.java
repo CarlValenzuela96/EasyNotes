@@ -68,6 +68,8 @@ public class Archivo {
             while ((linea = br.readLine()) != null) {
                 datos[i++] = linea.split("%");
             }
+            br.close();
+            fr.close();
         }
         return datos;
     }
@@ -89,8 +91,7 @@ public class Archivo {
         File f;
         if (dir.exists()) {
             for (File fichero : ficheros) {
-                f = new File(fichero.getName().replace(".txt", ""));
-                f.delete();
+                fichero.delete();
             }
         }
 
