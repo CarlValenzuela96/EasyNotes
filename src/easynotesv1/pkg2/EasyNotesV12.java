@@ -60,8 +60,8 @@ public class EasyNotesV12 {
                 Mixto m = new Mixto();
                 m.setCantNT(Byte.parseByte(l[0][2]));
                 m.setCantNP(Byte.parseByte(l[0][3]));
-                m.setPond_parct(Double.parseDouble(l[0][4]));
-                m.setPond_teo(Double.parseDouble(l[0][5]));
+                m.setPond_parct(Double.parseDouble(l[0][5]));
+                m.setPond_teo(Double.parseDouble(l[0][4]));
                 leer = m;
                 
             }

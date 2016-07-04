@@ -407,17 +407,25 @@ public class AgregarRamo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
+       if(!jTextField1.getText().equals("")&&!jTextField1.getText().equals("")){ 
+           if((Double.parseDouble(jTextField1.getText())+Double.parseDouble(jTextField2.getText()))==100){
         try {
             // TODO add your handling code here:
             agregar();
         } catch (IOException ex) {
             Logger.getLogger(AgregarRamo.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+           }else  if((Double.parseDouble(jTextField1.getText())+Double.parseDouble(jTextField2.getText()))!=100){
+                JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+           }
+           
+       }
     }//GEN-LAST:event_crearAsignActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         // TODO add your handling code here:
+       
         PaginaPrincipal pp = new PaginaPrincipal();
         this.dispose();
         pp.setVisible(true);

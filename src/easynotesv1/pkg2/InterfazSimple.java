@@ -1205,6 +1205,10 @@ public class InterfazSimple extends javax.swing.JFrame {
             }else if (a <= 1  && b <= 1) {
                 JOptionPane.showMessageDialog(null, "con la nota minima (1.0) En la última evaluacion pasas es ramo",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
+            }else if (a > 1 && b <= 1) {
+                JOptionPane.showMessageDialog(null, "Para aprobar la asignatura con un 4 necesitas un : |" + String.valueOf(a)
+                        + "|, En la última evaluacion\n y \n con la nota minima (1.0) En la última evaluacion pudes dar examen",
+                        "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
             }
         } else if (sumPond(this.pondT) != 100) {
             JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
