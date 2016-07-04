@@ -5,6 +5,8 @@
  */
 package easynotesv1.pkg2;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author carlos
@@ -14,6 +16,7 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
+        private static final ImageIcon icon = new ImageIcon(InterfazMixto.class.getResource("/recursos/iconoo.png"));
     public Inicio() {
         
         initComponents();
@@ -21,7 +24,7 @@ public class Inicio extends javax.swing.JFrame {
         L1.setVisible(false);
         L2.setVisible(false);
         L3.setVisible(false);
-       
+       this.setIconImage(icon.getImage());
     }
 
     /**

@@ -23,12 +23,12 @@ public class AgregarRamo extends javax.swing.JFrame {
      * Creates new form TPseparado
      */
     int x, y;
-
+    private static final ImageIcon icon = new ImageIcon(AgregarRamo.class.getResource("/recursos/iconoo.png"));
     public AgregarRamo() {
         initComponents();
         setLocationRelativeTo(null);
         jTextField2.setEditable(false);
-
+        this.setIconImage(icon.getImage());
     }
 
     /**

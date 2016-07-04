@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,16 +20,19 @@ public class PaginaPrincipal extends javax.swing.JFrame {
      * Creates new form PaginaPrincipal
      */
     int x, y;
-    
+
     static ArrayList<Ramo> ramos = new ArrayList<>();
+    private static final ImageIcon icon = new ImageIcon(PaginaPrincipal.class.getResource("/recursos/iconoo.png"));
 
     public PaginaPrincipal() {
 
         initComponents();
         setLocationRelativeTo(null);
-       inicioBotones();
+        inicioBotones();
+        this.setIconImage(icon.getImage());
     }
-     private void inicioBotones() {
+
+    private void inicioBotones() {
         switch (ramos.size()) {
             case 9:
                 asign9.setText(ramos.get(8).getNombre());
@@ -589,7 +593,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAgregarActionPerformed
         // TODO add your handling code here:
-       agregar();
+        agregar();
     }//GEN-LAST:event_botonAgregarActionPerformed
 
     private void botonBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBorrarActionPerformed
@@ -651,9 +655,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
 
     private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
         // TODO add your handling code here:
-        
+
         reiniciar();
-        
+
     }//GEN-LAST:event_botonReiniciarActionPerformed
 
     private void asign2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign2ActionPerformed
@@ -709,22 +713,22 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_asign9ActionPerformed
-    private void agregar(){
-        if (ramos.size()<9) {
+    private void agregar() {
+        if (ramos.size() < 9) {
             this.dispose();
             AgregarRamo ar = new AgregarRamo();
             ar.setTitle("AGREGAR ASIGNATURA");
             ar.setVisible(true);
             ar.setResizable(false);
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Ya tiene el máximo de\n9 "
                     + "asignaturas creadas.", "Límite alcanzado",
                     JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public void ramoNuevo(Ramo rn){
+
+    public void ramoNuevo(Ramo rn) {
         switch (ramos.size()) {
             case 0:
                 asign1.setVisible(true);
@@ -765,23 +769,26 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
         ramos.add(rn);
     }
-     private void asignatura(int n) throws IOException{
+
+    private void asignatura(int n) throws IOException {
         Ramo r = ramos.get(n);
         this.dispose();
-        if(r.getTipo().equals("TEORICO - PRACTICO por Separado")||r.getTipo().equals("TEORICO - PRACTICO en Conjunto")){
+        if (r.getTipo().equals("TEORICO - PRACTICO por Separado") || r.getTipo().equals("TEORICO - PRACTICO en Conjunto")) {
             InterfazMixto s = new InterfazMixto();
             s.ingresarRamo((Mixto) r);
             s.setTitle(r.getNombre());
             s.setVisible(true);
-        }else 
-        if (r.getTipo().equals("Teórico")||r.getTipo().equals("Práctico")){
-            InterfazSimple s = new InterfazSimple();
-            s.ingresarRamo((Simple) r);
-            s.setTitle(r.getNombre());
-            s.setVisible(true);
+        } else {
+            if (r.getTipo().equals("Teórico") || r.getTipo().equals("Práctico")) {
+                InterfazSimple s = new InterfazSimple();
+                s.ingresarRamo((Simple) r);
+                s.setTitle(r.getNombre());
+                s.setVisible(true);
+            }
         }
     }
-     private void borrar(){
+
+    private void borrar() {
         if (!ramos.isEmpty()) {
             this.dispose();
             String n = "";
@@ -796,20 +803,22 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La lista de ramos ya está vacía",
                     "Nada que hacer", JOptionPane.INFORMATION_MESSAGE);
         }
-    }  
-    public void elim(int i){
+    }
+
+    public void elim(int i) {
         ramos.remove(i);
         inicioBotones();
     }
-    private void reiniciar(){
-        
+
+    private void reiniciar() {
+
         int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
                 + "ramos que haya creado, vaciando la lista.\nEsto no se puede "
-                + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?", 
+                + "deshacer. ¿Está seguro(a) que desea reiniciar el semestre?",
                 "ADVERTENCIA", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             Archivo ar = new Archivo();
-          
+
             switch (ramos.size()) {
                 case 9:
                     asign9.setVisible(false);
@@ -834,7 +843,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     ar.eliminarArchivo(asign3.getText());
                 case 2:
                     asign2.setVisible(false);
-                   ar.eliminarArchivo(asign2.getText());
+                    ar.eliminarArchivo(asign2.getText());
                 case 1:
                     asign1.setVisible(false);
                     ar.eliminarArchivo(asign1.getText());
@@ -842,12 +851,9 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     break;
             }
             ramos.clear();
-           
-            
+
         }
     }
-    
-   
 
     /**
      * @param args the command line arguments
@@ -887,8 +893,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-              
-                    new PaginaPrincipal().setVisible(true);
+
+                new PaginaPrincipal().setVisible(true);
             }
         });
     }

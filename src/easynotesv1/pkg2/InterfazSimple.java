@@ -11,6 +11,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -27,6 +28,7 @@ public class InterfazSimple extends javax.swing.JFrame {
     double pondT[];
 
     boolean arregloN = false;
+    private static final ImageIcon icon = new ImageIcon(InterfazSimple.class.getResource("/recursos/iconoo.png"));
 
     /**
      * Creates new form InterfazSimple
@@ -34,7 +36,7 @@ public class InterfazSimple extends javax.swing.JFrame {
     public InterfazSimple() {
         initComponents();
         setLocationRelativeTo(null);
-
+        this.setIconImage(icon.getImage());
     }
 
     public void ingresarRamo(Simple s) throws IOException {
@@ -67,7 +69,7 @@ public class InterfazSimple extends javax.swing.JFrame {
             case 8:
                 break;
         }
-       switch (s.getNotas()) {
+        switch (s.getNotas()) {
             case 8:
                 nt8.setText(data[1][7]);
                 pt8.setText(data[2][7]);

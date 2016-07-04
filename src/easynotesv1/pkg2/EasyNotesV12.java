@@ -11,6 +11,7 @@ import clases.Ramo;
 import clases.Simple;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,10 +22,13 @@ public class EasyNotesV12 {
     /**
      * @param args the command line arguments
      */
+     
     
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
+       
         Inicio i = new Inicio();
+       
         i.setVisible(true);
         try {
         i.L1.setVisible(true);
@@ -71,8 +75,8 @@ public class EasyNotesV12 {
             pp.ramoNuevo(leer);
         }
         
-        pp.setVisible(true);
-    
+        pp.setVisible(true);    
+         
     }
     
 }

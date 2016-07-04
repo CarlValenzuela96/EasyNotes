@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package easynotesv1.pkg2;
+
 import clases.*;
 import java.awt.*;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,13 +20,15 @@ public class EliminarRamo extends javax.swing.JFrame {
      * Creates new form TPseparado
      */
     int x, y;
+    private static final ImageIcon icon = new ImageIcon(InterfazMixto.class.getResource("/recursos/iconoo.png"));
 
     public EliminarRamo() {
         initComponents();
         setLocationRelativeTo(null);
-        
+        this.setIconImage(icon.getImage());
     }
-    public void nombres(String[] n){
+
+    public void nombres(String[] n) {
         for (String string : n) {
             nomAsign.addItem(string);
         }
@@ -245,12 +249,12 @@ public class EliminarRamo extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         int resp = JOptionPane.showConfirmDialog(null,
+        int resp = JOptionPane.showConfirmDialog(null,
                 "Los Datos borrados no se podrán recuperar.\n ¿Desea Seguir igualmente?", "Confirmar", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             elim();
         }
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -262,7 +266,7 @@ public class EliminarRamo extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-         int resp = JOptionPane.showConfirmDialog(null,
+        int resp = JOptionPane.showConfirmDialog(null,
                 "Los Datos no guardado se eliminarán.\n ¿Desea salir igualmente?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
         if (JOptionPane.OK_OPTION == resp) {
             System.exit(0);
@@ -292,7 +296,7 @@ public class EliminarRamo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomAsignActionPerformed
 
-    private void elim(){
+    private void elim() {
         this.dispose();
         PaginaPrincipal pp = new PaginaPrincipal();
         Archivo ar = new Archivo();
@@ -301,6 +305,7 @@ public class EliminarRamo extends javax.swing.JFrame {
         pp.setTitle("EasyNotes");
         pp.setVisible(true);
     }
+
     /**
      * @param args the command line arguments
      */

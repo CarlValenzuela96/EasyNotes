@@ -10,6 +10,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 import javax.swing.JOptionPane;
 
@@ -33,6 +34,7 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     boolean arregloT = false;
     boolean arregloP = false;
+    private static final ImageIcon icon = new ImageIcon(InterfazMixto.class.getResource("/recursos/iconoo.png"));
 
     public InterfazMixto() {
         initComponents();
@@ -40,7 +42,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         promGral.setVisible(true);
         jLabel17.setVisible(true);
         jButton5.setVisible(true);
-
+        this.setIconImage(icon.getImage());
     }
 
     public void ingresarRamo(Mixto s) throws IOException {
