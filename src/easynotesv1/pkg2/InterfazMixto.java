@@ -40,13 +40,15 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     }
 
-    public void ingresarRamo(Mixto s) {
+    public void ingresarRamo(Mixto s) throws IOException {
         nombreAsign.setText(s.getNombre());
         tipoAprob.setText(s.getTipo());
         pondTeo.setText(String.valueOf(s.getPond_teo()));
         pondPract.setText(String.valueOf(s.getPond_parct()));
         jLabel15.setText(Integer.toString(s.getCantNT()));
         jLabel16.setText(Integer.toString(s.getCantNP()));
+        String[][] data = new Archivo().leerArchivoRamo(s.getNombre());
+        
 
         if (s.getTipo().equals("TEORICO - PRACTICO por Separado")) {
             promGral.setVisible(false);
@@ -107,6 +109,60 @@ public class InterfazMixto extends javax.swing.JFrame {
                 nt8.setVisible(false);
                 pt8.setVisible(false);
             case 8:
+                break;
+        }
+        switch (s.getCantNT()) {
+            case 8:
+                nt8.setText(data[1][7]);
+                pt8.setText(data[2][7]);
+            case 7:
+                nt7.setText(data[1][6]);
+                pt7.setText(data[2][6]);
+            case 6:
+                nt6.setText(data[1][5]);
+                pt6.setText(data[2][5]);
+            case 5:
+                nt5.setText(data[1][4]);
+                pt5.setText(data[2][4]);
+            case 4:
+                nt4.setText(data[1][3]);
+                pt4.setText(data[2][3]);
+            case 3:
+                nt3.setText(data[1][2]);
+                pt3.setText(data[2][2]);
+            case 2:
+                nt2.setText(data[1][1]);
+                pt2.setText(data[2][1]);
+            case 1:
+                nt1.setText(data[1][0]);
+                pt1.setText(data[2][0]);
+                break;
+        }
+        switch (s.getCantNP()) {
+            case 8:
+                np8.setText(data[3][7]);
+                pp8.setText(data[4][7]);
+            case 7:
+                np7.setText(data[3][6]);
+                pp7.setText(data[4][6]);
+            case 6:
+                np6.setText(data[3][5]);
+                pp6.setText(data[4][5]);
+            case 5:
+                np5.setText(data[3][4]);
+                pp5.setText(data[4][4]);
+            case 4:
+                np4.setText(data[3][3]);
+                pp4.setText(data[4][3]);
+            case 3:
+                np3.setText(data[3][2]);
+                pp3.setText(data[4][2]);
+            case 2:
+                np2.setText(data[3][1]);
+                pp2.setText(data[4][1]);
+            case 1:
+                np1.setText(data[3][0]);
+                pp1.setText(data[4][0]);
                 break;
         }
     }
