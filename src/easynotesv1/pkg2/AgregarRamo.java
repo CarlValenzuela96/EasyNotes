@@ -499,7 +499,7 @@ public class AgregarRamo extends javax.swing.JFrame {
     private void nomAsignKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nomAsignKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z') && c != KeyEvent.VK_SPACE) {
+        if ((c < 'a' || c > 'z') && (c < 'A' || c > 'Z')) {
             evt.consume();
         }
         if (nomAsign.getText().length() >= 22) {
