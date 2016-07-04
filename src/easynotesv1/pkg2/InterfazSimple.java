@@ -291,10 +291,20 @@ public class InterfazSimple extends javax.swing.JFrame {
                 pt1ActionPerformed(evt);
             }
         });
+        pt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt1KeyTyped(evt);
+            }
+        });
 
         pt2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pt2ActionPerformed(evt);
+            }
+        });
+        pt2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt2KeyTyped(evt);
             }
         });
 
@@ -303,10 +313,20 @@ public class InterfazSimple extends javax.swing.JFrame {
                 pt3ActionPerformed(evt);
             }
         });
+        pt3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt3KeyTyped(evt);
+            }
+        });
 
         pt4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pt4ActionPerformed(evt);
+            }
+        });
+        pt4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt4KeyTyped(evt);
             }
         });
 
@@ -315,10 +335,20 @@ public class InterfazSimple extends javax.swing.JFrame {
                 pt5ActionPerformed(evt);
             }
         });
+        pt5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt5KeyTyped(evt);
+            }
+        });
 
         pt6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pt6ActionPerformed(evt);
+            }
+        });
+        pt6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt6KeyTyped(evt);
             }
         });
 
@@ -327,10 +357,20 @@ public class InterfazSimple extends javax.swing.JFrame {
                 pt7ActionPerformed(evt);
             }
         });
+        pt7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt7KeyTyped(evt);
+            }
+        });
 
         pt8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pt8ActionPerformed(evt);
+            }
+        });
+        pt8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt8KeyTyped(evt);
             }
         });
 
@@ -712,6 +752,7 @@ public class InterfazSimple extends javax.swing.JFrame {
 
     private void pt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pt1ActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_pt1ActionPerformed
 
     private void pt2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pt2ActionPerformed
@@ -1216,7 +1257,7 @@ public class InterfazSimple extends javax.swing.JFrame {
 
     void calcularProm() {
         Simple s = new Simple();
-        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
+        if ((sumPond(this.pondT) <= 100 && sumPond(this.pondT) >= 99.96)&&validarPond(this.pondT) && validarNota(this.notasT) == true) {
             double a = truncarNum(s.calcPromedioSimple(this.notasT, this.pondT));
 
             if (a >= 4) {
@@ -1234,8 +1275,11 @@ public class InterfazSimple extends javax.swing.JFrame {
         } else if (sumPond(this.pondT) != 100) {
             JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else if (validarNota(this.notasT) == false) {
+        } else if (!validarNota(this.notasT)) {
             JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }else if (!validarPond(this.pondT)) {
+            JOptionPane.showMessageDialog(null, "ingresar ponderacion mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
     }
@@ -1243,7 +1287,7 @@ public class InterfazSimple extends javax.swing.JFrame {
     void calcularNotaFaltante() {
 
         Simple s = new Simple();
-        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true && this.notasT.length >= 2) {
+        if ((sumPond(this.pondT) <= 100 && sumPond(this.pondT) >= 99.96) && validarNota(this.notasT)&&validarPond(this.pondT)&& this.notasT.length >= 2) {
             this.notasT[notasT.length - 1] = 0;
             double a = truncarNum(s.calcNotaFaltante(notasT, pondT));
             double b = truncarNum(s.calcNotaPExamen(notasT, pondT));
@@ -1269,11 +1313,14 @@ public class InterfazSimple extends javax.swing.JFrame {
         } else if (sumPond(this.pondT) != 100) {
             JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else if (validarNota(this.notasT) == false) {
+        } else if (!validarNota(this.notasT)) {
             JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         } else if (this.notasT.length < 2) {
             JOptionPane.showMessageDialog(null, "Cantidad de notas debe se superior a 1",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }else if (!validarPond(this.pondT)) {
+            JOptionPane.showMessageDialog(null, "ingresar ponderacion mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
 
@@ -1293,11 +1340,20 @@ public class InterfazSimple extends javax.swing.JFrame {
         return cont;
     }
 
-    boolean validarNota(double notaT[]
-    ) {
+    boolean validarNota(double notaT[]) {
         boolean pasa = true;
         for (int i = 0; i < notaT.length; i++) {
             if (notaT[i] > 7 || notaT[i] <= 0) {
+                pasa = false;
+            }
+        }
+        return pasa;
+    }
+
+    boolean validarPond(double pondT[]) {
+        boolean pasa = true;
+        for (int i = 0; i < pondT.length; i++) {
+            if (pondT[i] <= 0) {
                 pasa = false;
             }
         }
@@ -1380,6 +1436,46 @@ public class InterfazSimple extends javax.swing.JFrame {
         jLabel2.setForeground(Color.black);
         jLabel2.setText(".");
     }//GEN-LAST:event_guardarMouseExited
+
+    private void pt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt1KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt1.getText(), evt);
+    }//GEN-LAST:event_pt1KeyTyped
+
+    private void pt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt2KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt2.getText(), evt);
+    }//GEN-LAST:event_pt2KeyTyped
+
+    private void pt3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt3KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt3.getText(), evt);
+    }//GEN-LAST:event_pt3KeyTyped
+
+    private void pt4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt4KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt4.getText(), evt);
+    }//GEN-LAST:event_pt4KeyTyped
+
+    private void pt5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt5KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt5.getText(), evt);
+    }//GEN-LAST:event_pt5KeyTyped
+
+    private void pt6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt6KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt6.getText(), evt);
+    }//GEN-LAST:event_pt6KeyTyped
+
+    private void pt7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt7KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt7.getText(), evt);
+    }//GEN-LAST:event_pt7KeyTyped
+
+    private void pt8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt8KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt8.getText(), evt);
+    }//GEN-LAST:event_pt8KeyTyped
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
@@ -1389,7 +1485,7 @@ public class InterfazSimple extends javax.swing.JFrame {
         if ((c == '.') && cadena.contains(".")) {
             evt.consume();
         }
-        if (cadena.length() >= 5) {
+        if (cadena.length() >= 4) {
             evt.consume();
         }
     }

@@ -416,10 +416,20 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pt1ActionPerformed(evt);
             }
         });
+        pt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt1KeyTyped(evt);
+            }
+        });
 
         pt2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pt2ActionPerformed(evt);
+            }
+        });
+        pt2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt2KeyTyped(evt);
             }
         });
 
@@ -428,10 +438,20 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pt3ActionPerformed(evt);
             }
         });
+        pt3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt3KeyTyped(evt);
+            }
+        });
 
         pt4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pt4ActionPerformed(evt);
+            }
+        });
+        pt4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt4KeyTyped(evt);
             }
         });
 
@@ -440,10 +460,20 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pt5ActionPerformed(evt);
             }
         });
+        pt5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt5KeyTyped(evt);
+            }
+        });
 
         pt6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pt6ActionPerformed(evt);
+            }
+        });
+        pt6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt6KeyTyped(evt);
             }
         });
 
@@ -452,10 +482,20 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pt7ActionPerformed(evt);
             }
         });
+        pt7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt7KeyTyped(evt);
+            }
+        });
 
         pt8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pt8ActionPerformed(evt);
+            }
+        });
+        pt8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pt8KeyTyped(evt);
             }
         });
 
@@ -464,10 +504,20 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pp2ActionPerformed(evt);
             }
         });
+        pp2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pp2KeyTyped(evt);
+            }
+        });
 
         pp1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pp1ActionPerformed(evt);
+            }
+        });
+        pp1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pp1KeyTyped(evt);
             }
         });
 
@@ -573,10 +623,20 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pp3ActionPerformed(evt);
             }
         });
+        pp3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pp3KeyTyped(evt);
+            }
+        });
 
         pp4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pp4ActionPerformed(evt);
+            }
+        });
+        pp4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pp4KeyTyped(evt);
             }
         });
 
@@ -585,10 +645,20 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pp5ActionPerformed(evt);
             }
         });
+        pp5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pp5KeyTyped(evt);
+            }
+        });
 
         pp6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pp6ActionPerformed(evt);
+            }
+        });
+        pp6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pp6KeyTyped(evt);
             }
         });
 
@@ -597,10 +667,20 @@ public class InterfazMixto extends javax.swing.JFrame {
                 pp7ActionPerformed(evt);
             }
         });
+        pp7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pp7KeyTyped(evt);
+            }
+        });
 
         pp8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pp8ActionPerformed(evt);
+            }
+        });
+        pp8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                pp8KeyTyped(evt);
             }
         });
 
@@ -2219,7 +2299,7 @@ public class InterfazMixto extends javax.swing.JFrame {
     double calcularPromTeorico() {
         Mixto s = new Mixto();
         double a = 0;
-        if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
+        if ((sumPond(this.pondT) <= 100&&sumPond(this.pondT) >= 99.96 ) && validarPond(this.pondT)&& validarNota(this.notasT) == true) {
             a = truncarNum(s.calcPromedioSimple(this.notasT, this.pondT));
 
             if (a >= 4) {
@@ -2237,8 +2317,11 @@ public class InterfazMixto extends javax.swing.JFrame {
         } else if (sumPond(this.pondT) != 100) {
             JOptionPane.showMessageDialog(null, "Ponderacion Teorica no suma 100",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else if (validarNota(this.notasT) == false) {
+        } else if (!validarNota(this.notasT)) {
             JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }else if (!validarPond(this.pondT)) {
+            JOptionPane.showMessageDialog(null, "Ingresar Ponderacion mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         return a;
@@ -2247,7 +2330,7 @@ public class InterfazMixto extends javax.swing.JFrame {
     double calcularPromPractico() {
         Simple s = new Simple();
         double a = 0;
-        if (sumPond(this.pondP) == 100 && validarNota(this.notasP) == true) {
+        if ((sumPond(this.pondP) <= 100&&sumPond(this.pondP) >= 99.96 )&& validarPond(this.pondP)&&validarNota(this.notasP)) {
             a = truncarNum(s.calcPromedioSimple(this.notasP, this.pondP));
 
             if (a >= 4) {
@@ -2267,6 +2350,9 @@ public class InterfazMixto extends javax.swing.JFrame {
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         } else if (validarNota(this.notasP) == false) {
             JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (!validarPond(this.pondP)) {
+            JOptionPane.showMessageDialog(null, "Ingresar Ponderacion mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         return a;
@@ -2298,7 +2384,7 @@ public class InterfazMixto extends javax.swing.JFrame {
     void calcularNotaFaltante(double[] pond, double[] notas) {
 
         Simple s = new Simple();
-        if (sumPond(pond) == 100 && validarNota(notas) == true && notas.length >= 2) {
+        if ((sumPond(pond) <= 100&&sumPond(pond) >= 99.96 ) && validarNota(notas)&&validarPond(pond)&& notas.length >= 2) {
             notas[notas.length - 1] = 0;
             double a = truncarNum(s.calcNotaFaltante(notas, pond));
             double b = truncarNum(s.calcNotaPExamen(notas, pond));
@@ -2324,11 +2410,14 @@ public class InterfazMixto extends javax.swing.JFrame {
         } else if (sumPond(pond) != 100) {
             JOptionPane.showMessageDialog(null, "Ponderacion no suma 100",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
-        } else if (validarNota(notas) == false) {
-            JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
+        } else if (!validarNota(notas)) {
+            JOptionPane.showMessageDialog(null, "Ingresar nota menor a 7 y/o mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         } else if (notas.length < 2) {
             JOptionPane.showMessageDialog(null, "Cantidad de notas debe se superior a 1",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        } else if (!validarPond(pond)) {
+            JOptionPane.showMessageDialog(null, "Ingresar Ponderacion mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
 
@@ -2351,6 +2440,15 @@ public class InterfazMixto extends javax.swing.JFrame {
         boolean pasa = true;
         for (int i = 0; i < notas.length; i++) {
             if (notas[i] > 7 || notas[i] <= 0) {
+                pasa = false;
+            }
+        }
+        return pasa;
+    }
+      boolean validarPond(double pond[]) {
+        boolean pasa = true;
+        for (int i = 0; i < pond.length; i++) {
+            if (pond[i] <= 0) {
                 pasa = false;
             }
         }
@@ -2464,6 +2562,86 @@ public class InterfazMixto extends javax.swing.JFrame {
         jLabel19.setText(".");
     }//GEN-LAST:event_guardarMouseExited
 
+    private void pt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt1KeyTyped
+        // TODO add your handling code here:7
+        validacionNota(pt1.getText(),evt);
+    }//GEN-LAST:event_pt1KeyTyped
+
+    private void pt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt2KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt2.getText(),evt);
+    }//GEN-LAST:event_pt2KeyTyped
+
+    private void pt3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt3KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt3.getText(),evt);
+    }//GEN-LAST:event_pt3KeyTyped
+
+    private void pt4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt4KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt4.getText(),evt);
+    }//GEN-LAST:event_pt4KeyTyped
+
+    private void pt5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt5KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt5.getText(),evt);
+    }//GEN-LAST:event_pt5KeyTyped
+
+    private void pt6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt6KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt6.getText(),evt);
+    }//GEN-LAST:event_pt6KeyTyped
+
+    private void pt7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt7KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt7.getText(),evt);
+    }//GEN-LAST:event_pt7KeyTyped
+
+    private void pt8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt8KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pt8.getText(),evt);
+    }//GEN-LAST:event_pt8KeyTyped
+
+    private void pp1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp1KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pp1.getText(),evt);
+    }//GEN-LAST:event_pp1KeyTyped
+
+    private void pp2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp2KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pp2.getText(),evt);
+    }//GEN-LAST:event_pp2KeyTyped
+
+    private void pp3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp3KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pp3.getText(),evt);
+    }//GEN-LAST:event_pp3KeyTyped
+
+    private void pp4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp4KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pp4.getText(),evt);
+    }//GEN-LAST:event_pp4KeyTyped
+
+    private void pp5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp5KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pp5.getText(),evt);
+    }//GEN-LAST:event_pp5KeyTyped
+
+    private void pp6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp6KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pp6.getText(),evt);
+    }//GEN-LAST:event_pp6KeyTyped
+
+    private void pp7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp7KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pp7.getText(),evt);
+    }//GEN-LAST:event_pp7KeyTyped
+
+    private void pp8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp8KeyTyped
+        // TODO add your handling code here:
+        validacionNota(pp8.getText(),evt);
+    }//GEN-LAST:event_pp8KeyTyped
+
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
@@ -2473,7 +2651,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         if ((c == '.') && cadena.contains(".")) {
             evt.consume();
         }
-        if (cadena.length() >= 5) {
+        if (cadena.length() >= 4) {
             evt.consume();
         }
     }
