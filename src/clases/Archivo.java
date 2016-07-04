@@ -37,14 +37,14 @@ public class Archivo {
         File f = new File("Ramos//" + nombre + ".txt");
         FileWriter fw;
         BufferedWriter bw;
-
+        
         if (f.exists()) {
 
             fw = new FileWriter(f, true);
             bw = new BufferedWriter(fw);
             bw.newLine();
             bw.write(nombre + "%" + tipo + "%" + cantN);
-
+        
         } else {
             fw = new FileWriter(f);
             bw = new BufferedWriter(fw);
@@ -55,6 +55,23 @@ public class Archivo {
         fw.close();
 
 //        throw new UnsupportedOperationException();
+    }
+    
+    public void guardarArchivo(String nombre, double[] notas, double[] pond) throws IOException{
+        File f = new File("Ramos//" + nombre + ".txt");
+        FileWriter fw = new FileWriter(f,true);
+        BufferedWriter bw = new BufferedWriter(fw);
+        
+        bw.newLine();
+        for (double nota : notas) {
+            bw.write(Double.toString(nota)+"%");
+        }
+        bw.newLine();
+        for (double p : pond) {
+            bw.write(Double.toString(p)+"%");
+        }
+        bw.close();
+        fw.close();
     }
 
     public String[][] leerArchivoRamo(String nombre) throws IOException {

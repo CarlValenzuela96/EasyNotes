@@ -5,8 +5,10 @@
  */
 package easynotesv1.pkg2;
 
+import clases.Archivo;
 import clases.Simple;
 import java.awt.*;
+import java.io.IOException;
 import javax.swing.JOptionPane;
 
 /**
@@ -340,6 +342,11 @@ public class InterfazSimple extends javax.swing.JFrame {
         guardar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/salir.png"))); // NOI18N
         jButton4.setBorder(null);
@@ -556,22 +563,20 @@ public class InterfazSimple extends javax.swing.JFrame {
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(tipoAprob)))
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(paginaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(107, 107, 107)))
+                        .addGap(20, 20, 20)
+                        .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(tipoAprob)))
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(paginaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(107, 107, 107)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1157,6 +1162,14 @@ public class InterfazSimple extends javax.swing.JFrame {
                 break;
         }
     }
+    
+    private void guardar() throws IOException{
+        Archivo ar = new Archivo();
+        ar.eliminarArchivo(nombreAsign.getText());
+        ar.crearArchivoSimple(nombreAsign.getText(), tipoAprob.getText(),
+                jLabel15.getText());
+        ar.guardarArchivo(nombreAsign.getText(), notasT, pondT);
+    }
 
     void calcularProm() {
         Simple s = new Simple();
@@ -1290,6 +1303,10 @@ public class InterfazSimple extends javax.swing.JFrame {
         jLabel2.setForeground(Color.black);
         jLabel2.setText(".");
     }//GEN-LAST:event_jButton1MouseExited
+
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_guardarActionPerformed
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 

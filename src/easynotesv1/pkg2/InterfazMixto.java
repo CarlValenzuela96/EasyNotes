@@ -1346,8 +1346,12 @@ public class InterfazMixto extends javax.swing.JFrame {
     }//GEN-LAST:event_np8KeyTyped
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        // TODO add your handling code here:
-       
+        try {
+            // TODO add your handling code here:
+            this.guardar();
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazMixto.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_guardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -2103,6 +2107,16 @@ public class InterfazMixto extends javax.swing.JFrame {
                 }
                 break;
         }
+    }
+    
+    private void guardar() throws IOException{
+        Archivo ar = new Archivo();
+        ar.eliminarArchivo(nombreAsign.getText());
+        ar.crearArchivoMixto(nombreAsign.getText(), tipoAprob.getText(),
+                jLabel15.getText(), jLabel16.getText(), pondTeo.getText(),
+                pondPract.getText());
+        ar.guardarArchivo(nombreAsign.getText(), notasT, pondT);
+        ar.guardarArchivo(nombreAsign.getText(), notasP, pondP);
     }
 
     double calcularPromTeorico() {
