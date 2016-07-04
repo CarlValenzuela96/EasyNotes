@@ -30,6 +30,9 @@ public class InterfazMixto extends javax.swing.JFrame {
     double[] pondP;
     double prom_Teo;
     double prom_Pract;
+    
+    boolean arregloT=false;
+    boolean arregloP=false;
 
     public InterfazMixto() {
         initComponents();
@@ -40,14 +43,15 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     }
 
-    public void ingresarRamo(Mixto s) {
+    public void ingresarRamo(Mixto s) throws IOException {
         nombreAsign.setText(s.getNombre());
         tipoAprob.setText(s.getTipo());
         pondTeo.setText(String.valueOf(s.getPond_teo()));
         pondPract.setText(String.valueOf(s.getPond_parct()));
         jLabel15.setText(Integer.toString(s.getCantNT()));
         jLabel16.setText(Integer.toString(s.getCantNP()));
-
+        String[][] data = new Archivo().leerArchivoRamo(s.getNombre());
+        
         if (s.getTipo().equals("TEORICO - PRACTICO por Separado")) {
             promGral.setVisible(false);
             jLabel17.setVisible(false);
@@ -107,6 +111,60 @@ public class InterfazMixto extends javax.swing.JFrame {
                 nt8.setVisible(false);
                 pt8.setVisible(false);
             case 8:
+                break;
+        }
+        switch (s.getCantNT()) {
+            case 8:
+                nt8.setText(data[1][7]);
+                pt8.setText(data[2][7]);
+            case 7:
+                nt7.setText(data[1][6]);
+                pt7.setText(data[2][6]);
+            case 6:
+                nt6.setText(data[1][5]);
+                pt6.setText(data[2][5]);
+            case 5:
+                nt5.setText(data[1][4]);
+                pt5.setText(data[2][4]);
+            case 4:
+                nt4.setText(data[1][3]);
+                pt4.setText(data[2][3]);
+            case 3:
+                nt3.setText(data[1][2]);
+                pt3.setText(data[2][2]);
+            case 2:
+                nt2.setText(data[1][1]);
+                pt2.setText(data[2][1]);
+            case 1:
+                nt1.setText(data[1][0]);
+                pt1.setText(data[2][0]);
+                break;
+        }
+        switch (s.getCantNP()) {
+            case 8:
+                np8.setText(data[3][7]);
+                pp8.setText(data[4][7]);
+            case 7:
+                np7.setText(data[3][6]);
+                pp7.setText(data[4][6]);
+            case 6:
+                np6.setText(data[3][5]);
+                pp6.setText(data[4][5]);
+            case 5:
+                np5.setText(data[3][4]);
+                pp5.setText(data[4][4]);
+            case 4:
+                np4.setText(data[3][3]);
+                pp4.setText(data[4][3]);
+            case 3:
+                np3.setText(data[3][2]);
+                pp3.setText(data[4][2]);
+            case 2:
+                np2.setText(data[3][1]);
+                pp2.setText(data[4][1]);
+            case 1:
+                np1.setText(data[3][0]);
+                pp1.setText(data[4][0]);
                 break;
         }
     }
@@ -606,6 +664,14 @@ public class InterfazMixto extends javax.swing.JFrame {
         guardar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
+        guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                guardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                guardarMouseExited(evt);
+            }
+        });
         guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 guardarActionPerformed(evt);
@@ -1347,14 +1413,32 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
         // TODO add your handling code here:
-       
+        if(arregloT&&arregloP){
+         try {
+            // TODO add your handling code here:
+            this.guardar();
+        } catch (IOException ex) {
+            Logger.getLogger(InterfazMixto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+          JOptionPane.showMessageDialog(null, "Datos Guardados Exitosamente",
+                        "NOTAS GUARDADAS", JOptionPane.WARNING_MESSAGE);
+        }else if(!arregloT&&!arregloP){
+          JOptionPane.showMessageDialog(null, "Error al guardar, calcula los promedios y vuelve a intentarlo",
+                        "NOTAS GUARDADAS", JOptionPane.WARNING_MESSAGE);
+        }else if(arregloT&&!arregloP){
+          JOptionPane.showMessageDialog(null, "Error al guardar, calcula el promedio practico y vuelve a intentarlo",
+                        "NOTAS GUARDADAS", JOptionPane.WARNING_MESSAGE);
+        }else if(!arregloT&&arregloP){
+          JOptionPane.showMessageDialog(null, "Error al guardar, calcula el promedio teorico y vuelve a intentarlo",
+                        "NOTAS GUARDADAS", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_guardarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
         crearArregloTeorico(evt);
-
+        this.arregloT=true;
     }//GEN-LAST:event_jButton1ActionPerformed
     void crearArregloTeorico(java.awt.event.ActionEvent evt) {
         if (jButton1 == evt.getSource()) {
@@ -2104,6 +2188,15 @@ public class InterfazMixto extends javax.swing.JFrame {
                 break;
         }
     }
+     private void guardar() throws IOException{
+        Archivo ar = new Archivo();
+        ar.eliminarArchivo(nombreAsign.getText());
+        ar.crearArchivoMixto(nombreAsign.getText(), tipoAprob.getText(),
+                jLabel15.getText(), jLabel16.getText(), pondTeo.getText(),
+                pondPract.getText());
+        ar.guardarArchivo(nombreAsign.getText(), notasT, pondT);
+        ar.guardarArchivo(nombreAsign.getText(), notasP, pondP);
+    }
 
     double calcularPromTeorico() {
         Mixto s = new Mixto();
@@ -2301,7 +2394,7 @@ public class InterfazMixto extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         crearArregloPractico(evt);
-
+        this.arregloP=true;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -2323,6 +2416,19 @@ public class InterfazMixto extends javax.swing.JFrame {
         jLabel19.setForeground(Color.black);
         jLabel19.setText(".");
     }//GEN-LAST:event_jButton5MouseExited
+
+    private void guardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseEntered
+        // TODO add your handling code here:
+        jLabel19.setVisible(true);
+        jLabel19.setForeground(Color.red);
+        jLabel19.setText("* Para guardar las notas debes primero Calcular los promedios obtenido");
+    }//GEN-LAST:event_guardarMouseEntered
+
+    private void guardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseExited
+        // TODO add your handling code here:
+        jLabel19.setForeground(Color.black);
+        jLabel19.setText(".");
+    }//GEN-LAST:event_guardarMouseExited
 
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();

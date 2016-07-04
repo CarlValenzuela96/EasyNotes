@@ -3,7 +3,10 @@ package easynotesv1.pkg2;
 import clases.*;
 import java.awt.MouseInfo;
 import java.awt.Point;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -621,17 +624,29 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel13MouseDragged
     // se paso a publio y statico en (customize code ) para poder agregar y ser visible desde agregar ramo
     private void asign1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign1ActionPerformed
-  asignatura(0);
+        try {
+            asignatura(0);
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_asign1ActionPerformed
 
     private void asign8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign8ActionPerformed
-        // TODO add your handling code here:
-        asignatura(7);
+        try {
+            // TODO add your handling code here:
+            asignatura(7);
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_asign8ActionPerformed
 
     private void asign5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign5ActionPerformed
-        // TODO add your handling code here:
-        asignatura(4);
+        try {
+            // TODO add your handling code here:
+            asignatura(4);
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_asign5ActionPerformed
 
     private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
@@ -642,33 +657,57 @@ public class PaginaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonReiniciarActionPerformed
 
     private void asign2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign2ActionPerformed
-        // TODO add your handling code here:
-        asignatura(1);
+        try {
+            // TODO add your handling code here:
+            asignatura(1);
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_asign2ActionPerformed
 
     private void asign3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign3ActionPerformed
-        // TODO add your handling code here:
-        asignatura(2);
+        try {
+            // TODO add your handling code here:
+            asignatura(2);
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_asign3ActionPerformed
 
     private void asign4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign4ActionPerformed
-        // TODO add your handling code here:
-        asignatura(3);
+        try {
+            // TODO add your handling code here:
+            asignatura(3);
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_asign4ActionPerformed
 
     private void asign6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign6ActionPerformed
-        // TODO add your handling code here:
-        asignatura(5);
+        try {
+            // TODO add your handling code here:
+            asignatura(5);
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_asign6ActionPerformed
 
     private void asign7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign7ActionPerformed
-        // TODO add your handling code here:
-        asignatura(6);
+        try {
+            // TODO add your handling code here:
+            asignatura(6);
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_asign7ActionPerformed
 
     private void asign9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asign9ActionPerformed
-        // TODO add your handling code here:
-        asignatura(8);
+        try {
+            // TODO add your handling code here:
+            asignatura(8);
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_asign9ActionPerformed
     private void agregar(){
         if (ramos.size()<9) {
@@ -726,7 +765,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
         ramos.add(rn);
     }
-     private void asignatura(int n){
+     private void asignatura(int n) throws IOException{
         Ramo r = ramos.get(n);
         this.dispose();
         if(r.getTipo().equals("TEORICO - PRACTICO por Separado")||r.getTipo().equals("TEORICO - PRACTICO en Conjunto")){

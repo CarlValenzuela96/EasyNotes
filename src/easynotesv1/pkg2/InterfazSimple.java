@@ -5,8 +5,12 @@
  */
 package easynotesv1.pkg2;
 
+import clases.Archivo;
 import clases.Simple;
 import java.awt.*;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +26,8 @@ public class InterfazSimple extends javax.swing.JFrame {
     double notasT[];
     double pondT[];
 
+    boolean arregloN = false;
+
     /**
      * Creates new form InterfazSimple
      */
@@ -31,10 +37,11 @@ public class InterfazSimple extends javax.swing.JFrame {
 
     }
 
-    public void ingresarRamo(Simple s) {
+    public void ingresarRamo(Simple s) throws IOException {
         nombreAsign.setText(s.getNombre());
         tipoAprob.setText(s.getTipo());
         jLabel15.setText(Integer.toString(s.getNotas()));
+        String[][] data = new Archivo().leerArchivoRamo(s.getNombre());
         switch (s.getNotas()) {
             case 1:
                 nt2.setVisible(false);
@@ -58,6 +65,33 @@ public class InterfazSimple extends javax.swing.JFrame {
                 nt8.setVisible(false);
                 pt8.setVisible(false);
             case 8:
+                break;
+        }
+       switch (s.getNotas()) {
+            case 8:
+                nt8.setText(data[1][7]);
+                pt8.setText(data[2][7]);
+            case 7:
+                nt7.setText(data[1][6]);
+                pt7.setText(data[2][6]);
+            case 6:
+                nt6.setText(data[1][5]);
+                pt6.setText(data[2][5]);
+            case 5:
+                nt5.setText(data[1][4]);
+                pt5.setText(data[2][4]);
+            case 4:
+                nt4.setText(data[1][3]);
+                pt4.setText(data[2][3]);
+            case 3:
+                nt3.setText(data[1][2]);
+                pt3.setText(data[2][2]);
+            case 2:
+                nt2.setText(data[1][1]);
+                pt2.setText(data[2][1]);
+            case 1:
+                nt1.setText(data[1][0]);
+                pt1.setText(data[2][0]);
                 break;
         }
     }
@@ -340,6 +374,19 @@ public class InterfazSimple extends javax.swing.JFrame {
         guardar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
         guardar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/bguardarP.png"))); // NOI18N
+        guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                guardarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                guardarMouseExited(evt);
+            }
+        });
+        guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarActionPerformed(evt);
+            }
+        });
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/salir.png"))); // NOI18N
         jButton4.setBorder(null);
@@ -556,22 +603,20 @@ public class InterfazSimple extends javax.swing.JFrame {
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jcMousePanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(tipoAprob)))
-                            .addGroup(jcMousePanel1Layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(paginaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(107, 107, 107)))
+                        .addGap(20, 20, 20)
+                        .addComponent(nombreAsign, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jcMousePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(tipoAprob)))
+                    .addGroup(jcMousePanel1Layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(paginaPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(107, 107, 107)
                 .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jcMousePanel1Layout.createSequentialGroup()
                         .addGroup(jcMousePanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -780,6 +825,7 @@ public class InterfazSimple extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         crearArreglo(evt);
+        arregloN = true;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     void crearArreglo(java.awt.event.ActionEvent evt) {
@@ -818,7 +864,7 @@ public class InterfazSimple extends javax.swing.JFrame {
                         mensajeError();
                     }
                 } else if (jButton2 == evt.getSource()) {
-                    if (!nt1.getText().equals("") && !pt1.getText().equals("")&& !pt2.getText().equals("")
+                    if (!nt1.getText().equals("") && !pt1.getText().equals("") && !pt2.getText().equals("")
                             && nt1.getText().charAt(0) != '.' && pt1.getText().charAt(0) != '.' && pt2.getText().charAt(0) != '.') {
                         this.notasT = new double[2];
                         notasT[0] = Double.parseDouble(nt1.getText());
@@ -1158,6 +1204,14 @@ public class InterfazSimple extends javax.swing.JFrame {
         }
     }
 
+    private void guardar() throws IOException {
+        Archivo ar = new Archivo();
+        ar.eliminarArchivo(nombreAsign.getText());
+        ar.crearArchivoSimple(nombreAsign.getText(), tipoAprob.getText(),
+                jLabel15.getText());
+        ar.guardarArchivo(nombreAsign.getText(), notasT, pondT);
+    }
+
     void calcularProm() {
         Simple s = new Simple();
         if (sumPond(this.pondT) == 100 && validarNota(this.notasT) == true) {
@@ -1192,7 +1246,7 @@ public class InterfazSimple extends javax.swing.JFrame {
             double a = truncarNum(s.calcNotaFaltante(notasT, pondT));
             double b = truncarNum(s.calcNotaPExamen(notasT, pondT));
 
-            if ((a <= 7 && b <= 7)&&(a > 1 && b > 1)) {
+            if ((a <= 7 && b <= 7) && (a > 1 && b > 1)) {
                 JOptionPane.showMessageDialog(null, "Para aprobar la asignatura con un 4 necesitas un : |" + String.valueOf(a)
                         + "|, En la última evaluacion\n y \n Para poder rendir examen necesitas un: |" + String.valueOf(b) + "|, En la última evaluacion",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
@@ -1202,10 +1256,10 @@ public class InterfazSimple extends javax.swing.JFrame {
             } else if (a > 7 && b > 7) {
                 JOptionPane.showMessageDialog(null, "Notas insuficientes para aprobar o para rendir examen, ",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
-            }else if (a <= 1  && b <= 1) {
+            } else if (a <= 1 && b <= 1) {
                 JOptionPane.showMessageDialog(null, "con la nota minima (1.0) En la última evaluacion pasas es ramo",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
-            }else if (a > 1 && b <= 1) {
+            } else if (a > 1 && b <= 1) {
                 JOptionPane.showMessageDialog(null, "Para aprobar la asignatura con un 4 necesitas un : |" + String.valueOf(a)
                         + "|, En la última evaluacion\n y \n con la nota minima (1.0) En la última evaluacion pudes dar examen",
                         "NOTA FALTANTE", JOptionPane.WARNING_MESSAGE);
@@ -1294,6 +1348,36 @@ public class InterfazSimple extends javax.swing.JFrame {
         jLabel2.setForeground(Color.black);
         jLabel2.setText(".");
     }//GEN-LAST:event_jButton1MouseExited
+
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
+        // TODO add your handling code here:
+        if (arregloN) {
+            try {
+                // TODO add your handling code here:
+                this.guardar();
+            } catch (IOException ex) {
+                Logger.getLogger(InterfazMixto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            JOptionPane.showMessageDialog(null, "Datos Guardados Exitosamente",
+                    "NOTAS GUARDADAS", JOptionPane.WARNING_MESSAGE);
+        } else if (!arregloN) {
+            JOptionPane.showMessageDialog(null, "Error al guardar, calcula el promedio y vuelve a intentarlo",
+                    "NOTAS GUARDADAS", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_guardarActionPerformed
+
+    private void guardarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseEntered
+        // TODO add your handling code here:
+        jLabel2.setVisible(true);
+        jLabel2.setForeground(Color.red);
+        jLabel2.setText("* Para guardar las notas debes primero Calcular el promedio obtenido");
+    }//GEN-LAST:event_guardarMouseEntered
+
+    private void guardarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarMouseExited
+        // TODO add your handling code here:
+        jLabel2.setForeground(Color.black);
+        jLabel2.setText(".");
+    }//GEN-LAST:event_guardarMouseExited
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 
