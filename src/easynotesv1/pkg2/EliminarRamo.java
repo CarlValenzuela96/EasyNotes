@@ -28,6 +28,7 @@ public class EliminarRamo extends javax.swing.JFrame {
         this.setIconImage(icon.getImage());
     }
 
+    //agrega la el nombre de la asignatura a un jComboBox para poder eliminarla
     public void nombres(String[] n) {
         for (String string : n) {
             nomAsign.addItem(string);
@@ -296,6 +297,8 @@ public class EliminarRamo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nomAsignActionPerformed
 
+    //instancia un objeto de clase principal para pasar como parametro el nombre del ramo seleccionado para eliminarlo del arraylist
+    //y un objeto de archivo para pasar como parametro el nombre del ramo seleccionado para borrar el archivo correspondiente 
     private void elim() {
         this.dispose();
         PaginaPrincipal pp = new PaginaPrincipal();

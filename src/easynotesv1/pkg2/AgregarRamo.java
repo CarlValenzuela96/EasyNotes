@@ -405,7 +405,7 @@ public class AgregarRamo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//boton crear asignatura y llama al metodo agregar
     private void crearAsignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearAsignActionPerformed
        if(!jTextField1.getText().equals("")&&!jTextField1.getText().equals("")){ 
            if((Double.parseDouble(jTextField1.getText())+Double.parseDouble(jTextField2.getText()))==100){
@@ -559,6 +559,8 @@ public class AgregarRamo extends javax.swing.JFrame {
         Point point = MouseInfo.getPointerInfo().getLocation();
         setLocation(point.x - x, point.y - y);
     }//GEN-LAST:event_jLabel12MouseDragged
+    
+//metodo que agrega las caracteristicas del ramo al arrayList de ramos de la pagina principal
     private void agregar() throws IOException {
         PaginaPrincipal pp = new PaginaPrincipal();
 
@@ -581,7 +583,6 @@ public class AgregarRamo extends javax.swing.JFrame {
                 m.setTipo("TEORICO - PRACTICO por Separado");
                 m.setPond_teo(Double.parseDouble(jTextField1.getText()));
                 m.setPond_parct(Double.parseDouble(jTextField2.getText()));
-                m.setLim_teo(Byte.parseByte(jTextField3.getText()));
                 m.setCantNT((byte) Byte.parseByte(jTextField3.getText()));
                 m.setCantNP((byte) Byte.parseByte(jTextField4.getText()));
                 nr = m;
@@ -591,7 +592,6 @@ public class AgregarRamo extends javax.swing.JFrame {
                 m.setTipo("TEORICO - PRACTICO en Conjunto");
                 m.setPond_teo(Double.parseDouble(jTextField1.getText()));
                 m.setPond_parct(Double.parseDouble(jTextField2.getText()));
-                m.setLim_teo(Byte.parseByte(jTextField3.getText()));
                 m.setCantNT((byte) Byte.parseByte(jTextField3.getText()));
                 m.setCantNP((byte) Byte.parseByte(jTextField4.getText()));
                 nr = m;
@@ -605,7 +605,6 @@ public class AgregarRamo extends javax.swing.JFrame {
                     break;
 
                 }
-
             }
             if (!resp) {
                 nr.setNombre(nomAsign.getText());
@@ -624,11 +623,6 @@ public class AgregarRamo extends javax.swing.JFrame {
                 jTextField3.setText("");
                 jTextField4.setText("");
             }
-            // nr.setNombre(nomAsign.getText());
-            //pp.ramoNuevo(nr);
-            //this.dispose();
-            //pp.setTitle("EasyNotes");
-            //pp.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Porfavor llene todos los campos",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
@@ -640,7 +634,7 @@ public class AgregarRamo extends javax.swing.JFrame {
             }
         }
     }
-
+    //validacion de cantidad de notas (cantidad de caracteres, y caracteres permitidos)
     private void validarCantNotas(String cadena, java.awt.event.KeyEvent evt) {
         char c = evt.getKeyChar();
 

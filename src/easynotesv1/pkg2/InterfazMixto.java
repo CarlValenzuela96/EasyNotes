@@ -44,6 +44,8 @@ public class InterfazMixto extends javax.swing.JFrame {
         jButton5.setVisible(true);
         this.setIconImage(icon.getImage());
     }
+//ve los datos de los ramos y los distribuye en la interfaz (cantidad de notas, tipo aprobacion, ect
+    //ademas de hacer visible los jTexfield segun la cantidad de notas que tenga el ramo
 
     public void ingresarRamo(Mixto s) throws IOException {
         nombreAsign.setText(s.getNombre());
@@ -1537,6 +1539,9 @@ public class InterfazMixto extends javax.swing.JFrame {
         crearArregloTeorico(evt);
         this.arregloT = true;
     }//GEN-LAST:event_jButton1ActionPerformed
+
+//crea un arreglo dependiendo de la cantidad de notas Teoricas que tenga el ramo
+//y calcula el promedio de la parte teorica o la nota necesaria.   
     void crearArregloTeorico(java.awt.event.ActionEvent evt) {
         if (jButton1 == evt.getSource()) {
             this.prom_Teo = 0;
@@ -1915,6 +1920,8 @@ public class InterfazMixto extends javax.swing.JFrame {
                 break;
         }
     }
+//crea un arreglo dependiendo de la cantidad de notas practicas que tenga el ramo
+//y calcula el promedio de la parte practica o la nota necesaria.   
 
     void crearArregloPractico(java.awt.event.ActionEvent evt) {
         if (jButton4 == evt.getSource()) {
@@ -2286,20 +2293,23 @@ public class InterfazMixto extends javax.swing.JFrame {
         }
     }
 
+    //instancia un objeto de clase archivo, guarda los datos del ramo 
+    //y guarda las notas y ponderaciones de este
     private void guardar() throws IOException {
         Archivo ar = new Archivo();
         ar.eliminarArchivo(nombreAsign.getText());
         ar.crearArchivoMixto(nombreAsign.getText(), tipoAprob.getText(),
                 jLabel15.getText(), jLabel16.getText(), pondTeo.getText(),
                 pondPract.getText());
-        ar.guardarArchivo(nombreAsign.getText(), notasT, pondT);
-        ar.guardarArchivo(nombreAsign.getText(), notasP, pondP);
+        ar.guardarNotas(nombreAsign.getText(), notasT, pondT);
+        ar.guardarNotas(nombreAsign.getText(), notasP, pondP);
     }
 
+    //instancia un objeto de la clase mixto y calcula el promedio teorico del ramo
     double calcularPromTeorico() {
         Mixto s = new Mixto();
         double a = 0;
-        if ((sumPond(this.pondT) <= 100&&sumPond(this.pondT) >= 99.96 ) && validarPond(this.pondT)&& validarNota(this.notasT) == true) {
+        if ((sumPond(this.pondT) <= 100 && sumPond(this.pondT) >= 99.96) && validarPond(this.pondT) && validarNota(this.notasT) == true) {
             a = truncarNum(s.calcPromedioSimple(this.notasT, this.pondT));
 
             if (a >= 4) {
@@ -2320,17 +2330,18 @@ public class InterfazMixto extends javax.swing.JFrame {
         } else if (!validarNota(this.notasT)) {
             JOptionPane.showMessageDialog(null, "ingresar nota menor a 7 y/o mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
-        }else if (!validarPond(this.pondT)) {
+        } else if (!validarPond(this.pondT)) {
             JOptionPane.showMessageDialog(null, "Ingresar Ponderacion mayor a 0",
                     "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         return a;
     }
 
+    //instancia un objeto de la clase mixto y calcula el promedio practico del ramo
     double calcularPromPractico() {
         Simple s = new Simple();
         double a = 0;
-        if ((sumPond(this.pondP) <= 100&&sumPond(this.pondP) >= 99.96 )&& validarPond(this.pondP)&&validarNota(this.notasP)) {
+        if ((sumPond(this.pondP) <= 100 && sumPond(this.pondP) >= 99.96) && validarPond(this.pondP) && validarNota(this.notasP)) {
             a = truncarNum(s.calcPromedioSimple(this.notasP, this.pondP));
 
             if (a >= 4) {
@@ -2358,6 +2369,8 @@ public class InterfazMixto extends javax.swing.JFrame {
         return a;
     }
 
+    //instancia un objeto de la clase mixto y calcula el promedio general del ramo
+    //usando el promedio teorico y promedio practico guardados con anterioridad en unas variables
     void promGral() {
 
         Mixto m = new Mixto();
@@ -2381,11 +2394,13 @@ public class InterfazMixto extends javax.swing.JFrame {
         }
     }
 
+    //instancia un objeto de la clase mixto y calcula la nota faltante para aprobar ya sea la parte teorica o practica
+    //usando como parametros las notas y ponderaciones de cada parte
     void calcularNotaFaltante(double[] pond, double[] notas) {
 
-        Simple s = new Simple();
-        if ((sumPond(pond) <= 100&&sumPond(pond) >= 99.96 ) && validarNota(notas)&&validarPond(pond)&& notas.length >= 2) {
-            notas[notas.length - 1] = 0;
+        Mixto s = new Mixto();
+        if ((sumPond(pond) <= 100 && sumPond(pond) >= 99.96) && validarNota(notas) && validarPond(pond) && notas.length >= 2) {
+
             double a = truncarNum(s.calcNotaFaltante(notas, pond));
             double b = truncarNum(s.calcNotaPExamen(notas, pond));
 
@@ -2428,6 +2443,7 @@ public class InterfazMixto extends javax.swing.JFrame {
                 "ERROR", JOptionPane.WARNING_MESSAGE);
     }
 
+    //suma las ponderaciones
     double sumPond(double pond[]) {
         double cont = 0;
         for (int i = 0; i < pond.length; i++) {
@@ -2435,6 +2451,7 @@ public class InterfazMixto extends javax.swing.JFrame {
         }
         return cont;
     }
+//valida la nota para que no sea mayor a 0 o menor a 7 y retorna un boolean
 
     boolean validarNota(double notas[]) {
         boolean pasa = true;
@@ -2445,7 +2462,9 @@ public class InterfazMixto extends javax.swing.JFrame {
         }
         return pasa;
     }
-      boolean validarPond(double pond[]) {
+
+    //valida la ponderacion para que no sea mayor a 0 y retorna un boolean
+    boolean validarPond(double pond[]) {
         boolean pasa = true;
         for (int i = 0; i < pond.length; i++) {
             if (pond[i] <= 0) {
@@ -2564,82 +2583,82 @@ public class InterfazMixto extends javax.swing.JFrame {
 
     private void pt1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt1KeyTyped
         // TODO add your handling code here:7
-        validacionNota(pt1.getText(),evt);
+        validacionNota(pt1.getText(), evt);
     }//GEN-LAST:event_pt1KeyTyped
 
     private void pt2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt2KeyTyped
         // TODO add your handling code here:
-        validacionNota(pt2.getText(),evt);
+        validacionNota(pt2.getText(), evt);
     }//GEN-LAST:event_pt2KeyTyped
 
     private void pt3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt3KeyTyped
         // TODO add your handling code here:
-        validacionNota(pt3.getText(),evt);
+        validacionNota(pt3.getText(), evt);
     }//GEN-LAST:event_pt3KeyTyped
 
     private void pt4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt4KeyTyped
         // TODO add your handling code here:
-        validacionNota(pt4.getText(),evt);
+        validacionNota(pt4.getText(), evt);
     }//GEN-LAST:event_pt4KeyTyped
 
     private void pt5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt5KeyTyped
         // TODO add your handling code here:
-        validacionNota(pt5.getText(),evt);
+        validacionNota(pt5.getText(), evt);
     }//GEN-LAST:event_pt5KeyTyped
 
     private void pt6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt6KeyTyped
         // TODO add your handling code here:
-        validacionNota(pt6.getText(),evt);
+        validacionNota(pt6.getText(), evt);
     }//GEN-LAST:event_pt6KeyTyped
 
     private void pt7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt7KeyTyped
         // TODO add your handling code here:
-        validacionNota(pt7.getText(),evt);
+        validacionNota(pt7.getText(), evt);
     }//GEN-LAST:event_pt7KeyTyped
 
     private void pt8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pt8KeyTyped
         // TODO add your handling code here:
-        validacionNota(pt8.getText(),evt);
+        validacionNota(pt8.getText(), evt);
     }//GEN-LAST:event_pt8KeyTyped
 
     private void pp1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp1KeyTyped
         // TODO add your handling code here:
-        validacionNota(pp1.getText(),evt);
+        validacionNota(pp1.getText(), evt);
     }//GEN-LAST:event_pp1KeyTyped
 
     private void pp2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp2KeyTyped
         // TODO add your handling code here:
-        validacionNota(pp2.getText(),evt);
+        validacionNota(pp2.getText(), evt);
     }//GEN-LAST:event_pp2KeyTyped
 
     private void pp3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp3KeyTyped
         // TODO add your handling code here:
-        validacionNota(pp3.getText(),evt);
+        validacionNota(pp3.getText(), evt);
     }//GEN-LAST:event_pp3KeyTyped
 
     private void pp4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp4KeyTyped
         // TODO add your handling code here:
-        validacionNota(pp4.getText(),evt);
+        validacionNota(pp4.getText(), evt);
     }//GEN-LAST:event_pp4KeyTyped
 
     private void pp5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp5KeyTyped
         // TODO add your handling code here:
-        validacionNota(pp5.getText(),evt);
+        validacionNota(pp5.getText(), evt);
     }//GEN-LAST:event_pp5KeyTyped
 
     private void pp6KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp6KeyTyped
         // TODO add your handling code here:
-        validacionNota(pp6.getText(),evt);
+        validacionNota(pp6.getText(), evt);
     }//GEN-LAST:event_pp6KeyTyped
 
     private void pp7KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp7KeyTyped
         // TODO add your handling code here:
-        validacionNota(pp7.getText(),evt);
+        validacionNota(pp7.getText(), evt);
     }//GEN-LAST:event_pp7KeyTyped
 
     private void pp8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pp8KeyTyped
         // TODO add your handling code here:
-        validacionNota(pp8.getText(),evt);
+        validacionNota(pp8.getText(), evt);
     }//GEN-LAST:event_pp8KeyTyped
 
     private void validacionNota(String cadena, java.awt.event.KeyEvent evt) {

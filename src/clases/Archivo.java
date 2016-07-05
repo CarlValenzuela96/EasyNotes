@@ -5,7 +5,7 @@ import java.io.*;
 public class Archivo {
 
     private Ramo ramo;
-
+//crea archivo para ramo mixto
     public void crearArchivoMixto(String nombre, String tipo, String cantNT, String cantNP, String pondTeo, String pondPract) throws IOException {
 
         File f = new File("Ramos//" + nombre + ".txt");
@@ -30,8 +30,8 @@ public class Archivo {
 
 //        throw new UnsupportedOperationException();
     }
-//lee el archivo para poder agregar notas
-
+    
+//crea archivo para ramo simple
     public void crearArchivoSimple(String nombre, String tipo, String cantN) throws IOException {
 
         File f = new File("Ramos//" + nombre + ".txt");
@@ -56,7 +56,9 @@ public class Archivo {
 
 //        throw new UnsupportedOperationException();
     }
-      public void guardarArchivo(String nombre, double[] notas, double[] pond) throws IOException{
+    
+    //guarda notas y ponderaciones en el archivo del ramo creado con anterioridad
+      public void guardarNotas(String nombre, double[] notas, double[] pond) throws IOException{
         File f = new File("Ramos//" + nombre + ".txt");
         FileWriter fw = new FileWriter(f,true);
         BufferedWriter bw = new BufferedWriter(fw);
@@ -72,7 +74,7 @@ public class Archivo {
         bw.close();
         fw.close();
     }
-
+//lee un archivo y lo transforma en matriz para extraer los datos
     public String[][] leerArchivoRamo(String nombre) throws IOException {
         File f = new File("Ramos//" + nombre + ".txt");
         String[][] datos = new String[5][8];
@@ -90,7 +92,7 @@ public class Archivo {
 
         return datos;
     }
-
+//elimina un archivo a eleccion
     public void eliminarArchivo(String nomArchivo) {
         File f = new File("Ramos//" + nomArchivo + ".txt");
         if (f.exists()) {

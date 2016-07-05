@@ -39,6 +39,8 @@ public class InterfazSimple extends javax.swing.JFrame {
         this.setIconImage(icon.getImage());
     }
 
+    //ve los datos de los ramos y los distribuye en la interfaz (cantidad de notas, tipo aprobacion, ect
+    //ademas de hacer visible los jTexfield segun la cantidad de notas que tenga el ramo
     public void ingresarRamo(Simple s) throws IOException {
         nombreAsign.setText(s.getNombre());
         tipoAprob.setText(s.getTipo());
@@ -871,6 +873,8 @@ public class InterfazSimple extends javax.swing.JFrame {
         arregloN = true;
     }//GEN-LAST:event_jButton1ActionPerformed
 
+//crea un arreglo dependiendo de la cantidad de notas que tenga el ramo
+//y calcula el promedio del ramo o la nota necesaria.    
     void crearArreglo(java.awt.event.ActionEvent evt) {
 
         switch (Integer.parseInt(jLabel15.getText())) {
@@ -1246,15 +1250,16 @@ public class InterfazSimple extends javax.swing.JFrame {
                 break;
         }
     }
-
+ //instancia un objeto de clase archivo, guarda los datos del ramo 
+    //y guarda las notas y ponderaciones de este
     private void guardar() throws IOException {
         Archivo ar = new Archivo();
         ar.eliminarArchivo(nombreAsign.getText());
         ar.crearArchivoSimple(nombreAsign.getText(), tipoAprob.getText(),
                 jLabel15.getText());
-        ar.guardarArchivo(nombreAsign.getText(), notasT, pondT);
+        ar.guardarNotas(nombreAsign.getText(), notasT, pondT);
     }
-
+//instancia un objeto de la clase simple y calcula el promedio del ramo
     void calcularProm() {
         Simple s = new Simple();
         if ((sumPond(this.pondT) <= 100 && sumPond(this.pondT) >= 99.96)&&validarPond(this.pondT) && validarNota(this.notasT) == true) {
@@ -1284,11 +1289,12 @@ public class InterfazSimple extends javax.swing.JFrame {
         }
     }
 
+//instancia un objeto de la clase simple y calcula la nota faltante para el 4 o para examen
     void calcularNotaFaltante() {
 
         Simple s = new Simple();
         if ((sumPond(this.pondT) <= 100 && sumPond(this.pondT) >= 99.96) && validarNota(this.notasT)&&validarPond(this.pondT)&& this.notasT.length >= 2) {
-            this.notasT[notasT.length - 1] = 0;
+         
             double a = truncarNum(s.calcNotaFaltante(notasT, pondT));
             double b = truncarNum(s.calcNotaPExamen(notasT, pondT));
 
@@ -1331,6 +1337,7 @@ public class InterfazSimple extends javax.swing.JFrame {
                 "ERROR", JOptionPane.WARNING_MESSAGE);
     }
 
+//suma las ponderaciones
     double sumPond(double pondT[]
     ) {
         double cont = 0;
@@ -1339,7 +1346,7 @@ public class InterfazSimple extends javax.swing.JFrame {
         }
         return cont;
     }
-
+//valida la nota para que sea mayor a 0 o menor a 7 y devuelve un boolean
     boolean validarNota(double notaT[]) {
         boolean pasa = true;
         for (int i = 0; i < notaT.length; i++) {
@@ -1349,7 +1356,7 @@ public class InterfazSimple extends javax.swing.JFrame {
         }
         return pasa;
     }
-
+//valida la ponderacion para que sea mayor a 0 devuelve un boolean
     boolean validarPond(double pondT[]) {
         boolean pasa = true;
         for (int i = 0; i < pondT.length; i++) {

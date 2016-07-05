@@ -51,8 +51,14 @@ public class EasyNotesV12 {
         if (!dir.exists()) {
             dir.mkdir();
         }
+        //se recorre el directorio Ramos para encontrar los archivos de los ramos agregados
+        //se guarda el metodo leerArchivoRamo de clase archivo que retorna una matriz String
+        //en otra matriz definida l y gracias a los setters de la clase ramo instanciada se puede distribuir los datos
+        //y cargarlos al arraylist del jframe paginaprincipal para poder usar los ramos agregados antes de cerrar la aplicacion
+        
         for (File ramo : dir.listFiles()) {
             Archivo carga = new Archivo();
+            
             String[][] l = carga.leerArchivoRamo(ramo.getName().replace(".txt",""));
             Ramo leer;
             if(l[0][1].equals("Teórico")||l[0][1].equals("Práctico")){

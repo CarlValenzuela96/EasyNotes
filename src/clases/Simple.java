@@ -12,14 +12,4 @@ public class Simple extends Ramo {
         this.notas = notas;
     }
 
-    public void calcPromedio() {
-
-        throw new UnsupportedOperationException();
-    }
-
-    public void agregarPond() {
-
-        throw new UnsupportedOperationException();
-    }
-
 }

@@ -1,14 +1,10 @@
 package clases;
 public class Mixto extends Ramo {
 
-	private boolean separado;
         private byte cantNP;
         private byte cantNT;
 	private double pond_teo;
 	private double pond_parct;
-	private byte lim_teo;
-
-    
 
     public byte getCantNP() {
         return cantNP;
@@ -26,16 +22,6 @@ public class Mixto extends Ramo {
         this.cantNT = cantNT;
     }
     
-
-	public boolean getSeparado() {
-		return this.separado;
-	}
-
-	
-	public void setSeparado(boolean separado) {
-		this.separado = separado;
-	}
-
 	public double getPond_teo() {
 		return this.pond_teo;
 	}
@@ -53,18 +39,9 @@ public class Mixto extends Ramo {
 	public void setPond_parct(double pond_parct) {
 		this.pond_parct = pond_parct;
 	}
-
-	public byte getLim_teo() {
-		return this.lim_teo;
-	}
-
-	
-	public void setLim_teo(byte lim_teo) {
-		this.lim_teo = lim_teo;
-	}
-
-	
         
+        //calcula el promedio total del ramo usando el promedio teorico, promedio practico ,ponderacion practica y ponderacion teorica
+        // y retorna un double con el promedio general del ramo
         public double calcPromedioTotal(double promT, double promP, double pondT, double pondP) {
             
             double promFT = promT*(pondT/100);

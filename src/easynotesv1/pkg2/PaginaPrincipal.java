@@ -31,6 +31,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         inicioBotones();
         this.setIconImage(icon.getImage());
     }
+//hace invisible los botones segun el tamaño del arraylist
 
     private void inicioBotones() {
         switch (ramos.size()) {
@@ -713,6 +714,7 @@ public class PaginaPrincipal extends javax.swing.JFrame {
             Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_asign9ActionPerformed
+    //agrega un ramo entre 1 y 9 
     private void agregar() {
         if (ramos.size() < 9) {
             this.dispose();
@@ -728,6 +730,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    //usa como parametro el ramo agregado en la interfaz agregar ramo y lo ingresa a un arraylist
+    //hace visible los botones y les asigna un nombre
     public void ramoNuevo(Ramo rn) {
         switch (ramos.size()) {
             case 0:
@@ -770,6 +774,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         ramos.add(rn);
     }
 
+    //se le pasa como parametro el numero de la asignatura dentro del arraylist y
+    //segun el tipo de asignatura le asigna le asigna una interfaz ya sea simple o mixta
     private void asignatura(int n) throws IOException {
         Ramo r = ramos.get(n);
         this.dispose();
@@ -788,6 +794,8 @@ public class PaginaPrincipal extends javax.swing.JFrame {
         }
     }
 
+    //si el arraylist no es de dimension 0 crea un arreglo con el nombre de cada ramo separando cada posicion con un :
+    //que es pasado como parametro al metodo nombres del jframe EliminarRamo para agregarlo al jComboBox y poder eliminarlo
     private void borrar() {
         if (!ramos.isEmpty()) {
             this.dispose();
@@ -804,12 +812,12 @@ public class PaginaPrincipal extends javax.swing.JFrame {
                     "Nada que hacer", JOptionPane.INFORMATION_MESSAGE);
         }
     }
-
+//elimina un ramo en especifico del arraylist
     public void elim(int i) {
         ramos.remove(i);
         inicioBotones();
     }
-
+//elimina todos los ramos de la asignatura
     private void reiniciar() {
 
         int resp = JOptionPane.showConfirmDialog(null, "Esto borrará todos los "
